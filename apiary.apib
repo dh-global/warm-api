@@ -18,9 +18,60 @@ FORMAT: 1A
 
 ## HTTP请求头
 
-+ 需要验证的操作
++ 需要验证的操作: **Authentication：JWT jwt-token**
 
-        Authentication：JWT jwt-token
+## 用户 [/users{?page}{?per_page}{?app}{?sort}]
+
+### 列出所有用户 [GET]
+仅供管理员使用
+
++ Parameters
+
+    + page: 0 (number, optional) - 起始页
+        + Default: `0`
+    + per_page: 60 (number, optional) - 每页返回的用户数（最大200）
+        + Default: `60`
+    + app: (string, optional) - 所属im app
+        + Default: ""
+    + sort: create_at (string, optional) - "" or "last_activity_at" or "create_at"
+        + Default: ""
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+        + username: neil (string, required) - 用户名
+        + create_at: 1441983590 (number, required) - 创建时间
+        + update_at: 1441983590 (number) - 最后更新时间
+        + phone: 13700000000 (string) - 电话号码
+        + role: user (string, required) - 权限："user" or "admin"
+        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
+        + im_acc: neilyin (string)
+
+    + Body
+
+            [
+                {
+                    "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
+                    "username": "neil",
+                    "create_at": 1441983590,
+                    "update_at": 1441983590,
+                    "phone": "13700000000",
+                    "role": "admin",
+                    "im_id": "k5j1urrkqfdhf8xxadb9iheipr"
+                    "im_acc": "neil"
+                },
+                {
+                    "id": "wz4ri5nktfd1fkufi668ch6zao",
+                    "username": "terry",
+                    "create_at": 1441983590,
+                    "update_at": 1441983590,
+                    "phone": "13700000000",
+                    "role": "user",
+                    "im_id": "g1ex84xwutd7mqbxuacpd4ebcw"
+                    "im_acc": "terry"
+                }
+            ]
 
 # GET /message
 + Response 200 (text/plain)
