@@ -20,7 +20,7 @@ FORMAT: 1A
 
 + 需要验证的操作: **Authentication：JWT jwt-token**
 
-## 用户 /users [/users{?page}{?per_page}{?app}{?sort}]
+## 用户集合 /users [/users{?page}{?per_page}{?app}{?sort}]
 
 ### 列出所有用户 [GET]
 仅供管理员使用
@@ -35,12 +35,6 @@ FORMAT: 1A
         + Default: ""
     + sort: create_at (string, optional) - 排序："" or "last_activity_at" or "create_at"
         + Default: ""
-
-+ Request
-
-    + Headers
-
-            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -82,11 +76,7 @@ FORMAT: 1A
 ### 创建用户 [POST]
 仅供管理员使用
 
-+ Request
-
-    + Headers
-
-            Accept: application/json
++ Request (application/json)
 
     + Attributes (object)
         + username: neil (string, required) - 用户名
@@ -129,21 +119,123 @@ FORMAT: 1A
                 "im_acc": "neil"
             }
 
-## 联系人 /users/{id}/contacts [/users/{id}/contacts{?sort}]
+## 用户 /users/{id} [/users/{id}]
 
-### 列出所有联系人 [GET]
+### 获取用户信息 [GET]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+        + username: neil (string, required) - 用户名
+        + create_at: 1441983590 (number, required) - 创建时间
+        + update_at: 1441983590 (number) - 最后更新时间
+        + phone: 13700000000 (string) - 电话号码
+        + role: user (string, required) - 权限："user" or "admin"
+        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
+        + im_acc: neilyin (string)
+
+    + Body
+
+            {
+                "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
+                "username": "neil",
+                "create_at": 1441983590,
+                "update_at": 1441983590,
+                "phone": "13700000000",
+                "role": "admin",
+                "im_id": "k5j1urrkqfdhf8xxadb9iheipr"
+                "im_acc": "neil"
+            }
+
+### 更新用户信息 [POST]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Response 200 (application/json)
+
+### 禁用用户 [DELETE]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Response 200 (application/json)
+
+## 当前用户 /users/me [/users/me]
+
+### 获取当前用户信息 [GET]
+
++ Response 200 (application/json)
+
+### 修改当前用户信息 [PUT]
+
++ Response 200 (application/json)
+
+## 通过手机号查找用户 /users/phone/{phone} [/users/phone/{phone}]
+
+### 通过手机号查找用户 [GET]
+
++ Parameters
+
+    + phone: 13300000000 (stirng, required) - 手机号码
+
++ Response 200 (application/json)
+
+## 用户头像 /users/{id}/image [/users/{id}/image]
+
+### 获取用户头像 [GET]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Response 200 (application/json)
+
+
+### 上传用户头像 [POST]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Request (application/json)
+
+    + Attributes (object)
+        + content: BASE64 (string, required) - 经BASE64编码的头像的内容
+
+    + Body
+
+            {
+                "content": "BASE64"
+            }
+
++ Response 201 (application/json)
+
+### 移除用户头像 [DELETE]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Response 200 (application/json)
+
+## 联系人集合 /users/{id}/contacts [/users/{id}/contacts{?sort}{?update_after}]
+
+### 列出联系人 [GET]
 
 + Parameters
 
     + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
     + sort: add_at (string, optional) - 排序："name" or "add_at"
-        + Default: ""
-
-+ Request
-
-    + Headers
-
-            Accept: application/json
+        + Default: add_at
+    + update_after: 1441983590 (stirng, optional) - 更新时间晚于
 
 + Response 200 (application/json)
 
@@ -181,3 +273,73 @@ FORMAT: 1A
                     "im_acc": "terry"
                 }
             ]
+
+### 请求添加联系人 [POST]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+
++ Request (application/json)
+
+    + Attributes (object)
+        + contact: 99bzrhcwxbr8p8kwe4jnw51m24 (string, required) - 联系人id
+        + message: hello (string) - 请求附带消息
+
+    + Body
+
+            {
+                "contact": "99bzrhcwxbr8p8kwe4jnw51m24",
+                "message": "hello"
+            }
+
++ Response 201 (application/json)
+请求发送成功
+
+    + Attributes (object)
+        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+        + username: neil (string, required) - 用户名
+        + create_at: 1441983590 (number, required) - 创建时间
+        + update_at: 1441983590 (number) - 最后更新时间
+        + phone: 13700000000 (string) - 电话号码
+        + role: user (string, required) - 权限："user" or "admin"
+        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
+        + im_acc: neil (string)
+
+    + Body
+
+            {
+                "user": "86bzrhcwxbr8p8kwe4jnw51m3c",
+                "contact": "99bzrhcwxbr8p8kwe4jnw51m24",
+                "request_at": 1441983590
+            }
+
+## 联系人 /users/{id}/contacts/{cid} [/users/{id}/contacts/{cid}]
+
+### 查看联系人信息 [GET]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+
++ Response 200 (application/json)
+
+### 修改与联系人相关的设置 [POST]
+如备注信息、隐私等
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+
++ Response 200 (application/json)
+
+### 移除联系人 [DELETE]
+
++ Parameters
+
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+
++ Response 200 (application/json)
