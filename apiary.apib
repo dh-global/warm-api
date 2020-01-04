@@ -350,12 +350,12 @@ FORMAT: 1A
 
 ### 添加好友请求 [POST]
 
++ Parameters
+
+    + id: 23 (int, required) - 用户id
+    + friend_id: 43 (int, required) - 好友id
+
 + Request (application/json)
-
-    + Parameters
-
-         + id: 23 (int, required) - 用户id
-         + friend_id: 43 (int, required) - 好友id
 
     + Attributes (object)
 
@@ -367,12 +367,12 @@ FORMAT: 1A
 
 ### 用户同意添加好友请求 [POST]
 
++ Parameters
+
+    + id: 23 (int, required) - 用户id
+    + friend_id: 43 (int, required) - 好友id
+
 + Request (application/json)
-
-    + Parameters
-
-        + id: 23 (int, required) - 用户id
-        + friend_id: 43 (int, required) - 好友id
 
 + Response 200 (application/json)
 
@@ -380,11 +380,12 @@ FORMAT: 1A
 ## 拒绝添加好友 /users/{id}/reject/{friend_id} [/users/{id}/reject/{friend_id}]
 
 ### 用户拒绝添加好友请求 [POST]
++ Parameters
+
+    + id: 23 (int, required) - 用户id
+    + friend_id: 43 (int, required) - 好友id
+
 + Request (application/json)
 
-    + Parameters
-
-         + id: 23 (int, required) - 用户id
-         + friend_id: 43 (int, required) - 好友id
 
 + Response 200 (application/json)
