@@ -226,49 +226,6 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
-## 好友 /users/{id}/friend/{friend_id}
-
-### 添加好友请求 [POST]
-
-+ Request (application/json)
-
-    + Parameters
-
-         + id: 23 (int, required) - 用户id
-         + friend_id: 43 (int, required) - 好友id
-
-    + Attributes (object)
-
-        + remark：I'm xxx (string) - 申请备注
-
-+ Response 200 (application/json)
-
-## 同意添加好友 /users/{id}/agree/{friend_id}
-
-### 用户同意添加好友请求 [GET]
-
-+ Request (application/json)
-
-    + Parameters
-
-        + id: 23 (int, required) - 用户id
-        + friend_id: 43 (int, required) - 好友id
-
-+ Response 200 (application/json)
-
-
-## 拒绝添加好友 /users/{id}/reject/{friend_id}
-
-### 用户拒绝添加好友请求 [GET]
-+ Request (application/json)
-
-    + Parameters
-
-         + id: 23 (int, required) - 用户id
-         + friend_id: 43 (int, required) - 好友id
-
-+ Response 200 (application/json)
-
 
 ## 联系人集合 /users/{id}/contacts [/users/{id}/contacts{?sort}{?update_after}]
 
@@ -385,5 +342,49 @@ FORMAT: 1A
 
     + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
     + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
+
++ Response 200 (application/json)
+
+
+## 好友 /users/{id}/friend/{friend_id} [/users/{id}/friend/{friend_id}]
+
+### 添加好友请求 [POST]
+
++ Request (application/json)
+
+    + Parameters
+
+         + id: 23 (int, required) - 用户id
+         + friend_id: 43 (int, required) - 好友id
+
+    + Attributes (object)
+
+        + remark：I'm xxx (string) - 申请备注
+
++ Response 200 (application/json)
+
+## 同意添加好友 /users/{id}/agree/{friend_id} [/users/{id}/agree/{friend_id}]
+
+### 用户同意添加好友请求 [GET]
+
++ Request (application/json)
+
+    + Parameters
+
+        + id: 23 (int, required) - 用户id
+        + friend_id: 43 (int, required) - 好友id
+
++ Response 200 (application/json)
+
+
+## 拒绝添加好友 /users/{id}/reject/{friend_id} [/users/{id}/reject/{friend_id}]
+
+### 用户拒绝添加好友请求 [GET]
++ Request (application/json)
+
+    + Parameters
+
+         + id: 23 (int, required) - 用户id
+         + friend_id: 43 (int, required) - 好友id
 
 + Response 200 (application/json)
