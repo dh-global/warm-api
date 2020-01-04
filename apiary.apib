@@ -233,7 +233,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+    + id: 86 (string, required) - 用户id
     + sort: add_at (string, optional) - 排序："name" or "add_at"
         + Default: add_at
     + update_after: 1441983590 (string, optional) - 更新时间晚于
@@ -241,13 +241,13 @@ FORMAT: 1A
 + Response 200 (application/json)
 
     + Attributes (object)
-        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+        + id: 86 (string, required) - 用户id
         + username: neil (string, required) - 用户名
         + create_at: 1441983590 (number, required) - 创建时间
         + update_at: 1441983590 (number) - 最后更新时间
         + phone: 13700000000 (string) - 电话号码
         + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
+        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string)
         + im_acc: neilyin (string)
 
     + Body
@@ -279,18 +279,18 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+    + id: 86 (int, required) - 用户id
 
 + Request (application/json)
 
     + Attributes (object)
-        + contact: 99bzrhcwxbr8p8kwe4jnw51m24 (string, required) - 联系人id
+        + contact: 99 (int, required) - 联系人id
         + message: hello (string) - 请求附带消息
 
     + Body
 
             {
-                "contact": "99bzrhcwxbr8p8kwe4jnw51m24",
+                "contact": 99,
                 "message": "hello"
             }
 
@@ -346,44 +346,27 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 好友 /users/{id}/friend/{friend_id} [/users/{id}/friend/{friend_id}]
-
-### 添加好友请求 [POST]
-
-+ Parameters
-
-    + id: 23 (int, required) - 用户id
-    + friend_id: 43 (int, required) - 好友id
-
-+ Request (application/json)
-
-    + Attributes (object)
-
-        + remark：I'm xxx (string) - 申请备注
-
-+ Response 200 (application/json)
-
-## 同意添加好友 /users/{id}/agree/{friend_id} [/users/{id}/agree/{friend_id}]
+## 同意添加好友 /users/{id}/agree/{cid} [/users/{id}/agree/{cid}]
 
 ### 用户同意添加好友请求 [POST]
 
 + Parameters
 
     + id: 23 (int, required) - 用户id
-    + friend_id: 43 (int, required) - 好友id
+    + cid: 43 (int, required) - 联系人id
 
 + Request (application/json)
 
 + Response 200 (application/json)
 
 
-## 拒绝添加好友 /users/{id}/reject/{friend_id} [/users/{id}/reject/{friend_id}]
+## 拒绝添加好友 /users/{id}/reject/{cid} [/users/{id}/reject/{cid}]
 
 ### 用户拒绝添加好友请求 [POST]
 + Parameters
 
     + id: 23 (int, required) - 用户id
-    + friend_id: 43 (int, required) - 好友id
+    + cid: 43 (int, required) - 联系人id
 
 + Request (application/json)
 
