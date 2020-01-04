@@ -222,12 +222,10 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
 + Response 200 (application/json)
 
 
-## 联系人集合 /users/{id}/contacts [/users/{id}/contacts{?sort}{?update_after}]
+## 联系人集合 /users/contacts [/users/contacts{?sort}{?update_after}]
 
 ### 列出联系人 [GET]
 
@@ -241,45 +239,41 @@ FORMAT: 1A
 + Response 200 (application/json)
 
     + Attributes (object)
-        + id: 86 (string, required) - 用户id
+        + id: 86 (int, required) - 用户id
         + username: neil (string, required) - 用户名
         + create_at: 1441983590 (number, required) - 创建时间
         + update_at: 1441983590 (number) - 最后更新时间
         + phone: 13700000000 (string) - 电话号码
         + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string)
+        + im_id: 89 (int)
         + im_acc: neilyin (string)
 
     + Body
 
             [
                 {
-                    "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
+                    "id": "86,
                     "username": "neil",
                     "create_at": 1441983590,
                     "update_at": 1441983590,
                     "phone": "13700000000",
                     "role": "admin",
-                    "im_id": "k5j1urrkqfdhf8xxadb9iheipr"
+                    "im_id": 54,
                     "im_acc": "neil"
                 },
                 {
-                    "id": "wz4ri5nktfd1fkufi668ch6zao",
+                    "id": 68,
                     "username": "terry",
                     "create_at": 1441983590,
                     "update_at": 1441983590,
                     "phone": "13700000000",
                     "role": "user",
-                    "im_id": "g1ex84xwutd7mqbxuacpd4ebcw"
+                    "im_id": 84,
                     "im_acc": "terry"
                 }
             ]
 
 ### 请求添加联系人 [POST]
-
-+ Parameters
-
-    + id: 86 (int, required) - 用户id
 
 + Request (application/json)
 
@@ -298,31 +292,30 @@ FORMAT: 1A
 请求发送成功
 
     + Attributes (object)
-        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+        + id: 86 (int, required) - 用户id
         + username: neil (string, required) - 用户名
         + create_at: 1441983590 (number, required) - 创建时间
         + update_at: 1441983590 (number) - 最后更新时间
         + phone: 13700000000 (string) - 电话号码
         + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
+        + im_id: 54 (int)
         + im_acc: neil (string)
 
     + Body
 
             {
-                "user": "86bzrhcwxbr8p8kwe4jnw51m3c",
-                "contact": "99bzrhcwxbr8p8kwe4jnw51m24",
+                "user": 86,
+                "contact": 99,
                 "request_at": 1441983590
             }
 
-## 联系人 /users/{id}/contacts/{cid} [/users/{id}/contacts/{cid}]
+## 联系人 /users/contacts/{cid} [/users/contacts/{cid}]
 
 ### 查看联系人信息 [GET]
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
+    + cid: 90 (int, required) - 联系人id
 
 + Response 200 (application/json)
 
@@ -331,8 +324,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
+    + cid: 90 (int, required) - 联系人id
 
 + Response 200 (application/json)
 
@@ -340,19 +332,17 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (int, required) - 联系人id
 
 + Response 200 (application/json)
 
 
-## 同意添加好友 /users/{id}/agree/{cid} [/users/{id}/agree/{cid}]
+## 同意添加好友 /user/contact_agree/{cid} [/users/contact_agree/{cid}]
 
-### 用户同意添加好友请求 [POST]
+### 用户同意添加好友请求 [GET]
 
 + Parameters
 
-    + id: 23 (int, required) - 用户id
     + cid: 43 (int, required) - 联系人id
 
 + Request (application/json)
@@ -360,12 +350,11 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 拒绝添加好友 /users/{id}/reject/{cid} [/users/{id}/reject/{cid}]
+## 拒绝添加好友 /user/contact_reject/{cid} [/users/contact_reject/{cid}]
 
-### 用户拒绝添加好友请求 [POST]
+### 用户拒绝添加好友请求 [GET]
 + Parameters
 
-    + id: 23 (int, required) - 用户id
     + cid: 43 (int, required) - 联系人id
 
 + Request (application/json)
