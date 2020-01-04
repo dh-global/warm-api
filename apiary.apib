@@ -345,11 +345,12 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 添加好友 /user/{id}/friend/{friend_id}
+## 好友 /user/{id}/friend/{friend_id}
 
 ### 添加好友请求 [POST]
 
 + Request (application/json)
+
     + Parameters
 
          + id: 23 (int, required) - 用户id
@@ -359,28 +360,30 @@ FORMAT: 1A
 
         + remark：I'm xxx (string) - 申请备注
 
- + Response 200 (application/json)
++ Response 200 (application/json)
 
 ## 同意添加好友 /user/{id}/agree/{friend_id}
 
 ### 用户同意添加好友请求 [GET]
 
 + Request (application/json)
+
+    + Parameters
+
+        + id: 23 (int, required) - 用户id
+        + friend_id: 43 (int, required) - 好友id
+
++ Response 200 (application/json)
+
+
+## 拒绝添加好友 /user/{id}/reject/{friend_id}
+
+### 用户拒绝添加好友请求 [GET]
++ Request (application/json)
+
     + Parameters
 
          + id: 23 (int, required) - 用户id
          + friend_id: 43 (int, required) - 好友id
-
- + Response 200 (application/json)
-
-
- ## 拒绝添加好友 /user/{id}/reject/{friend_id}
-
- ### 用户拒绝添加好友请求 [GET]
- + Request (application/json)
-     + Parameters
-
-          + id: 23 (int, required) - 用户id
-          + friend_id: 43 (int, required) - 好友id
 
 + Response 200 (application/json)
