@@ -125,7 +125,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Response 200 (application/json)
 
@@ -156,7 +156,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Response 200 (application/json)
 
@@ -164,7 +164,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Response 200 (application/json)
 
@@ -184,7 +184,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + phone: 13300000000 (stirng, required) - 手机号码
+    + phone: 13300000000 (string, required) - 手机号码
 
 + Response 200 (application/json)
 
@@ -194,7 +194,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Response 200 (application/json)
 
@@ -203,7 +203,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Request (application/json)
 
@@ -222,7 +222,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Response 200 (application/json)
 
@@ -232,10 +232,10 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
     + sort: add_at (string, optional) - 排序："name" or "add_at"
         + Default: add_at
-    + update_after: 1441983590 (stirng, optional) - 更新时间晚于
+    + update_after: 1441983590 (string, optional) - 更新时间晚于
 
 + Response 200 (application/json)
 
@@ -278,7 +278,7 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
 
 + Request (application/json)
 
@@ -320,8 +320,8 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
 
 + Response 200 (application/json)
 
@@ -330,8 +330,8 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
 
 + Response 200 (application/json)
 
@@ -339,7 +339,48 @@ FORMAT: 1A
 
 + Parameters
 
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (stirng, required) - 用户id
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (stirng, required) - 联系人id
+    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
+    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (string, required) - 联系人id
+
++ Response 200 (application/json)
+
+
+## 添加好友 /user/{id}/friend/{friend_id}
+
+### 添加好友请求 [POST]
+
++ Request (application/json)
+    + Parameters
+
+         + id: 23 (int, required) - 用户id
+         + friend_id: 43 (int, required) - 好友id
+
+    + Attributes (object)
+
+        + remark：I'm xxx (string) - 申请备注
+
+ + Response 200 (application/json)
+
+## 同意添加好友 /user/{id}/agree/{friend_id}
+
+### 用户同意添加好友请求 [GET]
+
++ Request (application/json)
+    + Parameters
+
+         + id: 23 (int, required) - 用户id
+         + friend_id: 43 (int, required) - 好友id
+
+ + Response 200 (application/json)
+
+
+ ## 拒绝添加好友 /user/{id}/reject/{friend_id}
+
+ ### 用户拒绝添加好友请求 [GET]
+ + Request (application/json)
+     + Parameters
+
+          + id: 23 (int, required) - 用户id
+          + friend_id: 43 (int, required) - 好友id
 
 + Response 200 (application/json)
