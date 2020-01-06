@@ -20,7 +20,7 @@ FORMAT: 1A
 
 + 需要验证的操作: **Authentication：JWT jwt-token**
 
-## 用户集合 /users [/users{?page}{?per_page}{?app}{?sort}]
+## 用户集合 /user [/user{?page}{?per_page}{?app}{?sort}]
 
 ### 列出所有用户 [GET]
 仅供管理员使用
@@ -119,7 +119,7 @@ FORMAT: 1A
                 "im_acc": "neil"
             }
 
-## 用户 /users/{id} [/users/{id}]
+## 用户 /user/{id} [/user/{id}]
 
 ### 获取用户信息 [GET]
 
@@ -168,7 +168,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
-## 当前用户 /users/me [/users/me]
+## 当前用户 /user/me [/user/me]
 
 ### 获取当前用户信息 [GET]
 
@@ -178,7 +178,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
-## 通过手机号查找用户 /users/phone/{phone} [/users/phone/{phone}]
+## 通过手机号查找用户 /user/phone/{phone} [/user/phone/{phone}]
 
 ### 通过手机号查找用户 [GET]
 
@@ -188,7 +188,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
-## 用户头像 /users/{id}/image [/users/{id}/image]
+## 用户头像 /user/{id}/image [/user/{id}/image]
 
 ### 获取用户头像 [GET]
 
@@ -225,7 +225,7 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 联系人集合 /users/contacts [/users/contacts{?sort}{?update_after}]
+## 联系人集合 /user/contacts [/user/contacts{?sort}{?update_after}]
 
 ### 列出联系人 [GET]
 
@@ -309,7 +309,7 @@ FORMAT: 1A
                 "request_at": 1441983590
             }
 
-## 联系人 /users/contacts/{cid} [/users/contacts/{cid}]
+## 联系人 /user/contacts/{cid} [/user/contacts/{cid}]
 
 ### 查看联系人信息 [GET]
 
@@ -337,7 +337,7 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 同意添加好友 /user/contact_agree/{cid} [/users/contact_agree/{cid}]
+## 同意添加好友 /user/contact_agree/{cid} [/user/contact_agree/{cid}]
 
 ### 用户同意添加好友请求 [GET]
 
@@ -350,7 +350,7 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 拒绝添加好友 /user/contact_reject/{cid} [/users/contact_reject/{cid}]
+## 拒绝添加好友 /user/contact_reject/{cid} [/user/contact_reject/{cid}]
 
 ### 用户拒绝添加好友请求 [GET]
 + Parameters
