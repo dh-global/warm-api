@@ -298,12 +298,7 @@ FORMAT: 1A
 
 ## 联系人 /user/contacts/{cid} [/user/contacts/{cid}]
 
-### 搜索联系人 /user/{keyword}
-+ Parameters
 
-    + keyword: 10086 (string, required) - 搜索关键字
-
-+ Response 200 (application/json)
 
 
 ### 查看联系人信息(单个) [GET]
@@ -356,3 +351,37 @@ FORMAT: 1A
 
 
 + Response 200 (application/json)
+
+
+## 搜索联系人 /user/search/{keyword} [/user/search/{keyword}]
+
+## 搜索联系人 [GET]
+
++ Parameters
+
+    + keyword: 10086 (string, required) - 搜索关键字
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 86 (number, required) - 用户id
+        + username: neil (string, required) - 用户名
+        + nickname: neil (string, optional) - 昵称
+        + avatar_url: /image/avatar/1.png - 用户头像
+
+    + Body
+
+            [
+                {
+                    "id": 86,
+                    "username": "neil",
+                    "nickname": "neil",
+                    "avatar_url": "/image/avatar/1.png",
+                },
+                {
+                    "id": 68,
+                    "username": "terry",
+                    "nickname": "terry",
+                    "avatar_url": "/image/avatar/1.png"
+                }
+            ]
