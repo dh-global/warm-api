@@ -353,35 +353,17 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
-## 搜索联系人 /user/search/{keyword} [/user/search/{keyword}]
+## 添加好友申请列表 /user/contacts/new [/user/contact/new]
+已完成
+### 添加好友申请列表(新朋友) [GET]
 
-## 搜索联系人 [GET]
-
-+ Parameters
-
-    + keyword: 10086 (string, required) - 搜索关键字
++ Request
 
 + Response 200 (application/json)
 
     + Attributes (object)
-        + id: 86 (number, required) - 用户id
+        + user_id: 86 (number, required) - 用户id
         + username: neil (string, required) - 用户名
-        + nickname: neil (string, optional) - 昵称
-        + avatar_url: /image/avatar/1.png - 用户头像
-
-    + Body
-
-            [
-                {
-                    "id": 86,
-                    "username": "neil",
-                    "nickname": "neil",
-                    "avatar_url": "/image/avatar/1.png",
-                },
-                {
-                    "id": 68,
-                    "username": "terry",
-                    "nickname": "terry",
-                    "avatar_url": "/image/avatar/1.png"
-                }
-            ]
+        + friend_id: 56 (number, required) - 好友id
+        + friend_name: derek (string, required) - 好友名
+        + request_time: 1441983590 (number, required) - 请求时间
