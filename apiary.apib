@@ -362,8 +362,22 @@ FORMAT: 1A
 + Response 200 (application/json)
 
     + Attributes (object)
-        + user_id: 86 (number, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + friend_id: 56 (number, required) - 好友id
+        + id: 86 (number, required) - 用户id
+        + nickname: neil (string, required) - 用户名
         + friend_name: derek (string, required) - 好友名
-        + request_time: 1441983590 (number, required) - 请求时间
+        + message: I'm xxx - 添加消息
+        + status: reject - 请求状态
+        + request_at: 1441983590 (number, required) - 请求时间
+
+
+    + Body
+            [
+                {
+                    "id": 99,
+                    "nickname": "derek",
+                    "avatar_url": "/image/..."
+                    "request_at": 1441983590
+                    "status": "reject",
+                }
+            ]
+
