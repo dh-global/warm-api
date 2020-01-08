@@ -188,6 +188,24 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+    + Attributes (object)
+        + users: [] (array, required) - 用户列表
+
+            + id: 012341 (int64, required) - 用户id
+
+    + Body
+            "data": {
+                "users": [
+                    {
+                        "id": 012341,
+                    },
+                    {
+                        "id": 2304589,
+                    }
+                ]
+            }
+
+
 ## 用户头像 /user/{id}/image [/user/{id}/image]
 
 ### 获取用户头像 [GET]
