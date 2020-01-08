@@ -189,20 +189,37 @@ FORMAT: 1A
 + Response 200 (application/json)
 
     + Attributes (object)
-        + users: [] (object, required) - 用户列表
 
-            + id: 012341 (int64, required) - 用户id
+            + user_id: 012341 (int64, required) - 用户id
+            + account: 012341 (int64, required) - 用户id
+            + account_alias: 012341 (int64, required) - 用户id
+            + nickname: 012341 (int64, required) - 用户id
+            + country_code: 012341 (int64, required) - 用户id
+            + phone: 012341 (int64, required) - 用户id
+            + sex: 012341 (int64, required) - 用户id
+            + avatar_url: 012341 (int64, required) - 用户id
+            + im_id: 012341 (int64, required) - 用户id
 
     + Body
             {
-                "users": [
-                    {
-                        "id": 012341,
-                    },
-                    {
-                        "id": 2304589,
-                    }
+              "code": 0,
+              "msg": "OK",
+              "ack": 0,
+              "data": {
+                "contacts": [
+                  {
+                    "account": "A1NSH716Q5WPc9F1xqD6o1UVcb",
+                    "account_alias": "",
+                    "user_id": 100000004,
+                    "nickname": "#zz68tt",
+                    "country_code": "+86",
+                    "phone": "13129511258",
+                    "sex": 0,
+                    "avatar_url": "/image/avatar/2.png",
+                    "im_id": 1214389191803047936
+                  }
                 ]
+              }
             }
 
 
