@@ -228,6 +228,53 @@ FORMAT: 1A
           }
         }
 
+## 通过账号查找用户 /user/account/{account} [/user/account/{account}]
+
+### 通过手机号查找用户 [GET]
+
++ Parameters
+
+    + account: A1NSHMMVBwFsHXUyf8cNJxnhHZ (string, required) - 账号
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + user_id: 012341 (number, required) - 用户id
+        + account: A1NSHMMVBwFsHXUyf8cNJxnhHZ (string, required) - 账户
+        + account_alias: 012341 (string, required) - 账号
+        + nickname: agag (string, required) - 昵称
+        + country_code: 86 (string, required) - 国家码
+        + phone: 012341 (string, required) - 手机号
+        + sex: 012341 (number, required) - 性别
+        + avatar_url: 012341 (string, required) - 头像地址
+        + im_id: 12341 (number, required) - im_id
+        + friend_nickname: sb (string, required) - 对朋友的昵称
+        + is_friend: true (bool, required) - 是否是朋友
+        + is_black: false (bool, required) - 是否是拉黑
+        + is_delete: false (bool, required) - 是否是删除
+
+    + Body
+        {
+            "code": 0,
+            "msg": "OK",
+            "ack": 0,
+            "data": {
+             "user": {
+               "account": "A1NSHMMVBwFsHXUyf8cNJxnhHZ",
+               "account_alias": "",
+               "user_id": 100000058,
+               "nickname": "#rpufkz",
+               "country_code": "+1",
+               "phone": "13129511252",
+               "sex": 0,
+               "avatar_url": "/image/avatar/1.png",
+               "im_id": 1214710492447019008,
+               "friend_nickname": "#rpufkz",
+               "is_friend": false,
+               "is_black": false,
+               "is_delete": false
+             }
+            }
+        }
 
 ## 用户头像 /user/{id}/image [/user/{id}/image]
 
