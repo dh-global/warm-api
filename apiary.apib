@@ -196,7 +196,11 @@ FORMAT: 1A
         + phone: 012341 (string, required) - 手机号
         + sex: 012341 (number, required) - 性别
         + avatar_url: 012341 (string, required) - 头像地址
-        + im_id: 012341 (number, required) - im_id
+        + im_id: 12341 (number, required) - im_id
+        + friend_nickname: sb (string, required) - 对朋友的昵称
+        + is_friend: true (bool, required) - 是否是朋友
+        + is_black: false (bool, required) - 是否是拉黑
+        + is_delete: false (bool, required) - 是否是删除
 
     + Body
         {
@@ -298,7 +302,6 @@ FORMAT: 1A
             ]
 
 ### 请求添加联系人 [POST]
-已完成
 + Request (application/json)
 
     + Attributes (object)
@@ -334,8 +337,6 @@ FORMAT: 1A
             }
 
 ## 联系人 /user/contacts/{cid} [/user/contacts/{cid}]
-
-
 
 
 ### 查看联系人信息(单个) [GET]
@@ -378,7 +379,6 @@ FORMAT: 1A
 
 
 ## 拒绝添加好友 /user/contact_reject/{cid} [/user/contact_reject/{cid}]
-已完成
 ### 用户拒绝添加好友请求 [GET]
 + Parameters
 
@@ -391,7 +391,6 @@ FORMAT: 1A
 
 
 ## 添加好友申请列表 /user/contacts/new [/user/contacts/new]
-已完成
 ### 添加好友申请列表(新朋友) [GET]
 
 + Request
