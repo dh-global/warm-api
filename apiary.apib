@@ -181,7 +181,7 @@ FORMAT: 1A
 ## 通过手机号查找用户 /user/phone/{phone} [/user/phone/{phone}]
 
 ### 通过手机号查找用户 [GET]
-
+ 
 + Parameters
 
     + phone: 13300000000 (string, required) - 手机号码
@@ -196,6 +196,7 @@ FORMAT: 1A
         + phone: 012341 (string, required) - 手机号
         + sex: 012341 (number, required) - 性别
         + avatar_url: 012341 (string, required) - 头像地址
+        + signature: hello！ (string, required) - 个性签名
         + im_id: 12341 (number, required) - im_id
         + friend_nickname: sb (string, required) - 对朋友的昵称
         + is_friend: true (number, required) - 是否是朋友
@@ -218,6 +219,7 @@ FORMAT: 1A
                 "phone": "17888888888",
                 "sex": 0,
                 "avatar_url": "/image/avatar/1.png",
+                "signature": "hello!",
                 "im_id": 1214427164300972032,
                 "friend_nickname": "\"\"",
                 "is_friend": true,
@@ -246,6 +248,7 @@ FORMAT: 1A
         + phone: 012341 (string, required) - 手机号
         + sex: 012341 (number, required) - 性别
         + avatar_url: 012341 (string, required) - 头像地址
+        + signature: hello！ (string, required) - 个性签名
         + im_id: 12341 (number, required) - im_id
         + friend_nickname: sb (string, required) - 对朋友的昵称
         + is_friend: true (number, required) - 是否是朋友
@@ -267,6 +270,7 @@ FORMAT: 1A
                "phone": "13129511252",
                "sex": 0,
                "avatar_url": "/image/avatar/1.png",
+               "signature": "hello!",
                "im_id": 1214710492447019008,
                "friend_nickname": "#rpufkz",
                "is_friend": false,
@@ -294,6 +298,7 @@ FORMAT: 1A
         + phone: 012341 (string, required) - 手机号
         + sex: 012341 (number, required) - 性别
         + avatar_url: 012341 (string, required) - 头像地址
+        + signature: hello！ (string, required) - 个性签名
         + im_id: 12341 (number, required) - im_id
         + friend_nickname: sb (string, required) - 对朋友的昵称
         + is_friend: true (number, required) - 是否是朋友
@@ -316,6 +321,7 @@ FORMAT: 1A
                 "phone": "17888888888",
                 "sex": 0,
                 "avatar_url": "/image/avatar/1.png",
+                "signature": "hello!",
                 "im_id": 1214427164300972032,
                 "friend_nickname": "\"\"",
                 "is_friend": true,
@@ -380,7 +386,7 @@ FORMAT: 1A
         + username: neil (string, required) - 用户名
         + nickname: neil (string, optional) - 昵称
         + avatar_url: /image/avatar/1.png  (string, required) - 用户头像
-        + im_id: 234561236 (number, required) - 用户头像
+        + im_id: 234561236 (number, required) - im_id
 
     + Body
 
@@ -455,6 +461,49 @@ FORMAT: 1A
     + cid: 90 (number, required) - 联系人id
 
 + Response 200 (application/json)
+
+    + Attributes (object)
+        + user_id: 012341 (number, required) - 用户id
+        + account: 012341 (string, required) - 账户
+        + account_alias: 012341 (string, required) - 账号
+        + nickname: agag (string, required) - 昵称
+        + country_code: 86 (string, required) - 国家码
+        + phone: 012341 (string, required) - 手机号
+        + sex: 012341 (number, required) - 性别
+        + avatar_url: 012341 (string, required) - 头像地址
+        + signature: hello！ (string, required) - 个性签名
+        + im_id: 12341 (number, required) - im_id
+        + friend_nickname: sb (string, required) - 对朋友的昵称
+        + is_friend: true (number, required) - 是否是朋友
+        + is_black: false (number, required) - 是否是拉黑
+        + is_delete: false (number, required) - 是否是删除
+
+    + Body
+        {
+          "code": 0,
+          "msg": "OK",
+          "ack": 0,
+          "data": {
+            "users": [
+              {
+                "account": "A1NSHMBk9LVCNNxucnrbqSzFk9",
+                "account_alias": "",
+                "user_id": 100000041,
+                "nickname": "#z3wgch",
+                "country_code": "+86",
+                "phone": "17888888888",
+                "sex": 0,
+                "avatar_url": "/image/avatar/1.png",
+                "signature": "hello!",
+                "im_id": 1214427164300972032,
+                "friend_nickname": "\"\"",
+                "is_friend": true,
+                "is_black": false,
+                "is_delete": false
+              }
+            ]
+          }
+        }
 
 ### 移除联系人 [DELETE]
 

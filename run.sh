@@ -1,1 +1,1 @@
-aglio -i apiary.apib --server
+aglio -i apiary-1.apib --server
