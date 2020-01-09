@@ -379,7 +379,8 @@ FORMAT: 1A
         + id: 86 (number, required) - 用户id
         + username: neil (string, required) - 用户名
         + nickname: neil (string, optional) - 昵称
-        + avatar_url: /image/avatar/1.png - 用户头像
+        + avatar_url: /image/avatar/1.png  (string, required) - 用户头像
+        + im_id: 234561236 (number, required) - 用户头像
 
     + Body
 
@@ -389,12 +390,14 @@ FORMAT: 1A
                     "username": "neil",
                     "nickname": "neil",
                     "avatar_url": "/image/avatar/1.png",
+                    "im_id": 86897912795,
                 },
                 {
                     "id": 68,
                     "username": "terry",
                     "nickname": "terry",
-                    "avatar_url": "/image/avatar/1.png"
+                    "avatar_url": "/image/avatar/1.png",
+                    "im_id": 9789035145,
                 }
             ]
 
