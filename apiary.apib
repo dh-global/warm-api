@@ -330,12 +330,12 @@ FORMAT: 1A
 + Response  200 (application/json)
 
     + Attributes (object)
-        contacts: (array, required)
+        + contacts: (array, required)
             + friend_id: 86 (number, required) - 用户id
             + nickname: neil (string, required) - 昵称
-            + friend_nickname: neil (number, required) - 用户对朋友的昵称 
+            + friend_nickname: neil (string, required) - 用户对朋友的昵称 
             + avatar_url: /image/avatar/2.png (string, required) - 最后更新时间
-            + im_id: 13700000000 (number, required) - im id
+            + im_id: 137 (number, required) - im id
 
     + Body
         {
@@ -373,20 +373,108 @@ FORMAT: 1A
 
 ## 联系人信息 /users/{id}/contacts/{cid}  [/users/{id}/contacts/{cid}]
 ### 获取单个联系人信息 [GET]
-### 修改联系人信息 [PATCH]
-### 添加联系人,同意/拒绝添加联系人 [POST]
-### 删除联系人 [DELETE]
++ Parameters
+    + id: 1235 (number, required) - 用户id
+    + cid: 1235 (number, required) - 联系人id
 
-// ## 联系人 /users/{id}/contacts/{cid}  [/users/{id}/contacts/{cid}]
++ Response  200 (application/json)
+
+    + Attributes (object)
+        + user_id: 125 (string, required) - 用户id
+        + account: xxxxx (string, required) - 账号
+        + account_alias: xxxxx (string, required) - 账号别名
+        + im_id: 125 (string, required) - im id
+        + nickname: xxxxx (string, required) - 用户昵称
+        + platform: xxxxx (string, required) - 设备平台
+        + country_code: xxxxx (string, required) - 国家号
+        + phone: xxxxx (string, required) - 手机号
+        + home_phone: xxxxx (string, required) - 座机号码
+        + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+        + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+        + avatar: xxxxx (string, required) - /image/avatar/1.png
+        + job: xxxxx (string, required) - 用户工作
+        + address: xxxxx (string, required) - 用户地址
+        + signature: xxxxx (string, required) - 个性签名
+        + is_friend: true (string , required) - 是否是朋友，布尔值
+        + is_delete: false (string , required) - 是否是朋友，布尔值
+        + is_black: false (string , required) - 是否是朋友，布尔值
+        + friend_nickname: derek (string, required) - 对朋友的昵称
+
+### 添加联系人,同意/拒绝添加联系人 [POST]
++ Parameters
+    + id: 1235 (number, required) - 用户id
+    + cid: 1235 (number, required) - 联系人id
+
++ Request (application/json)
+
+    + Attributes (object)
+        + handle_type: add (string, required) - 处理类型：add/agree/reject
+        + add_by: share (string, optional) - 通过什么方式添加朋友：share/qrcode/phone/account
+        + message: I'm xx (string, optional) - 添加朋友时的备注
+
++ Response  201 (application/json)
+
+    + Attributes (object)
+
+### 修改联系人信息 [PATCH]
++ Parameters
+    + id: 1235 (number, required) - 用户id
+    + cid: 1235 (number, required) - 联系人id
+
++ Request (application/json)
+
+    + Attributes (object)
+        + nickname: derek (string, required) - 用户昵称
+
+
++ Response  200 (application/json)
+
+
+### 删除联系人 [DELETE]
++ Parameters
+    + id: 1235 (number, required) - 用户id
+    + cid: 1235 (number, required) - 联系人id
+
++ Response  204 (application/json)
 
 
 ## 个人中心 /users/{id} [/users/{id}]
 ### 获取个人中心信息 [GET]
++ Parameters
+    + id: 1235 (number, required) - 用户id 
+
++ Response  200 (application/json)
+
+    + Attributes (object)
+        + user_id: 125 (string, required) - 用户id
+        + account: xxxxx (string, required) - 账号
+        + account_alias: xxxxx (string, required) - 账号别名
+        + im_id: 125 (string, required) - im id
+        + nickname: xxxxx (string, required) - 用户昵称
+        + platform: xxxxx (string, required) - 设备平台
+        + country_code: xxxxx (string, required) - 国家号
+        + phone: xxxxx (string, required) - 手机号
+        + home_phone: xxxxx (string, required) - 座机号码
+        + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+        + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+        + avatar: xxxxx (string, required) - /image/avatar/1.png
+        + job: xxxxx (string, required) - 用户工作
+        + address: xxxxx (string, required) - 用户地址
+        + signature: xxxxx (string, required) - 个性签名
+
 ### 修改个人中心信息 [POST]
++ Parameters
+    + id: 1235 (number, required) - 用户id
+
++ Response  200 (application/json)
+
+    + Attributes (object)
+        + nickname: derek (string, required) - 要修改的昵称
 
 
-## 头像 /users/{id}/avatar [/users/{id}/avatar]
-### 获取历史头像列表 [GET]
-### 上传头像 [POST]
-### 删除头像 [DELETE]
+
+// ## 头像 /users/{id}/avatar [/users/{id}/avatar]
+// ### 获取历史头像列表 [GET]
+// ### 上传头像 [POST]
+// ### 删除头像 [DELETE]
 
