@@ -13,561 +13,380 @@ FORMAT: 1A
 
 + URL前缀：/api/v1/
 + 接口形态：Restful
-+ Post：JSON
++ 方法：GET/POST/PUT/DELETE
 + 返回：JSON
 
 ## HTTP请求头
 
 + 需要验证的操作: **Authorization：JWT jwt-token**
 
-## 用户集合 /user [/user{?page}{?per_page}{?app}{?sort}]
+## http响应格式
++ Attributes (object)
 
-### 列出所有用户 [GET]
-仅供管理员使用
+    + code: 0 (number, required) -  系统状态码
+    + message: error (string, required) - 错误信息 
+    + data: {} (object), required) -  响应数据
 
+
++ Body
+    {
+        "code": 0,
+        "message": "error",
+        "data": {...},
+    }
+
+## http状态码定义
++ 200：GET、PUT、PATCH success
++ 201：POST success
++ 204：DELETE success
++ 400：bad request, bad param
++ 401：api unauthorized
++ 403：user forbidden
++ 404：GET not found
+
+
+## 平台启动信息 /config/{platform} [/config/{platform]
+### 平台启动信息 [GET]
 + Parameters
+    + platform: iphone (string, required) - 平台： pc iphone android mac
 
-    + page: 0 (number, optional) - 起始页
-        + Default: `0`
-    + per_page: 60 (number, optional) - 每页返回的用户数（最大200）
-        + Default: `60`
-    + app: dh (string, optional) - 所属im app
-        + Default: ""
-    + sort: create_at (string, optional) - 排序："" or "last_activity_at" or "create_at"
-        + Default: ""
-
-+ Response 200 (application/json)
-
++ Response  200 (application/json)
     + Attributes (object)
-        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + create_at: 1441983590 (number, required) - 创建时间
-        + update_at: 1441983590 (number) - 最后更新时间
-        + phone: 13700000000 (string) - 电话号码
-        + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
-        + im_acc: neilyin (string)
+
+        + start_info:  (object, required) - 启动信息
+            + start_type: picture (string, required) - 启动类型
+            + picture_url: /xxx/xxx (string, required) - 启动图片地址
+            + video_url: /xxx/xxx (string, required) - 启动视频地址
+        + version_info: (object, required) - 版本信息
+            + updated_at: 2020-01-13 13:49:00 (string, required) -  更新发布时间
+            + platform:  iphone (string, required) - 平台： pc iphone android mac
+            + ver: 0.0.1 (string, required) - 版本号
+            + downloa_url: http://xxx.xxx.com (string, required) -  下载地址
+            + upgrade_info: upgrade: 1.xxxx; (string, required) - 版本更新信息
+            + is_force: true (string,required) - 是否强制更新
+        + web_server: (object, required) - http服务器
+            + addrs: ["1270.0.0.1:9001"] (array, required) - http服务器地址
+        + file_server: (object, required) - 文件服务
+            + addrs: ["1270.0.0.1:9001"] (array, required) - 文件服务地址
 
     + Body
+        {
+            "start_info": {
+                "start_type": "picture",
+                "picture_url": "/xxx/xxx",
+                "video_url": "/xxx/xxx"
+            },
+            "version_info": {
+                "updated_at": "2020",
+                "platform": "iphone",
+                "ver": "0.0.1",
+                "downloa_url": "http://xxx.xxx.com",
+                "upgrade_info": "upgrade: 1.xxxx;",
+                "is_force": "true"
+            },
+            "web_server": {
+                "addrs": [
+                "[\"1270.0.0.1:9001\"]"
+                ]
+            },
+            "file_server": {
+                "addrs": [
+                "[\"1270.0.0.1:9001\"]"
+                ]
+            }
+        }
 
-            [
+
+## SMS短信 /sms/{phone} [/sms/{phone}]
+### 发送短信 [POST]
++ Parameters
+    + phone: 10086 (string, required) - 手机号码: ps.考虑区号
+
++ Request (application/json)
+    + Attributes (object)
+        + country_code: +86 (string, required) - 国家号
+        + sms_type: vcode (string, required) - 短信类型
+        + is_type: 0 (number, required) - 是否测试
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + v_code: 7835 (string, required) - 验证码(测试环境才会返回验证码)
+        + expire：60 (number, required) - 有效期(second)
+    + Body
+        {
+            "v_code": "7835",
+            "expire": 60,
+        }
+
+
+## auth /auth/ [/auth/]
+### login [POST]
++ Request (application/json)
+    + Attributes (object)
+        + v_code: 0988 (string, optional) - 验证码
+        + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
+        + country_code: +86 (string, required) - 国家号
+        + login_type: vcode (string, required) - 登录类型， v_code, qrcode
+        + is_type: 0 (number, optional) - 是否测试
+
++ Response 201 (application/json)
+    + Attributes (object)    
+        + web_server: (object, required) - http服务器
+            + addrs: ["1270.0.0.1:9001"] (array, required) - http服务器地址
+        + file_server: (object, required) - 文件服务器
+            + addrs: ["1270.0.0.1:9001"] (array, required) - 文件服务地址
+        + im_server: (object, required) - im服务器
+            + addrs: ["1270.0.0.1:9001"] (array, required) - im服务地址
+        + user: (object, required)
+            + user_id: 
+        + token: xxxxxxxxx (array, required) - token
+        + exp: 60 (array, required) - token
+        + im_token: xxxxxxxxx (array, required) - im token
+        + im_exp: 40 (array, required) - im token exp
+
+
+### logout [DELETE]
++ Response 204 (application/json)
+
+
+## 二维码登陆相关 /auth/qrcode [/auth/qrcode{?qr_token}]
+### 获取二维码状态（pc接口) [GET]
++ Parameters
+    + qr_token: xxxx (string, required) - qrCode token
++ Response 200 (application/json)
+
+### 获取登陆二维码信息（pc接口） [POST]
+创建一个登录二维码
++ Request (application/json)
+    + Attributes (object)
+        + platform: pc (string, required) - 设备类型
+
++ Response 201 (application/json)
+
+    + Attributes (object)
+
+### app扫码登陆、 同意/取消二维码登陆 （app接口） [PATCH]
+修改二维码状态
++ Request (application/json)
+    + Attributes (object)
+        + qr_token: xxxxx (string, required) - qr_token
+        + update_type: scan_code (string, required) -  操作类型：scan_code/agree/cancel
++ Response 200 (application/json)
+
+        
+
+
+## 通过phone搜索联系人 /user/phone/{phone} [/users/phone/{phone}]
+### 通过phone搜索联系人parameters [GET]
++ Parameters (application/json)
+    + phone: xxxxx (string, required) - 手机号
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + users: (array, required) - 用户列表 
+            + user_id: 125 (number, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (number, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+    
+    + Body
+    {
+        "users": [
+            {
+                "user_id": 1,
+                "account": "A1NSHijF6cBpudF3khcBCkfmVm",
+                "account_alias": "",
+                "im_id": 0,
+                "nickname": "ujtb4h",
+                "platform": "iphone",
+                "country_code": "+86",
+                "phone": "18814181870",
+                "home_phone": "",
+                "sex": "",
+                "birthday": "",
+                "avatar": "/image/avatar/5.jpeg",
+                "email": "",
+                "job": "",
+                "address": "",
+                "signature": "hello world!"
+            }
+        ]
+    }
+
+## 通过account搜索联系人 /user/account/{account} [/users/account/{account}]
+### 通过account搜索联系人 [GET]
++ Parameters (application/json)
+    + account: xxxxx (string, required) - 账号
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + users: (array, required) - 用户列表 
+            + user_id: 125 (number, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (number, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+    
+    + Body
+    {
+        "users": [
+            {
+                "user_id": 1,
+                "account": "A1NSHijF6cBpudF3khcBCkfmVm",
+                "account_alias": "",
+                "im_id": 0,
+                "nickname": "ujtb4h",
+                "platform": "iphone",
+                "country_code": "+86",
+                "phone": "18814181870",
+                "home_phone": "",
+                "sex": "",
+                "birthday": "",
+                "avatar": "/image/avatar/5.jpeg",
+                "email": "",
+                "job": "",
+                "address": "",
+                "signature": "hello world!"
+            }
+        ]
+    }
+
+## 通过id搜索联系人 /user/id/{id} [/users/id/{id}]
+### 通过id搜索联系人 [GET]
++ Parameters (application/json)
+    + id: 4524 (number, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + users: (array, required) - 用户列表 
+            + user_id: 125 (string, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (string, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+    
+    + Body
+    {
+        "users": [
+            {
+                "user_id": 1,
+                "account": "A1NSHijF6cBpudF3khcBCkfmVm",
+                "account_alias": "",
+                "im_id": 0,
+                "nickname": "ujtb4h",
+                "platform": "iphone",
+                "country_code": "+86",
+                "phone": "18814181870",
+                "home_phone": "",
+                "sex": "",
+                "birthday": "",
+                "avatar": "/image/avatar/5.jpeg",
+                "email": "",
+                "job": "",
+                "address": "",
+                "signature": "hello world!"
+            }
+        ]
+    }
+
+
+## 联系人集合 /users/{id}/contacts [/users/{id}/contacts]
+### 获取所有联系人的信息 [GET]
+
++ Parameters
+    + id: 1235 (number, required) - 用户id
+
++ Response  200 (application/json)
+
+    + Attributes (object)
+        contacts: (array, required)
+            + friend_id: 86 (number, required) - 用户id
+            + nickname: neil (string, required) - 昵称
+            + friend_nickname: neil (number, required) - 用户对朋友的昵称 
+            + avatar_url: /image/avatar/2.png (string, required) - 最后更新时间
+            + im_id: 13700000000 (number, required) - im id
+
+    + Body
+        {
+            "contacts": [
                 {
-                    "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
-                    "username": "neil",
-                    "create_at": 1441983590,
-                    "update_at": 1441983590,
-                    "phone": "13700000000",
-                    "role": "admin",
-                    "im_id": "k5j1urrkqfdhf8xxadb9iheipr"
-                    "im_acc": "neil"
+                    "friend_id": 100000135,
+                    "im_id": 0,
+                    "nickname": "ujtb4h",
+                    "friend_nickname": "",
+                    "avatar_url": "/image/avatar/5.jpeg"
                 },
                 {
-                    "id": "wz4ri5nktfd1fkufi668ch6zao",
-                    "username": "terry",
-                    "create_at": 1441983590,
-                    "update_at": 1441983590,
-                    "phone": "13700000000",
-                    "role": "user",
-                    "im_id": "g1ex84xwutd7mqbxuacpd4ebcw"
-                    "im_acc": "terry"
-                }
-            ]
-
-### 创建用户 [POST]
-仅供管理员使用
-
-+ Request (application/json)
-
-    + Attributes (object)
-        + username: neil (string, required) - 用户名
-        + password: 23Dr43234324 (string, required) - 密码
-        + phone: 13700000000 (string) - 电话号码
-        + role: user (string, required) - 权限："user" or "admin"
-
-    + Body
-
-            {
-                "username": "terry",
-                "password": "23Dr43234324",
-                "phone": "13700000000",
-                "role": "user"
-            }
-
-+ Response 201 (application/json)
-创建成功
-
-    + Attributes (object)
-        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + create_at: 1441983590 (number, required) - 创建时间
-        + update_at: 1441983590 (number) - 最后更新时间
-        + phone: 13700000000 (string) - 电话号码
-        + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
-        + im_acc: neil (string)
-
-    + Body
-
-            {
-                "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
-                "username": "neil",
-                "create_at": 1441983590,
-                "update_at": 1441983590,
-                "phone": "13700000000",
-                "role": "admin",
-                "im_id": "k5j1urrkqfdhf8xxadb9iheipr",
-                "im_acc": "neil"
-            }
-
-## 用户 /user/{id} [/user/{id}]
-
-### 获取用户信息 [GET]
-
-+ Parameters
-
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-        + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + create_at: 1441983590 (number, required) - 创建时间
-        + update_at: 1441983590 (number) - 最后更新时间
-        + phone: 13700000000 (string) - 电话号码
-        + role: user (string, required) - 权限："user" or "admin"
-        + im_id: k5j1urrkqfdhf8xxadb9iheipr (string) 
-        + im_acc: neilyin (string)
-
-    + Body
-
-            {
-                "id": "86bzrhcwxbr8p8kwe4jnw51m3c",
-                "username": "neil",
-                "create_at": 1441983590,
-                "update_at": 1441983590,
-                "phone": "13700000000",
-                "role": "admin",
-                "im_id": "k5j1urrkqfdhf8xxadb9iheipr"
-                "im_acc": "neil"
-            }
-
-### 更新用户信息 [POST]
-
-+ Parameters
-
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
-+ Response 200 (application/json)
-
-### 禁用用户 [DELETE]
-
-+ Parameters
-
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
-+ Response 200 (application/json)
-
-## 当前用户 /user/me [/user/me]
-
-### 获取当前用户信息 [GET]
-
-+ Response 200 (application/json)
-
-### 修改当前用户昵称 [PUT]
-+ Request
-    + Attributes (object)
-        + modify_type: nickname (string, required) - 修改类型: nickname
-        + value: meme (string, required) - 修改值
-
-+ Response 200 (application/json)
-
-## 通过手机号查找用户 /user/phone/{phone} [/user/phone/{phone}]
-
-### 通过手机号查找用户 [GET]
- 
-+ Parameters
-
-    + phone: 13300000000 (string, required) - 手机号码
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + user_id: 012341 (number, required) - 用户id
-        + account: 012341 (string, required) - 账户
-        + account_alias: 012341 (string, required) - 账号
-        + nickname: agag (string, required) - 昵称
-        + country_code: 86 (string, required) - 国家码
-        + phone: 012341 (string, required) - 手机号
-        + sex: 012341 (number, required) - 性别
-        + avatar_url: 012341 (string, required) - 头像地址
-        + signature: hello！ (string, required) - 个性签名
-        + im_id: 12341 (number, required) - im_id
-        + friend_nickname: sb (string, required) - 对朋友的昵称
-        + is_friend: true (number, required) - 是否是朋友
-        + is_black: false (number, required) - 是否是拉黑
-        + is_delete: false (number, required) - 是否是删除
-
-    + Body
-        {
-          "code": 0,
-          "msg": "OK",
-          "ack": 0,
-          "data": {
-            "users": [
-              {
-                "account": "A1NSHMBk9LVCNNxucnrbqSzFk9",
-                "account_alias": "",
-                "user_id": 100000041,
-                "nickname": "#z3wgch",
-                "country_code": "+86",
-                "phone": "17888888888",
-                "sex": 0,
-                "avatar_url": "/image/avatar/1.png",
-                "signature": "hello!",
-                "im_id": 1214427164300972032,
-                "friend_nickname": "\"\"",
-                "is_friend": true,
-                "is_black": false,
-                "is_delete": false
-              }
-            ]
-          }
-        }
-
-## 通过账号查找用户 /user/account/{account} [/user/account/{account}]
-
-### 通过账号查找用户 [GET]
-
-+ Parameters
-
-    + account: A1NSHMMVBwFsHXUyf8cNJxnhHZ (string, required) - 账号
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + user_id: 012341 (number, required) - 用户id
-        + account: A1NSHMMVBwFsHXUyf8cNJxnhHZ (string, required) - 账户
-        + account_alias: 012341 (string, required) - 账号
-        + nickname: agag (string, required) - 昵称
-        + country_code: 86 (string, required) - 国家码
-        + phone: 012341 (string, required) - 手机号
-        + sex: 012341 (number, required) - 性别
-        + avatar_url: 012341 (string, required) - 头像地址
-        + signature: hello！ (string, required) - 个性签名
-        + im_id: 12341 (number, required) - im_id
-        + friend_nickname: sb (string, required) - 对朋友的昵称
-        + is_friend: true (number, required) - 是否是朋友
-        + is_black: false (number, required) - 是否是拉黑
-        + is_delete: false (number, required) - 是否是删除
-
-    + Body
-        {
-            "code": 0,
-            "msg": "OK",
-            "ack": 0,
-            "data": {
-             "user": {
-               "account": "A1NSHMMVBwFsHXUyf8cNJxnhHZ",
-               "account_alias": "",
-               "user_id": 100000058,
-               "nickname": "#rpufkz",
-               "country_code": "+1",
-               "phone": "13129511252",
-               "sex": 0,
-               "avatar_url": "/image/avatar/1.png",
-               "signature": "hello!",
-               "im_id": 1214710492447019008,
-               "friend_nickname": "#rpufkz",
-               "is_friend": false,
-               "is_black": false,
-               "is_delete": false
-             }
-            }
-        }
-
-## 通过id查找用户 /user/id/{id} [/user/id/{id}]
-
-### 通过id号查找用户 [GET]
-
-+ Parameters
-
-    + id: 133000 (string, required) - id
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + user_id: 012341 (number, required) - 用户id
-        + account: 012341 (string, required) - 账户
-        + account_alias: 012341 (string, required) - 账号
-        + nickname: agag (string, required) - 昵称
-        + country_code: 86 (string, required) - 国家码
-        + phone: 012341 (string, required) - 手机号
-        + sex: 012341 (number, required) - 性别
-        + avatar_url: 012341 (string, required) - 头像地址
-        + signature: hello！ (string, required) - 个性签名
-        + im_id: 12341 (number, required) - im_id
-        + friend_nickname: sb (string, required) - 对朋友的昵称
-        + is_friend: true (number, required) - 是否是朋友
-        + is_black: false (number, required) - 是否是拉黑
-        + is_delete: false (number, required) - 是否是删除
-
-    + Body
-        {
-          "code": 0,
-          "msg": "OK",
-          "ack": 0,
-          "data": {
-            "users": [
-              {
-                "account": "A1NSHMBk9LVCNNxucnrbqSzFk9",
-                "account_alias": "",
-                "user_id": 100000041,
-                "nickname": "#z3wgch",
-                "country_code": "+86",
-                "phone": "17888888888",
-                "sex": 0,
-                "avatar_url": "/image/avatar/1.png",
-                "signature": "hello!",
-                "im_id": 1214427164300972032,
-                "friend_nickname": "\"\"",
-                "is_friend": true,
-                "is_black": false,
-                "is_delete": false
-              }
-            ]
-          }
-        }
-
-## 用户头像 /user/{id}/image [/user/{id}/image]
-
-### 获取用户头像 [GET]
-
-+ Parameters
-
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
-+ Response 200 (application/json)
-
-
-### 上传用户头像 [POST]
-
-+ Parameters
-
-    + id: 86bzrhcwxbr8p8kwe4jnw51m3c (string, required) - 用户id
-
-+ Request (application/json)
-
-    + Attributes (object)
-        + content: BASE64 (string, required) - 经BASE64编码的头像的内容
-
-    + Body
-
-            {
-                "content": "BASE64"
-            }
-
-+ Response 201 (application/json)
-
-### 移除用户头像 [DELETE]
-
-+ Parameters
-
-+ Response 200 (application/json)
-
-
-## 联系人集合 /user/contacts [/user/contacts{?sort}{?update_after}]
-
-### 列出联系人列表 [GET]
-
-+ Parameters
-
-    + sort: add_at (string, optional) - 排序："name" or "add_at"
-        + Default: add_at
-    + update_after: 1441983590 (string, optional) - 更新时间晚于
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-        + id: 86 (number, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + nickname: neil (string, optional) - 昵称
-        + avatar_url: /image/avatar/1.png  (string, required) - 用户头像
-        + im_id: 234561236 (number, required) - im_id
-
-    + Body
-
-            [
-                {
-                    "id": 86,
-                    "username": "neil",
-                    "nickname": "neil",
-                    "avatar_url": "/image/avatar/1.png",
-                    "im_id": 86897912795,
+                    "friend_id": 100000136,
+                    "im_id": 0,
+                    "nickname": "ujtb4h",
+                    "friend_nickname": "",
+                    "avatar_url": "/image/avatar/5.jpeg"
                 },
                 {
-                    "id": 68,
-                    "username": "terry",
-                    "nickname": "terry",
-                    "avatar_url": "/image/avatar/1.png",
-                    "im_id": 9789035145,
+                    "friend_id": 100000138,
+                    "im_id": 0,
+                    "nickname": "ujtb4h",
+                    "friend_nickname": "",
+                    "avatar_url": "/image/avatar/5.jpeg"
+                },
+                {
+                    "friend_id": 100000137,
+                    "im_id": 0,
+                    "nickname": "ujtb4h",
+                    "friend_nickname": "",
+                    "avatar_url": "/image/avatar/5.jpeg"
                 }
             ]
-
-### 请求添加联系人 [POST]
-+ Request (application/json)
-
-    + Attributes (object)
-        + contact: 99 (number, required) - 联系人id
-        + message: hello (string) - 请求附带消息
-
-    + Body
-
-            {
-                "contact": 99,
-                "message": "hello"
-            }
-
-+ Response 201 (application/json)
-请求发送成功
-
-    + Attributes (object)
-        + id: 86 (number, required) - 用户id
-        + username: neil (string, required) - 用户名
-        + create_at: 1441983590 (number, required) - 创建时间
-        + update_at: 1441983590 (number) - 最后更新时间
-        + phone: 13700000000 (string) - 电话号码
-        + role: user (string, required) - 权限："user" or "admin"
-        + im_id: 54 (number)
-        + im_acc: neil (string)
-
-    + Body
-
-            {
-                "user": 86,
-                "contact": 99,
-                "request_at": 1441983590
-            }
-
-## 联系人 /user/contacts/{cid} [/user/contacts/{cid}]
-
-
-### 查看联系人信息(单个) [GET]
-
-+ Parameters
-
-    + cid: 90 (number, required) - 联系人id
-
-+ Response 200 (application/json)
-
-### 修改与联系人相关的设置 [POST]
-如备注信息、隐私等
-
-+ Parameters
-
-    + cid: 90 (number, required) - 联系人id
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-        + user_id: 012341 (number, required) - 用户id
-        + account: 012341 (string, required) - 账户
-        + account_alias: 012341 (string, required) - 账号
-        + nickname: agag (string, required) - 昵称
-        + country_code: 86 (string, required) - 国家码
-        + phone: 012341 (string, required) - 手机号
-        + sex: 012341 (number, required) - 性别
-        + avatar_url: 012341 (string, required) - 头像地址
-        + signature: hello！ (string, required) - 个性签名
-        + im_id: 12341 (number, required) - im_id
-        + friend_nickname: sb (string, required) - 对朋友的昵称
-        + is_friend: true (number, required) - 是否是朋友
-        + is_black: false (number, required) - 是否是拉黑
-        + is_delete: false (number, required) - 是否是删除
-
-    + Body
-        {
-          "code": 0,
-          "msg": "OK",
-          "ack": 0,
-          "data": {
-            "users": [
-              {
-                "account": "A1NSHMBk9LVCNNxucnrbqSzFk9",
-                "account_alias": "",
-                "user_id": 100000041,
-                "nickname": "#z3wgch",
-                "country_code": "+86",
-                "phone": "17888888888",
-                "sex": 0,
-                "avatar_url": "/image/avatar/1.png",
-                "signature": "hello!",
-                "im_id": 1214427164300972032,
-                "friend_nickname": "\"\"",
-                "is_friend": true,
-                "is_black": false,
-                "is_delete": false
-              }
-            ]
-          }
         }
 
-### 移除联系人 [DELETE]
+## 联系人信息 /users/{id}/contacts/{cid}  [/users/{id}/contacts/{cid}]
+### 获取单个联系人信息 [GET]
+### 修改联系人信息 [PATCH]
+### 添加联系人,同意/拒绝添加联系人 [POST]
+### 删除联系人 [DELETE]
 
-+ Parameters
-
-    + cid: 902zrhcwxbr8p8kwe4jnwabc22 (number, required) - 联系人id
-
-+ Response 200 (application/json)
-
-
-## 同意添加好友 /user/contact_agree/{cid} [/user/contact_agree/{cid}]
-已完成
-### 用户同意添加好友请求 [GET]
-
-+ Parameters
-
-    + cid: 43 (number, required) - 联系人id
-
-+ Request (application/json)
-
-+ Response 200 (application/json)
+// ## 联系人 /users/{id}/contacts/{cid}  [/users/{id}/contacts/{cid}]
 
 
-## 拒绝添加好友 /user/contact_reject/{cid} [/user/contact_reject/{cid}]
-### 用户拒绝添加好友请求 [GET]
-+ Parameters
-
-    + cid: 43 (number, required) - 联系人id
-
-+ Request (application/json)
+## 个人中心 /users/{id} [/users/{id}]
+### 获取个人中心信息 [GET]
+### 修改个人中心信息 [POST]
 
 
-+ Response 200 (application/json)
-
-
-## 添加好友申请列表 /user/contacts/new [/user/contacts/new]
-### 添加好友申请列表(新朋友) [GET]
-
-+ Request
-
-+ Response 200 (application/json)
-
-    + Attributes (object)
-        + id: 86 (number, required) - 用户id
-        + nickname: neil (string, required) - 用户名
-        + avatar_url: /image/...
-        + message: I'm xxx - 添加消息
-        + status: reject - 请求状态(request/receive/reject/pass)
-        + request_at: 1441983590 (number, required) - 请求时间
-
-
-    + Body
-            [
-                {
-                    "id": 99,
-                    "nickname": "derek",
-                    "avatar_url": "/image/..."
-                    "request_at": 1441983590
-                    "status": "reject",
-                    "message": "hello!"
-                }
-            ]
+## 头像 /users/{id}/avatar [/users/{id}/avatar]
+### 获取历史头像列表 [GET]
+### 上传头像 [POST]
+### 删除头像 [DELETE]
 
