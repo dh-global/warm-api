@@ -100,7 +100,7 @@ FORMAT: 1A
 ## SMS短信 /sms/{phone} [/sms/{phone}]
 ### 发送短信 [POST]
 + Parameters
-    + phone: 10086 (string, required) - 手机号码: ps.考虑区号
+    + phone: 10086 (string, required) - 手机号码
 
 + Request (application/json)
     + Attributes (object)
@@ -156,7 +156,7 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 ### 获取登陆二维码信息（pc接口） [POST]
-创建一个登录二维码
+
 + Request (application/json)
     + Attributes (object)
         + platform: pc (string, required) - 设备类型
@@ -166,19 +166,20 @@ FORMAT: 1A
     + Attributes (object)
 
 ### app扫码登陆、 同意/取消二维码登陆 （app接口） [PATCH]
-修改二维码状态
 + Request (application/json)
+
     + Attributes (object)
+
         + qr_token: xxxxx (string, required) - qr_token
         + update_type: scan_code (string, required) -  操作类型：scan_code/agree/cancel
+
 + Response 200 (application/json)
 
-        
 
 
 ## 通过phone搜索联系人 /user/phone/{phone} [/users/phone/{phone}]
 ### 通过phone搜索联系人parameters [GET]
-+ Parameters (application/json)
++ Parameters
     + phone: xxxxx (string, required) - 手机号
 
 + Response 200 (application/json)
@@ -226,7 +227,7 @@ FORMAT: 1A
 
 ## 通过account搜索联系人 /user/account/{account} [/users/account/{account}]
 ### 通过account搜索联系人 [GET]
-+ Parameters (application/json)
++ Parameters
     + account: xxxxx (string, required) - 账号
 
 + Response 200 (application/json)
@@ -274,7 +275,7 @@ FORMAT: 1A
 
 ## 通过id搜索联系人 /user/id/{id} [/users/id/{id}]
 ### 通过id搜索联系人 [GET]
-+ Parameters (application/json)
++ Parameters
     + id: 4524 (number, required) - 用户id
 
 + Response 200 (application/json)
@@ -411,6 +412,7 @@ FORMAT: 1A
         + handle_type: add (string, required) - 处理类型：add/agree/reject
         + add_by: share (string, optional) - 通过什么方式添加朋友：share/qrcode/phone/account
         + message: I'm xx (string, optional) - 添加朋友时的备注
+        + friend_im_id: 243 (number, required) - 联系人imid
 
 + Response  201 (application/json)
 
@@ -466,10 +468,12 @@ FORMAT: 1A
 + Parameters
     + id: 1235 (number, required) - 用户id
 
++ Attributes (object)
+    + nickname: derek (string, required) - 要修改的昵称
+
 + Response  200 (application/json)
 
-    + Attributes (object)
-        + nickname: derek (string, required) - 要修改的昵称
+
 
 
 
