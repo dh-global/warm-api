@@ -127,7 +127,7 @@ FORMAT: 1A
         + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
         + country_code: +86 (string, required) - 国家号
         + login_type: vcode (string, required) - 登录类型， v_code, qrcode
-        + is_test: 0 (number, optional) - 是否测试
+        + phone: 10086 (string, required) - 手机号码
 
 + Response 201 (application/json)
     + Attributes (object)    
@@ -474,8 +474,14 @@ FORMAT: 1A
 + Response  200 (application/json)
 
 
+## 当前用户 /user/me [/user/me]
+### （旧的）修改当前用户信息 [PUT]
++ Request
+    + Attributes (object)
+        + modify_type: nickname (string, required) - 修改类型: nickname
+        + value: meme (string, required) - 修改值
 
-
++ Response 200 (application/json)
 
 // ## 头像 /users/{id}/avatar [/users/{id}/avatar]
 // ### 获取历史头像列表 [GET]
