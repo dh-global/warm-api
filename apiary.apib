@@ -483,6 +483,28 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+## 文件上传 /files [/files]
+### 上传文件 [POST]
++ Headers:
+
+    + file: name.txt (string, required) - 文件名
+    + content-type: multipart/form-data; boundary= (string, required) - 内容类型
+
++ Response 200 (application/json)
+
+    + file_token: asdfasdgagas (string, required) - 文件token
+
+
+## 下载文件 /files/{file_token} [/files/{file_token}]
+### 下载文件 [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+
+        + data: lkajslkdjfla (string, required) - 文件数据
+
+
 // ## 头像 /users/{id}/avatar [/users/{id}/avatar]
 // ### 获取历史头像列表 [GET]
 // ### 上传头像 [POST]
