@@ -509,7 +509,7 @@ form的命名统一为file
 
 
 ## 群相关操作 /groups [/groups]
-### 创建群（N） [POST]
+### 创建群（Y） [POST]
 
 + Request (application/json)
 
@@ -534,10 +534,19 @@ form的命名统一为file
         + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
         + notice: hello world! (string, required) - 群通告
 
-// ### 获取群列表(N) [GET]
+### 获取群列表(Y) [GET]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + group_id: 123 (number, required) - 群id
+        + name: my group (string, required) - 群名称
+        + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
 
 ## 群（群主）操作 /groups/{group_id} [/groups/{group_id}]
-### 获取群信息(N)  [GET]
+### 获取群信息(Y)  [GET]
 + Parameters
     + group_id: 1235 (number, required) - 群id
 
@@ -555,7 +564,7 @@ form的命名统一为file
         + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
         + notice: hello world! (string, required) - 群通告
 
-### 修改群信息(N)  [POST]
+### 修改群信息(Y)  [POST]
 + Request (application/json)
     + Attributes (object)
         + name: my group (string, optional) - 群名称
