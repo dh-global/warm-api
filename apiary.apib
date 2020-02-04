@@ -560,7 +560,7 @@ form的命名统一为file
     + Attributes (object)
         + name: my group (string, optional) - 群名称
         + owner_id: 1 (number, optional) - 群主的用户id
-        + max_cap: 100 (menber, optional) - 群成员容量，默认200
+        + max_cap: 100 (number, optional) - 群成员容量，默认200
         + avatar: /image/avatar/2.png (string, optional) - 群头像，暂时先分配默认头像
         + notice: hello world! (string, optional) - 群通告
 
@@ -595,7 +595,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_id: 124 (member, required) - 用户id
+        + user_id: 124 (number, required) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -606,7 +606,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_id: 124 (member, required) - 用户id
+        + user_id: 124 (number, required) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
