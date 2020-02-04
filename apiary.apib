@@ -485,10 +485,11 @@ FORMAT: 1A
 
 ## 文件上传 /files [/files]
 ### 上传文件 [POST]
+form的命名统一为file
 + Headers:
 
     + file: name.txt (string, required) - 文件名
-    + content-type: multipart/form-data; boundary= (string, required) - 内容类型
+    + content-type: multipart/form-data; (string, required) - 内容类型
 
 + Response 200 (application/json)
 
@@ -497,6 +498,8 @@ FORMAT: 1A
 
 ## 下载文件 /files/{file_token} [/files/{file_token}]
 ### 下载文件 [GET]
++ Parameters
+    + file_token: werutipoiqeutoijqoeij (string, required) - 文件token
 
 + Response 200 (application/json)
 
@@ -505,8 +508,142 @@ FORMAT: 1A
         + data: lkajslkdjfla (string, required) - 文件数据
 
 
-// ## 头像 /users/{id}/avatar [/users/{id}/avatar]
-// ### 获取历史头像列表 [GET]
-// ### 上传头像 [POST]
-// ### 删除头像 [DELETE]
+## 群相关操作 /groups [/groups]
+### 创建群（N） [POST]
 
++ Request (application/json)
+
+    + Attributes (object)
+
+        + name: my group (string, required) - 群名称
+        + group_type: chat (string, optional) - 群类型
+        + max_cap: 100 (menber, optional) - 群成员容量，默认200
+        + notice: hello world! (string, optional) - 群通告
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + group_id: 123 (number, required) - 群id
+        + name: my group (string, required) - 群名称
+        + group_type: chat (string, required) - 群类型
+        + max_cap: 100 (menber, required) - 群成员容量，默认200
+        + member_hash: lkajslkdjfla (string, required) - 成员hash
+        + created_at: 15xxxxx (number,required) - 建群时间
+        + owner_id: 1 (number, required) - 群主的用户id
+        + creator_id: 1 (number, required) - 建群者的用户id
+        + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
+        + notice: hello world! (string, required) - 群通告
+
+// ### 获取群列表(N) [GET]
+
+## 群（群主）操作 /groups/{group_id} [/groups/{group_id}]
+### 获取群信息(N)  [GET]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + group_id: 123 (number, required) - 群id
+        + name: my group (string, required) - 群名称
+        + group_type: chat (string, required) - 群类型
+        + max_cap: 100 (menber, required) - 群成员容量，默认200
+        + member_hash: lkajslkdjfla (string, required) - 成员hash
+        + created_at: 15xxxxx (number,required) - 建群时间
+        + owner_id: 1 (number, required) - 群主的用户id
+        + creator_id: 1 (number, required) - 建群者的用户id
+        + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
+        + notice: hello world! (string, required) - 群通告
+
+### 修改群信息(N)  [POST]
++ Request (application/json)
+    + Attributes (object)
+        + name: my group (string, optional) - 群名称
+        + owner_id: 1 (number, optional) - 群主的用户id
+        + max_cap: 100 (menber, optional) - 群成员容量，默认200
+        + avatar: /image/avatar/2.png (string, optional) - 群头像，暂时先分配默认头像
+        + notice: hello world! (string, optional) - 群通告
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 解散群(N)  [DELETE]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Response 200 (application/json)
+     + Attributes (object)
+
+
+## 群成员 /groups/{group_id}/members [/groups/{group_id}/members]
+### 获取群成员列表(N) [GET]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + member_hash: asldkjflaksjdfl (string, required) - 群成员hash
+        + members: (array, require) - 数组
+            + nickname: derek (string, required) - 用户昵称
+            + user_id: 123 (number, required) - 用户id
+            + avatar: /image/avatar/2.png  (string, required) - 用户头像
+            + role: owner (string, required) - 用户群角色
+
+### 添加群成员(N) [POST]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Request (application/json)
+    + Attributes (object)
+        + user_id: 124 (member, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 移除群成员(N) [DELETE]
++ Parameters
+    + group_id: 1235 (number, required) - 群id
+
++ Request (application/json)
+    + Attributes (object)
+        + user_id: 124 (member, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+## 群成员 /groups/{group_id}/members/{user_id} [/groups/{group_id}/members/{user_id}]
+### 获取群成员信息(N) [GET]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + user_id: 1235 (number, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + user_id: 125 (string, required) - 用户id
+        + account: xxxxx (string, required) - 账号
+        + account_alias: xxxxx (string, required) - 账号别名
+        + im_id: 125 (string, required) - im id
+        + nickname: xxxxx (string, required) - 用户昵称
+        + platform: xxxxx (string, required) - 设备平台
+        + country_code: xxxxx (string, required) - 国家号
+        + phone: xxxxx (string, required) - 手机号
+        + home_phone: xxxxx (string, required) - 座机号码
+        + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+        + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+        + avatar: xxxxx (string, required) - /image/avatar/1.png
+        + job: xxxxx (string, required) - 用户工作
+        + address: xxxxx (string, required) - 用户地址
+        + signature: xxxxx (string, required) - 个性签名
+
+### 修改群成员信息或设置(N) [POST]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + user_id: 1235 (number, required) - 用户id
+
++ Request (application/json)
+    + Attributes (object)
+        + nickname: derek (string, required) - 群成员的昵称
+
+
++ Response 200 (application/json)
+    + Attributes (object)
