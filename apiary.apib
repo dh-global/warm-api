@@ -576,7 +576,7 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
 
-### 解散群(N)  [DELETE]
+### 解散群(Y)  [DELETE]
 + Parameters
     + group_id: 1235 (number, required) - 群id
 
@@ -585,7 +585,7 @@ form的命名统一为file
 
 
 ## 群成员 /groups/{group_id}/members [/groups/{group_id}/members]
-### 获取群成员列表(N) [GET]
+### 获取群成员列表(Y) [GET]
 + Parameters
     + group_id: 1235 (number, required) - 群id
 
@@ -593,36 +593,37 @@ form的命名统一为file
     + Attributes (object)
         + member_hash: asldkjflaksjdfl (string, required) - 群成员hash
         + members: (array, require) - 数组
-            + nickname: derek (string, required) - 用户昵称
+            + group_nickname: derek (string, required) - 用户昵称
             + user_id: 123 (number, required) - 用户id
+            + imid: 1241235 (number, required) - imid
             + avatar: /image/avatar/2.png  (string, required) - 用户头像
             + role: owner (string, required) - 用户群角色
 
-### 添加群成员(N) [POST]
+### 添加群成员(Y) [POST]
 + Parameters
     + group_id: 1235 (number, required) - 群id
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids: [123, 23534] (array, required) - 用户id数组
+        + user_ids: 123, 23534 (array, required) - 用户id数组
 
 
 + Response 200 (application/json)
     + Attributes (object)
 
-### 移除群成员(N) [DELETE]
+### 移除群成员(Y) [DELETE]
 + Parameters
     + group_id: 1235 (number, required) - 群id
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids: [123, 23534] (array, required) - 用户id数组
+        + user_ids: 123, 23534 (array, required) - 用户id数组
 
 + Response 200 (application/json)
     + Attributes (object)
 
 ## 群成员 /groups/{group_id}/members/{user_id} [/groups/{group_id}/members/{user_id}]
-### 获取群成员信息(N) [GET]
+### 获取群成员信息(Y) [GET]
 + Parameters
     + group_id: 12 (number, required) - 群id
     + user_id: 1235 (number, required) - 用户id
@@ -644,15 +645,17 @@ form的命名统一为file
         + job: xxxxx (string, required) - 用户工作
         + address: xxxxx (string, required) - 用户地址
         + signature: xxxxx (string, required) - 个性签名
+        + role: owner (string, required) - 群角色
+        + group_nickname: derek (string, required) - 群昵称
 
-### 修改群成员信息或设置(N) [POST]
+### 修改群成员信息或设置(Y) [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
     + user_id: 1235 (number, required) - 用户id
 
 + Request (application/json)
     + Attributes (object)
-        + nickname: derek (string, required) - 群成员的昵称
+        + group_nickname: derek (string, required) - 群成员的昵称
 
 
 + Response 200 (application/json)
