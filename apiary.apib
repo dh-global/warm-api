@@ -606,6 +606,8 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + user_ids: 123, 23534 (array, required) - 用户id数组
+ //      + add_way: invite (string, required) - 加群方式： apply/invite/qrcode
+ //      + add_by: 123 (number, required) - 邀请人
 
 
 + Response 200 (application/json)
@@ -660,3 +662,18 @@ form的命名统一为file
 
 + Response 200 (application/json)
     + Attributes (object)
+
+
+## 群请求相关 /groups/{group_id}/join_reqs [/groups/{group_id}/join_reqs
+### 申请入群 [POST]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+
++ Request (application/json)
+    + Attributes (object)
+        + user_id: 15 (number, required) -
+        + join_way: qrcode (string, required) - 加入方式
+        + message: I'm xxx (string, required) - 添加消息
+
++ Response 200 (application/json)
+     + Attributes (object)
