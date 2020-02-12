@@ -541,7 +541,9 @@ form的命名统一为file
     + Attributes (object)
         + group_id: 123 (number, required) - 群id
         + name: my group (string, required) - 群名称
-        + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
+        + avatar: /image/avatar/2.png (string, required) - 群头像，默认空值
+        + count: 1 (number, required) - 群成员人数
+        + role： owner (string, required) - 群角色： owner/admin/member
 
 ## 群（群主）操作 /groups/{group_id} [/groups/{group_id}]
 ### 获取群信息(Y)  [GET]
