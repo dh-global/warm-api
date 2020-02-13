@@ -676,3 +676,43 @@ form的命名统一为file
 
 + Response 200 (application/json)
      + Attributes (object)
+
+## 资源同步 /res [/res]
+### 获取同步资源集合 [GET]
+
++ Response 200 (application/json)
+     + Attributes (object)
+        + contacts  (object)
+            + last: 15xxxxx (number, required) - 时间戳，上次联系人列表更新时间
+        + groups  (object)
+            + last: 15xxxxx (number, required) - 时间戳，上次群列表更新时间
+
+## 同步联系人资源 /res/contacts/last [/res/contacts/last?after]
+## 拉取联系人资源 [GET]
++ Parameters
+    + after: 15xxxxxx (number, required) - 时间戳，客户端本地保存的，联系人列表上次的更新时间
+
++ Response 200 (application/json)
+     + Attributes (object)
+        + count: 3 (number, required) - 新增资源数量
+        + contacts： (array, required) - 新增的联系人列表信息
+            + user_id: 86 (number, required) - 用户id
+            + nickname: neil (string, required) - 昵称
+            + friend_nickname: neil (string, required) - 用户对朋友的昵称
+            + avatar: /image/avatar/2.png (string, required) - 最后更新时间
+            + im_id: 137 (number, required) - im id
+
+## 同步群列表资源 /res/groups/last [/res/groups/last?after]
+## 拉取群列表资源 [GET]
++ Parameters
+    + after: 15xxxxxx (number, required) - 时间戳，客户端本地保存的，群列表上次的更新时间
+
++ Response 200 (application/json)
+     + Attributes (object)
+        + count: 3 (number, required) - 新增资源数量
+        + groups： (array, required) - 新增的群列表信息
+            + group_id: 123 (number, required) - 群id
+            + name: my group (string, required) - 群名称
+            + avatar: /image/avatar/2.png (string, required) - 群头像，默认空值
+            + count: 1 (number, required) - 群成员人数
+            + role： owner (string, required) - 群角色： owner/admin/member
