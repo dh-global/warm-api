@@ -337,6 +337,7 @@ FORMAT: 1A
             + friend_nickname: neil (string, required) - 用户对朋友的昵称 
             + avatar: /image/avatar/2.png (string, required) - 最后更新时间
             + im_id: 137 (number, required) - im id
+            + mute_notice: yes (string, required) - 消息免打扰： yes/no. 默认：no
 
     + Body
         {
@@ -346,28 +347,32 @@ FORMAT: 1A
                     "im_id": 0,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
-                    "avatar": "/image/avatar/5.jpeg"
+                    "avatar": "/image/avatar/5.jpeg",
+                    "mute_notice": "no"
                 },
                 {
                     "user_id": 100000136,
                     "im_id": 0,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
-                    "avatar": "/image/avatar/5.jpeg"
+                    "avatar": "/image/avatar/5.jpeg",
+                    "mute_notice": "yes"
                 },
                 {
                     "user_id": 100000138,
                     "im_id": 0,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
-                    "avatar": "/image/avatar/5.jpeg"
+                    "avatar": "/image/avatar/5.jpeg",
+                    "mute_notice": "no"
                 },
                 {
                     "user_id": 100000137,
                     "im_id": 0,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
-                    "avatar": "/image/avatar/5.jpeg"
+                    "avatar": "/image/avatar/5.jpeg",
+                    "mute_notice": "no"
                 }
             ]
         }
@@ -400,6 +405,7 @@ FORMAT: 1A
         + is_delete: false (string , required) - 是否是朋友，布尔值
         + is_black: false (string , required) - 是否是朋友，布尔值
         + friend_nickname: derek (string, required) - 对朋友的昵称
+        + mute_notice: yes (string, required) - 消息免打扰： yes/no
 
 ### 添加联系人,同意/拒绝添加联系人 [POST]
 + Parameters
@@ -427,6 +433,7 @@ FORMAT: 1A
 
     + Attributes (object)
         + nickname: derek (string, required) - 用户昵称
+        + mute_notice: yes (string, required) - 消息免打扰： yes/no
 
 
 + Response  200 (application/json)
@@ -544,6 +551,7 @@ form的命名统一为file
         + avatar: /image/avatar/2.png (string, required) - 群头像，默认空值
         + count: 1 (number, required) - 群成员人数
         + role： owner (string, required) - 群角色： owner/admin/member
+        + mute_notice: yes (string, required) - 消息免打扰： yes/no
 
 ## 获取群信息 /groups/{group_id}/info [/groups/{group_id}/info]
 ### 获取群概要信息(Y)  [GET]
@@ -683,6 +691,7 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + group_nickname: derek (string, required) - 群成员的昵称
+        + mute_notice: yes (string, required) - 消息免打扰: yes/no
 
 + Response 200 (application/json)
     + Attributes (object)
