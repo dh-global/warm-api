@@ -743,7 +743,7 @@ form的命名统一为file
             + im_id: 137 (number, required) - im id
 
 ## 同步群列表资源 /res/groups/last [/res/groups/last?after]
-## 拉取群列表资源 [GET]
+### 拉取群列表资源 [GET]
 + Parameters
     + after: 15xxxxxx (number, required) - 时间戳，客户端本地保存的，群列表上次的更新时间
 
@@ -756,3 +756,33 @@ form的命名统一为file
             + avatar: /image/avatar/2.png (string, required) - 群头像，默认空值
             + count: 1 (number, required) - 群成员人数
             + role： owner (string, required) - 群角色： owner/admin/member
+
+
+## 会话设置 /users/{user_id}/chat_settings{?after} [/users/{user_id}/chat_settings{?after}]
+### 获取会话设置记录 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+    + after: 12445 (number, required) - 上次的会话设置记录id
+
++ Response 200 (application/json)
+     + Attributes (object)
+         + chat_settings: (array) - 会话设置记录
+             + object_id: 14 (number, required) - user id or group id
+             + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊
+             + key： xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰，(由客户端自定义，但要三端统一)
+             + value： 0 (number, required) - 配置值，如, 1:开启， 2:关闭，(由客户端自定义，但要三端统一)
+
+
+### 设置会话设置记录 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Request (application/json)
+     + Attributes (object)
+         + object_id: 14 (number, required) - user id or group id
+         + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊
+         + key： xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰，(由客户端自定义，但要三端统一)
+         + value： 0 (number, required) - 配置值，如, 1:开启， 2:关闭，(由客户端自定义，但要三端统一)
+
++ Response 200 (application/json)
+     + Attributes (object)
