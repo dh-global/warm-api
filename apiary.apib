@@ -704,6 +704,22 @@ form的命名统一为file
 + Response (application/json)
     + Attributes (object)
 
+
+## 群成员设置 /groups/{group_id}/members/{user_id}/settings [/groups/{group_id}/members/{user_id}/settings]
+### 修改群成员设置 [POST]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + user_id: 1235 (number, required) - 用户id
+
++ Request (application/json)
+    + Attributes (object)
+        + key: role (string, required) - 设置类型: role
+        + value: admin (string, required) - 设置值， role: admin/member
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+
 ## 群请求相关 /groups/{group_id}/join_reqs [/groups/{group_id}/join_reqs]
 ### 申请入群 [POST]
 + Parameters
@@ -711,6 +727,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
+        + invite_id: 2134 (number, required) - 邀请人的user_id,主动申请入群的,填申请人user_id
         + join_way: qrcode (string, required) - 加入方式: create/invite/qrcode
         + message: I'm xxx (string, required) - 添加消息
 
@@ -812,3 +829,5 @@ form的命名统一为file
 
 + Response 200 (application/json)
      + Attributes (object)
+
+
