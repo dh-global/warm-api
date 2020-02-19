@@ -719,20 +719,25 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
 
-## 群设置 /groups/{group_id}/settings{?after} [/groups/{group_id}/settings{?after}]
+## 群设置 /groups/{group_id}/settings [/groups/{group_id}/settings]
 ### 获取群设置 [GET]
 + Parameters
      + group_id: 12 (number, required) - 群id
 + Response 200 (application/json)
-     + Attributes (object)
-        + after：0 (number, required) - 新增资源起始id
-        + last： 3 (number, required) - 新增资源结束id
-        + count: 3 (number, required) - 新增资源数量
-        + settings： (array, required) - 新增的群列表信息
-            + id: 123 (number, required) - 设置id
-            + type: 1 (string, required) - 暂时为1，没有作用
-            + key: no_speaking (string, required) - 配置项: no_speaking
-            + value: 1 (number, required) - 配置值, 0: 开启，1： 关闭
+    + Attributes (object)
+        + setting： (array, required) - 新增的群列表信息
+            + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
+            + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
+            + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
+            + invite_way: 1 (number, required) - 邀请人入群方法, 0: 关闭， 1：开启
+    + Body {
+        "setting"": {
+                "no_speaking": 0,
+                "add_in_group": 1,
+                "invite": 1,
+                "invite_way":1
+            },
+    }
 
 ### 更改群设置 [POST]
 + Parameters
@@ -740,24 +745,18 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + type: 1 (string, required) - 暂时为1，没有作用
-        + key: no_speaking (string, required) - 配置项: no_speaking
-        + value: 1 (number, required) - 配置值
+        + key: no_speaking (string, required) - 配置项: no_speaking:禁言，add_in_group：群内添加好友，invite: 邀请人入群，invite_way: 邀请人入群方法
+        + value: 1 (number, required) - 配置值, 0: 关闭，1：启用
 
 + Response 200 (application/json)
      + Attributes (object)
 
 
-## 群角色 /groups/{group_id}/roles{?role=admin} [/groups/{group_id}/roles{?role=admin}]
+## 群角色 /groups/{group_id}/roles{?role} [/groups/{group_id}/roles{?role}]
 ### 获取群角色 [GET]
 + Parameters
      + group_id: 12 (number, required) - 群id
-     + role: admin (string, required) - 群角色： owner/admin/member
-
-+ Request (application/json)
-     + Attributes (object)
-        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
-        + role: string (string, required) - 群角色： owner/admin/member
+     + role: admin (string, required) - 群角色： admin
 
 + Response 200  (application/json)
     + Attributes (object)
@@ -778,7 +777,7 @@ form的命名统一为file
     + Attributes (object)
         + type: 1 (string, required) - 暂时为1，没有作用
         + key: no_speaking (string, required) - 配置项: no_speaking
-        + value: 1 (number, required) - 配置值, 0: 开启，1： 关闭
+        + value: 15xxxxx (number, required) - 配置值, no_speaking: 禁言结束时间戳
 
 + Response 200 (application/json)
      + Attributes (object)
