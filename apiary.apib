@@ -775,14 +775,11 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + type: 1 (string, required) - 暂时为1，没有作用
-        + key: no_speaking (string, required) - 配置项: no_speaking
-        + value: 15xxxxx (number, required) - 配置值, no_speaking: 禁言结束时间戳
+        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
+        + role: string (string, required) - 群角色： owner/admin/member
 
 + Response 200 (application/json)
      + Attributes (object)
-        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
-        + role: string (string, required) - 群角色： owner/admin/member
 
 
 ## 群公告 /groups/{group_id}/notices [/groups/{group_id}/notices] 
