@@ -748,12 +748,18 @@ form的命名统一为file
      + Attributes (object)
 
 
-## 群角色 /groups/{group_id}/roles [/groups/{group_id}/roles]
+## 群角色 /groups/{group_id}/roles{?role=admin} [/groups/{group_id}/roles{?role=admin}]
 ### 获取群角色 [GET]
 + Parameters
      + group_id: 12 (number, required) - 群id
+     + role: admin (string, required) - 群角色： owner/admin/member
 
 + Request (application/json)
+     + Attributes (object)
+        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
+        + role: string (string, required) - 群角色： owner/admin/member
+
++ Response 200  (application/json)
     + Attributes (object)
         + roles: (array, required) - 群角色列表
             + user_id: 1 (number, required) - 用户id
@@ -762,10 +768,7 @@ form的命名统一为file
             + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
             + add_in_group: 1 (number, required) - 是否能设置群内添加好友的能力, 0: 开启，1： 关闭
 
-+ Response 200 (application/json)
-     + Attributes (object)
-        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
-        + role: string (string, required) - 群角色： owner/admin/member
+
 
 ### 设置群角色(管理员) [POST]
 + Parameters
@@ -944,7 +947,7 @@ form的命名统一为file
 
 + Request (application/json)
      + Attributes (object)
-         + blacklist: 14，56 (array, required) - 被拉黑人的user_id数组, id类型：number
+         + blacklist: 14，56 (array, required) - 黑名单的user_id数组, id类型：number
 
 + Response 200 (application/json)
     + Attributes (object)
