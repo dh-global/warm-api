@@ -683,7 +683,7 @@ form的命名统一为file
         + role: owner (string, required) - 群角色
         + group_nickname: derek (string, required) - 群昵称
 
-### 修改群成员信息或设置(Y) [POST]
+### 修改群成员信息(Y) [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
     + user_id: 1235 (number, required) - 用户id
@@ -691,7 +691,6 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + group_nickname: derek (string, required) - 群成员的昵称
-        + role: admin (string, required) - 群角色: owner/admin/member
 
 + Response 200 (application/json)
     + Attributes (object)
