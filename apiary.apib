@@ -742,7 +742,7 @@ form的命名统一为file
     + Attributes (object)
         + type: 1 (string, required) - 暂时为1，没有作用
         + key: no_speaking (string, required) - 配置项: no_speaking
-        + value: 1 (number, required) - 配置值, 0: 开启，1： 关闭
+        + value: 1 (number, required) - 配置值
 
 + Response 200 (application/json)
      + Attributes (object)
@@ -796,7 +796,7 @@ form的命名统一为file
 ### 设置群公告 [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    
+
 + Request (application/json)
      + Attributes (object)
         + notice: hello world! (string, required) - 群公告信息
@@ -916,3 +916,35 @@ form的命名统一为file
      + Attributes (object)
 
 
+
+## 个人设置-黑名单 /users/{user_id}/blacklist [/users/{user_id}/blacklist]
+### 获取黑名单列表 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
++ Response 200 (application/json)
+    + Attributes (object)
+        + blacklist: (array, required) - 黑名单列表
+            + user_id: 124 (number, required) - 被拉黑人的user_id
+            + created_at: 15xxxxx (number, required) - 拉黑时间戳
+
+### 添加黑名单 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Request (application/json)
+     + Attributes (object)
+         + blacklist: 14，56 (array, required) - 被拉黑人的user_id数组, id类型：number
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 移除黑名单 [DELETE]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Request (application/json)
+     + Attributes (object)
+         + blacklist: 14，56 (array, required) - 被拉黑人的user_id数组, id类型：number
+
++ Response 200 (application/json)
+    + Attributes (object)
