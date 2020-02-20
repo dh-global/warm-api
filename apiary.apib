@@ -705,6 +705,17 @@ form的命名统一为file
 
 
 ## 群成员设置 /groups/{group_id}/members/{user_id}/settings [/groups/{group_id}/members/{user_id}/settings]
+### 获取群成员设置 [GET]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + user_id: 1235 (number, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + setting：(object)
+            + user_id: 123 (number, required) - 用户id
+            + no_speaking: 15xxxxx (number, required) - 禁言结束时间戳
+            
 ### 修改群成员设置 [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
@@ -714,7 +725,7 @@ form的命名统一为file
     + Attributes (object)
         + type: 1 (number, required) - 类型，暂时为1
         + key: no_speaking (string, required) - 设置类型， no_speaking:禁言
-        + value: 1 (number, required) - 设置值， 0: 关闭， 1： 禁言
+        + value: 1 (number, required) - 设置值， no_speaking：禁言结束时间戳
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -731,7 +742,7 @@ form的命名统一为file
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
             + invite_way: 1 (number, required) - 邀请人入群方法, 0: 关闭， 1：开启
     + Body {
-        "setting"": {
+        "setting": {
                 "no_speaking": 0,
                 "add_in_group": 1,
                 "invite": 1,
@@ -947,3 +958,5 @@ form的命名统一为file
 
 + Response 200 (application/json)
     + Attributes (object)
+
+
