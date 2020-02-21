@@ -715,7 +715,7 @@ form的命名统一为file
         + setting：(object)
             + user_id: 123 (number, required) - 用户id
             + no_speaking: 15xxxxx (number, required) - 禁言结束时间戳
-            
+
 ### 修改群成员设置 [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
@@ -736,7 +736,7 @@ form的命名统一为file
      + group_id: 12 (number, required) - 群id
 + Response 200 (application/json)
     + Attributes (object)
-        + setting： (array, required) - 新增的群列表信息
+        + setting： (object) - 新增的群列表信息
             + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
             + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
@@ -828,6 +828,39 @@ form的命名统一为file
 
 + Response 200 (application/json)
      + Attributes (object)
+
+## 入群申请处理相关 /groups/{group_id}/join_reqs/{req_id} [/groups/{group_id}/join_reqs/{req_id}]
+### 获取入群申请 [GET]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + req_id: 12 (number, required) - request id
+
++ Request 
+     + Attributes (object)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + id: 2134 (number, required) - 邀请人的user_id,主动申请入群的,填申请人user_id
+        + create_at: 15000000000000 (number, required) - 时间戳
+        + group_id: 354  (number, required) - 群id
+        + user_id: 2 (number, required) - 用户id
+        + operator_id： 3 (number, required) - 用户id
+        + join_way: qrcode (string, required) - 加入方式: create/invite/qrcode
+        + status: applying (string, required) - 申请状态
+        + message: I'm xxx (string, required) - 添加消息
+
+### 审批入群申请 [POST]
++ Parameters
+    + group_id: 12 (number, required) - 群id
+    + req_id: 12 (number, required) - request id
+
++ Request 
+     + Attributes (object)
+        + approve： agree (string, required) - 审批： agree/reject
+
++ Response 200 (application/json)
+    + Attributes (object)
+
 
 ## 资源同步 /res [/res]
 ### 获取同步资源集合 [GET]
