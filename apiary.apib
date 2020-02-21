@@ -128,6 +128,11 @@ FORMAT: 1A
         + country_code: +86 (string, required) - 国家号
         + login_type: vcode (string, required) - 登录类型: vcode, qrcode
         + phone: 10086 (string, required) - 手机号码
+        + device (object)
+            + name: HUAWEI (string, required) - 设备名称
+            + model: android xxx (string, required) - 设备型号
+            + mac：jsldfjl (string, required) - 设备mac地址
+            + version： v0.0.1 (string, required) - 系统版本
 
 + Response 201 (application/json)
     + Attributes (object)    
@@ -434,7 +439,7 @@ FORMAT: 1A
     + Attributes (object)
         + nickname: derek (string, required) - 用户昵称
         + signature: yes (string, required) - 个性签名
-        + avatar： kdflsjflajsdf (string, required) - 头像的file token
+        + avatar： kdflsjfl13515ajsdf (string, required) - 头像的file token
 
 
 + Response  200 (application/json)
@@ -994,3 +999,36 @@ form的命名统一为file
     + Attributes (object)
 
 
+## 登录设备 /users/{user_id}/devices [/users/{user_id}/devices]
+### 获取登录设备列表 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + devices (array)
+            + id: 12 (number, required) - 设备id 
+            + login_at： 1559808709 (number, required) - 最后一次登录时间
+            + Name： HUAWEI (string, required) - 设备名称
+            + Model: android xxx (string, required) - 设备型号信息
+
+## 登录设备管理 /users/{user_id}/devices/{device_id} [/users/{user_id}/devices{device_id}]
+### 修改登录设备信息 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id
+    + device_id: 1 (number, required) - device id
+
++ Request (application/json)
+     + Attributes (object)
+         + name: HUAWEI (array, required) - 设备名称
+
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 删除登录设备 [DELETE]
++ Parameters
+    + user_id: 14 (number, required) - user id
+    + device_id: 1 (number, required) - device id
+
++ Response 200 (application/json)
+    + Attributes (object)
