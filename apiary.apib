@@ -160,11 +160,15 @@ FORMAT: 1A
     + qr_token: xxxx (string, required) - qrCode token
 + Response 200 (application/json)
 
-### 获取登陆二维码信息（pc接口） [POST]
+### 创建登陆二维码（pc接口） [POST]
 
 + Request (application/json)
     + Attributes (object)
         + platform: pc (string, required) - 设备类型
+        + name: HUAWEI (string, required) - 设备名称
+        + model: android xxx (string, required) - 设备型号
+        + mac：jsldfjl (string, required) - 设备mac地址
+        + version： v0.0.1 (string, required) - 系统版本
 
 + Response 201 (application/json)
 
