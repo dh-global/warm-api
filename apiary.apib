@@ -439,11 +439,8 @@ FORMAT: 1A
     + cid: 1235 (number, required) - 联系人id
 
 + Request (application/json)
-
     + Attributes (object)
         + nickname: derek (string, required) - 用户昵称
-        + signature: yes (string, required) - 个性签名
-        + avatar： kdflsjfl13515ajsdf (string, required) - 头像的file token
 
 
 + Response  200 (application/json)
@@ -485,8 +482,11 @@ FORMAT: 1A
 + Parameters
     + id: 1235 (number, required) - 用户id
 
-+ Attributes (object)
-    + nickname: derek (string, required) - 要修改的昵称
++ Request (application/json)
+    + Attributes (object)
+        + nickname: derek (string, required) - 要修改的昵称
+        + signature: yes (string, required) - 个性签名
+        + avatar： kdflsjfl13515ajsdf (string, required) - 头像的file token
 
 + Response  200 (application/json)
 
@@ -1060,3 +1060,14 @@ form的命名统一为file
         + repeat_password: derek (string, required) - 重复password，需要加密
 + Response 200 (application/json)
     + Attributes (object)
+
+
+尹贵云0222工作日报
+今天工作进展：
+    1. 系统设置-设备管理         完成
+    2. 修改账号密码             完成
+    3. 修改用户id              完成
+    4. 与客户端联调群相关设置，改bug
+明天工作计划：
+    1. 
+    3. 与客户端联调接口
