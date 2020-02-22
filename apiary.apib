@@ -1043,10 +1043,16 @@ form的命名统一为file
 ###  修改用户account [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
-    + account_alias: derek (string, required) - 修改account
++ Request (application/json)
+    + Attributes (object)
+        + account_alias: derek (string, required) - 修改account
 
 ## 账号 /users/{user_id}/password [/users/{user_id}/password]
 ###  password [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
-    + password: derek (string, required) - 修改password
++ Request (application/json)
+    + Attributes (object)
+        + old_password: derek (string, required) - 救password，需要加密，加密方式由三端协商
+        + new_password: derek (string, required) - 新password，需要加密
+        + repeat_password: derek (string, required) - 重复password，需要加密
