@@ -477,6 +477,7 @@ FORMAT: 1A
         + job: xxxxx (string, required) - 用户工作
         + address: xxxxx (string, required) - 用户地址
         + signature: xxxxx (string, required) - 个性签名
+        + password: true (bool, required) - 是否已设置密码
 
 ### 修改个人中心信息 [POST]
 + Parameters
@@ -489,16 +490,6 @@ FORMAT: 1A
         + avatar： kdflsjfl13515ajsdf (string, required) - 头像的file token
 
 + Response  200 (application/json)
-
-
-## 当前用户 /user/me [/user/me]
-### （旧的）修改当前用户信息 [POST]
-+ Request
-    + Attributes (object)
-        + modify_type: nickname (string, required) - 修改类型: nickname
-        + value: meme (string, required) - 修改值
-
-+ Response 200 (application/json)
 
 ## 文件上传 /files [/files]
 ### 上传文件 [POST]
@@ -1057,7 +1048,27 @@ form的命名统一为file
     + Attributes (object)
         + old_password: derek (string, required) - 救password，需要加密，加密方式由三端协商
         + new_password: derek (string, required) - 新password，需要加密
-+ Response 200 (application/json)e
++ Response 200 (application/json)
     + Attributes (object)
 
 
+## 隐私设置 /users/{user_id}/privacy_settings [/users/{user_id}/privacy_settings]
+### 获取隐私设置 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
++ Response 200 (application/json)e
+    + Attributes (object)
+        + setting (object)
+            + id: 1 (number, required) - 设置id
+            + user_id: 123 (number, required) - 用户id
+            + add_verify: 1 (number, required) - 添加认证， 0： 关闭， 1：启用
+
+### 修改隐私设置 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id
++ Request (application/json)
+    + Attributes (object)
+        + key: add_verify (string, required) - 设置类型， add_verify：被添加好友是否需要验证
+        + value: 0 (string, required) - 设置值， add_verify：0关闭，1启用
++ Response 200 (application/json)
+    + Attributes (object)
