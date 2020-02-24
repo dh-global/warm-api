@@ -531,7 +531,7 @@ form的命名统一为file
 + Request (application/json)
 
     + Attributes (object)
-
+        + user_ids： 123 (array) - 用户id数组，id类型：number
         + name: my group (string, required) - 群名称
         + group_type: chat (string, optional) - 群类型
         + max_cap: 100 (number, optional) - 群成员容量，默认200
@@ -1057,17 +1057,7 @@ form的命名统一为file
     + Attributes (object)
         + old_password: derek (string, required) - 救password，需要加密，加密方式由三端协商
         + new_password: derek (string, required) - 新password，需要加密
-        + repeat_password: derek (string, required) - 重复password，需要加密
-+ Response 200 (application/json)
++ Response 200 (application/json)e
     + Attributes (object)
 
 
-尹贵云0222工作日报
-今天工作进展：
-    1. 系统设置-设备管理         完成
-    2. 修改账号密码             完成
-    3. 修改用户id              完成
-    4. 与客户端联调群相关设置，改bug
-明天工作计划：
-    1. 
-    3. 与客户端联调接口
