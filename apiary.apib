@@ -477,7 +477,7 @@ FORMAT: 1A
         + job: xxxxx (string, required) - 用户工作
         + address: xxxxx (string, required) - 用户地址
         + signature: xxxxx (string, required) - 个性签名
-        + password: true (bool, required) - 是否已设置密码
+        + password: true (int, required) -  布尔值，是否已设置密码
 
 ### 修改个人中心信息 [POST]
 + Parameters
@@ -1058,7 +1058,7 @@ form的命名统一为file
     + user_id: 14 (number, required) - user id
 + Response 200 (application/json)
     + Attributes (object)
-        + setting: (object)
+        // + setting: (object)
             + id: 1 (number, required) - 设置id
             + user_id: 123 (number, required) - 用户id
             + add_verify: 1 (number, required) - 添加认证， 0： 关闭， 1：启用
