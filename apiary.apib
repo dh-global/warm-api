@@ -35,14 +35,14 @@ FORMAT: 1A
         "data": {...},
     }
 
-## http状态码定义
-+ 200：GET、PUT、PATCH success
-+ 201：POST success
-+ 204：DELETE success
-+ 400：bad request, bad param
-+ 401：api unauthorized
-+ 403：user forbidden
-+ 404：GET not found
+// ## http状态码定义
+// + 200：GET、PUT、PATCH success
+// + 201：POST success
+// + 204：DELETE success
+// + 400：bad request, bad param
+// + 401：api unauthorized
+// + 403：user forbidden
+// + 404：GET not found
 
 
 ## 平台启动信息 /config/{platform} [/config/{platform]
@@ -123,10 +123,11 @@ FORMAT: 1A
 ### login [POST]
 + Request (application/json)
     + Attributes (object)
-        + v_code: 0988 (string, optional) - 验证码
+        + v_code: 0988 (string, optional) - 登录验证码
+        + pwd： passwordxxxxx (string, optional) - 登录密码
         + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
         + country_code: +86 (string, required) - 国家号
-        + login_type: vcode (string, required) - 登录类型: vcode, qrcode
+        + login_type: vcode (string, required) - 登录类型: vcode/pwd
         + phone: 10086 (string, required) - 手机号码
         + device (object)
             + name: HUAWEI (string, required) - 设备名称
@@ -1040,7 +1041,7 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
 
-## 账号 /users/{user_id}/password [/users/{user_id}/password]
+## 密码 /users/{user_id}/password [/users/{user_id}/password]
 ###  password [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
