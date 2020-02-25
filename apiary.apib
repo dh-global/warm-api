@@ -1080,3 +1080,15 @@ form的命名统一为file
         + value: 0 (string, required) - 设置值， add_verify：0关闭，1启用
 + Response 200 (application/json)
     + Attributes (object)
+
+
+## 推送设置 /users/{user_id}/push_settings  [/users/{user_id}/push_settings]
+###  设置推送 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id
++ Request (application/json)
+    + Attributes (object)
+        + value: 0 (string, required) - 设置值，0关闭，1启用
+
++ Response 200 (application/json)
+    + Attributes (object)
