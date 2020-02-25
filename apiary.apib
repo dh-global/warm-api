@@ -1083,6 +1083,16 @@ form的命名统一为file
 
 
 ## 推送设置 /users/{user_id}/push_settings  [/users/{user_id}/push_settings]
+###  获取推送设置 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + setting: (object)
+            + switch: 0 (number, required) - 推送开关
+            + detail: 0 (number, required) - 推送详情
+
 ###  设置推送 [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
