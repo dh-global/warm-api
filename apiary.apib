@@ -1001,16 +1001,16 @@ form的命名统一为file
     + user_id: 14 (number, required) - user id
 
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes (array)
         + devices (object)
-            + id: 12 (number, required) - 设备id 
+            + device_id: 12 (number, required) - 设备id 
             + login_at： 1559808709 (number, required) - 最后一次登录时间
             + Name： HUAWEI (string, required) - 设备名称
             + Model: android xxx (string, required) - 设备型号信息
     + Body {
         [
             {
-                "id": 12 ,
+                "device_id": 12 ,
                 "login_at"：1559808709,
                 "Name"："HUAWEI",
                 "Model" : "android "
