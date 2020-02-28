@@ -344,12 +344,13 @@ FORMAT: 1A
 
     + Attributes (object)
         + contacts: (array, required)
-            + user_id: 86 (number, required) - 用户id
-            + nickname: neil (string, required) - 昵称
-            + friend_nickname: neil (string, required) - 用户对朋友的昵称 
-            + avatar: /image/avatar/2.png (string, required) - 最后更新时间
-            + im_id: 137 (number, required) - im id
-            + mute_notice: yes (string, required) - 消息免打扰： yes/no. 默认：no
+            + contact (object)
+                + user_id: 86 (number, required) - 用户id
+                + nickname: neil (string, required) - 昵称
+                + friend_nickname: neil (string, required) - 用户对朋友的昵称 
+                + avatar: /image/avatar/2.png (string, required) - 最后更新时间
+                + im_id: 137 (number, required) - im id
+                + mute_notice: yes (string, required) - 消息免打扰： yes/no. 默认：no
 
     + Body
         {
