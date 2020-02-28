@@ -583,7 +583,7 @@ form的命名统一为file
 + Response 200 (application/json)
 
     + Attributes (object)
-        + info (object)
+        + info (object) - 群信息
             + group_id: 123 (number, required) - 群id
             + name: my group (string, required) - 群名称
             + group_type: chat (string, required) - 群类型
@@ -594,12 +594,122 @@ form的命名统一为file
             + creator_id: 1 (number, required) - 建群者的用户id
             + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
             + notice: hello world! (string, required) - 群通告
-        + members:  (array, require) - 成员列表
-           + group_nickname: derek (string, required) - 用户昵称
-           + user_id: 123 (number, required) - 用户id
-           + imid: 1241235 (number, required) - imid
-           + avatar: /image/avatar/2.png  (string, required) - 用户头像
-           + role: owner (string, required) - 用户群角色
+        + notice (object) - 群公告
+            + notice_id: 12435 (number, required) - 群公告id
+            + notice: hello world! (string, required) - 群公告信息
+            + updated_at: 15xxxxxxxx (number, required) -  更新时间戳
+            + modify_by: 12435 (number, required) - 更新者用户id
+        + settings (object) - 群设置
+            + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
+            + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
+            + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
+            + invite_way: 1 (number, required) - 邀请人入群方法, ...
+        + roles (array) - 群角色列表
+            + roles (object)
+                + user_id: 1 (number, required) - 用户id
+                + role: admin (string, required) - 群角色： owner/admin/member
+                + no_speaking: 1 (number, required) - 是否有禁言权力, 0: 开启，1： 关闭
+                + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
+                + add_in_group: 1 (number, required) - 是否能设置群内添加好友的能力, 0: 开启，1： 关闭
+        + members (array) - 成员列表
+            + members (object)
+                + group_nickname: derek (string, required) - 用户昵称
+                + user_id: 123 (number, required) - 用户id
+                + imid: 1241235 (number, required) - imid
+                + avatar: /image/avatar/2.png  (string, required) - 用户头像
+        + member_settings (array) - 成员设置
+            + member_settings (object) 
+                + user_id: 123 (number, required) - 用户id
+                + no_speaking: 15xxxxx (number, required) - 禁言结束时间戳
+
+    + Body 
+    {
+        "info": {
+            "group_id": 22,
+            "name": "sg1zs3、ginsx4、c3n3fw",
+            "create_at": 1582874658,
+            "update_at": 1582874658,
+            "group_type": "chat",
+            "max_cap": 200,
+            "avatar": "5ce1170cab0a083b91d09a1b0cfb8d0a",
+            "notice": "",
+            "creator_id": 16,
+            "owner_id": 16,
+            "member_hash": "9758095553d254459482bd606612cf84"
+        },
+        "notice": {
+            "notice_id": 0,
+            "notice": "",
+            "updated_at": -62135596800,
+            "modify_by": 0
+        },
+        "settings": {
+            "no_speaking": 0,
+            "add_in_group": 1,
+            "invite": 0,
+            "invite_way": 1
+        },
+        "roles": [
+            {
+                "user_id": 16,
+                "role": "owner",
+                "no_speaking": 1,
+                "modify_info": 1,
+                "add_in_group": 1
+            },
+            {
+                "user_id": 18,
+                "role": "member",
+                "no_speaking": 0,
+                "modify_info": 0,
+                "add_in_group": 0
+            },
+            {
+                "user_id": 24,
+                "role": "member",
+                "no_speaking": 0,
+                "modify_info": 0,
+                "add_in_group": 0
+            }
+        ],
+        "members": [
+            {
+                "user_id": 16,
+                "im_id": 1582799689503524,
+                "group_nickname": "sg1zs3",
+                "avatar": "3ee76fabaec2bf385015049390210f45",
+                "role": ""
+            },
+            {
+                "user_id": 18,
+                "im_id": 1582800854198274,
+                "group_nickname": "ginsx4",
+                "avatar": "b4db9c634ca0a753ac1edc0f23f3b4ad",
+                "role": ""
+            },
+            {
+                "user_id": 24,
+                "im_id": 1582859137417914,
+                "group_nickname": "c3n3fw",
+                "avatar": "b4db9c634ca0a753ac1edc0f23f3b4ad",
+                "role": ""
+            }
+        ],
+        "member_settings": [
+            {
+                "user_id": 16,
+                "no_speaking": 0
+            },
+            {
+                "user_id": 18,
+                "no_speaking": 0
+            },
+            {
+                "user_id": 24,
+                "no_speaking": 0
+            }
+        ]
+    }
 
 ### 修改群信息(Y)  [POST]
 + Request (application/json)
@@ -801,6 +911,7 @@ form的命名统一为file
      + group_id: 12 (number, required) - 群id
 + Response 200 (application/json)
     + Attributes (object)
+        + notice_id: 12435 (number, required) - 群公告id
         + notice: hello world! (string, required) - 群公告信息
         + updated_at: 15xxxxxxxx (number, required) -  更新时间戳
         + modify_by: 12435 (number, required) - 更新者用户id
