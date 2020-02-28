@@ -195,21 +195,22 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (object)
         + users: (array, required) - 用户列表 
-            + user_id: 125 (number, required) - 用户id
-            + account: xxxxx (string, required) - 账号
-            + account_alias: xxxxx (string, required) - 账号别名
-            + im_id: 125 (number, required) - im id
-            + nickname: xxxxx (string, required) - 用户昵称
-            + platform: xxxxx (string, required) - 设备平台
-            + country_code: xxxxx (string, required) - 国家号
-            + phone: xxxxx (string, required) - 手机号
-            + home_phone: xxxxx (string, required) - 座机号码
-            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
-            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
-            + avatar: xxxxx (string, required) - /image/avatar/1.png
-            + job: xxxxx (string, required) - 用户工作
-            + address: xxxxx (string, required) - 用户地址
-            + signature: xxxxx (string, required) - 个性签名
+            + user (object)
+                + user_id: 125 (number, required) - 用户id
+                + account: xxxxx (string, required) - 账号
+                + account_alias: xxxxx (string, required) - 账号别名
+                + im_id: 125 (number, required) - im id
+                + nickname: xxxxx (string, required) - 用户昵称
+                + platform: xxxxx (string, required) - 设备平台
+                + country_code: xxxxx (string, required) - 国家号
+                + phone: xxxxx (string, required) - 手机号
+                + home_phone: xxxxx (string, required) - 座机号码
+                + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+                + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+                + avatar: xxxxx (string, required) - /image/avatar/1.png
+                + job: xxxxx (string, required) - 用户工作
+                + address: xxxxx (string, required) - 用户地址
+                + signature: xxxxx (string, required) - 个性签名
     
     + Body
     {
@@ -243,25 +244,26 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (object)
         + users: (array, required) - 用户列表 
-            + user_id: 125 (number, required) - 用户id
-            + account: xxxxx (string, required) - 账号
-            + account_alias: xxxxx (string, required) - 账号别名
-            + im_id: 125 (number, required) - im id
-            + nickname: xxxxx (string, required) - 用户昵称
-            + platform: xxxxx (string, required) - 设备平台
-            + country_code: xxxxx (string, required) - 国家号
-            + phone: xxxxx (string, required) - 手机号
-            + home_phone: xxxxx (string, required) - 座机号码
-            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
-            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
-            + avatar: xxxxx (string, required) - /image/avatar/1.png
-            + job: xxxxx (string, required) - 用户工作
-            + address: xxxxx (string, required) - 用户地址
-            + signature: xxxxx (string, required) - 个性签名
+            + user (object)
+                + user_id: 125 (number, required) - 用户id
+                + account: xxxxx (string, required) - 账号
+                + account_alias: xxxxx (string, required) - 账号别名
+                + im_id: 125 (number, required) - im id
+                + nickname: xxxxx (string, required) - 用户昵称
+                + platform: xxxxx (string, required) - 设备平台
+                + country_code: xxxxx (string, required) - 国家号
+                + phone: xxxxx (string, required) - 手机号
+                + home_phone: xxxxx (string, required) - 座机号码
+                + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+                + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+                + avatar: xxxxx (string, required) - /image/avatar/1.png
+                + job: xxxxx (string, required) - 用户工作
+                + address: xxxxx (string, required) - 用户地址
+                + signature: xxxxx (string, required) - 个性签名
     
     + Body
     {
-        "contacts": [
+        "users": [
             {
                 "user_id": 1,
                 "account": "A1NSHijF6cBpudF3khcBCkfmVm",
@@ -740,11 +742,12 @@ form的命名统一为file
     + Attributes (object)
         + member_hash: asldkjflaksjdfl (string, required) - 群成员hash
         + members: (array, require) - 数组
-            + group_nickname: derek (string, required) - 用户昵称
-            + user_id: 123 (number, required) - 用户id
-            + imid: 1241235 (number, required) - imid
-            + avatar: /image/avatar/2.png  (string, required) - 用户头像
-            + role: owner (string, required) - 用户群角色
+            + members (object)
+                + group_nickname: derek (string, required) - 用户昵称
+                + user_id: 123 (number, required) - 用户id
+                + imid: 1241235 (number, required) - imid
+                + avatar: /image/avatar/2.png  (string, required) - 用户头像
+                + role: owner (string, required) - 用户群角色
 
 ### 添加群成员(Y) [POST]
 + Parameters
@@ -848,7 +851,7 @@ form的命名统一为file
      + group_id: 12 (number, required) - 群id
 + Response 200 (application/json)
     + Attributes (object)
-        + setting： (object) - 新增的群列表信息
+        + setting (object) - 新增的群列表信息
             + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
             + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
@@ -884,11 +887,12 @@ form的命名统一为file
 + Response 200  (application/json)
     + Attributes (object)
         + roles: (array, required) - 群角色列表
-            + user_id: 1 (number, required) - 用户id
-            + role: admin (string, required) - 群角色： owner/admin/member
-            + no_speaking: 1 (number, required) - 是否有禁言权力, 0: 开启，1： 关闭
-            + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
-            + add_in_group: 1 (number, required) - 是否能设置群内添加好友的能力, 0: 开启，1： 关闭
+            + roles (object)
+                + user_id: 1 (number, required) - 用户id
+                + role: admin (string, required) - 群角色： owner/admin/member
+                + no_speaking: 1 (number, required) - 是否有禁言权力, 0: 开启，1： 关闭
+                + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
+                + add_in_group: 1 (number, required) - 是否能设置群内添加好友的能力, 0: 开启，1： 关闭
 
 
 
@@ -1055,8 +1059,9 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
         + blacklist: (array, required) - 黑名单列表
-            + user_id: 124 (number, required) - 被拉黑人的user_id
-            + created_at: 15xxxxx (number, required) - 拉黑时间戳
+            + blacklist (object)
+                + user_id: 124 (number, required) - 被拉黑人的user_id
+                + created_at: 15xxxxx (number, required) - 拉黑时间戳
 
 ### 添加黑名单 [POST]
 + Parameters
@@ -1089,10 +1094,11 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
         + devices (array)
-            + device_id: 12 (number, required) - 设备id 
-            + login_at： 1559808709 (number, required) - 最后一次登录时间
-            + Name： HUAWEI (string, required) - 设备名称
-            + Model: android xxx (string, required) - 设备型号信息
+            + device (object)
+                + device_id: 12 (number, required) - 设备id 
+                + login_at： 1559808709 (number, required) - 最后一次登录时间
+                + Name： HUAWEI (string, required) - 设备名称
+                + Model: android xxx (string, required) - 设备型号信息
     + Body {
         "devices": [
             {
