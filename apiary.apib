@@ -526,7 +526,8 @@ form的命名统一为file
 + Request (application/json)
 
     + Attributes (object)
-        + user_ids： 123 (array) - 用户id数组，id类型：number
+        + user_ids (array, required) - 用户id数组，
+            + id : 123 (number) - 用户id
         + name: my group (string, required) - 群名称
         + group_type: chat (string, optional) - 群类型
         + max_cap: 100 (number, optional) - 群成员容量，默认200
@@ -756,7 +757,8 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids: 123,23534 (array,required) - 用户id数组, id类型为number
+        + user_ids (array, required) - 用户id数组，
+            + id : 123 (number) - 用户id
 
 
 + Response 200 (application/json)
@@ -768,7 +770,8 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids: 123, 23534 (array, required) - 用户id数组, id类型为number
+        + user_ids (array, required) - 用户id数组，
+            + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -903,7 +906,8 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids: 12,43 (array, required) - 用户id数组，id类型：number
+        + user_ids (array, required) - 用户id数组，
+            + id : 123 (number) - 用户id
         + role: string (string, required) - 群角色： owner/admin/member
 
 + Response 200 (application/json)
@@ -1070,7 +1074,8 @@ form的命名统一为file
 
 + Request (application/json)
      + Attributes (object)
-         + blacklist: 14，56 (array, required) - 被拉黑人的user_id数组, id类型：number
+        + blacklist (array, required) - 被拉黑人的user_id数组
+            + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -1081,7 +1086,8 @@ form的命名统一为file
 
 + Request (application/json)
      + Attributes (object)
-         + blacklist: 14，56 (array, required) - 黑名单的user_id数组, id类型：number
+        + blacklist (array, required)  - 黑名单的user_id数组
+            + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
