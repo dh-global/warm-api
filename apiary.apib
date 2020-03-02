@@ -299,21 +299,22 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (object)
         + contacts: (array, required) - 用户列表 
-            + user_id: 125 (string, required) - 用户id
-            + account: xxxxx (string, required) - 账号
-            + account_alias: xxxxx (string, required) - 账号别名
-            + im_id: 125 (string, required) - im id
-            + nickname: xxxxx (string, required) - 用户昵称
-            + platform: xxxxx (string, required) - 设备平台
-            + country_code: xxxxx (string, required) - 国家号
-            + phone: xxxxx (string, required) - 手机号
-            + home_phone: xxxxx (string, required) - 座机号码
-            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
-            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
-            + avatar: xxxxx (string, required) - /image/avatar/1.png
-            + job: xxxxx (string, required) - 用户工作
-            + address: xxxxx (string, required) - 用户地址
-            + signature: xxxxx (string, required) - 个性签名
+            + contact (object)
+                + user_id: 125 (string, required) - 用户id
+                + account: xxxxx (string, required) - 账号
+                + account_alias: xxxxx (string, required) - 账号别名
+                + im_id: 125 (string, required) - im id
+                + nickname: xxxxx (string, required) - 用户昵称
+                + platform: xxxxx (string, required) - 设备平台
+                + country_code: xxxxx (string, required) - 国家号
+                + phone: xxxxx (string, required) - 手机号
+                + home_phone: xxxxx (string, required) - 座机号码
+                + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+                + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+                + avatar: xxxxx (string, required) - /image/avatar/1.png
+                + job: xxxxx (string, required) - 用户工作
+                + address: xxxxx (string, required) - 用户地址
+                + signature: xxxxx (string, required) - 个性签名
     
     + Body
     {
@@ -1247,10 +1248,50 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + device_id: sdfa (string, required) - 设备唯一id
-        + contacts (array) - 通讯录列表
+        + contacts: (array) - 通讯录列表
             + contact (object) - 通讯录信息
                 + cn : +86 (string, required)  - 国家号
                 + phone: 10086 (string, required) - 手机号码
                 + name: derek (string, required) - 通讯录备注
 + Response 200 (application/json)
     + Attributes (object)
+
+
+
+## 地址位置  /users/{user_id}/locations [ /users/{user_id}/locations]
+### 设置地理位置 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id  
++ Request (application/json)
+    + Attributes (object)
+        + longitude: 12.35 (number, required) - 京都
+        + latitude: 35.3 (number, required) - 通   
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 清楚地理位置 [DELETE]
++ Parameters
+    + user_id: 14 (number, required) - user id  
++ Response 200 (application/json)
+    + Attributes (object)
+
+
+## 附近的人 /users/{user_id}/people_nearby{?limit&dist}  [/users/{user_id}/people_nearby{?limit&dist}]
+### 获取附近的人 
++ Parameters
+    + user_id: 14 (number, required) - user id  
+    + limit: 20 (number, required) - 每次获取数量
+    + dist: 10 (number, required) - 距离，最大值:20, 单位：km
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + nearby: (array, required) -  附近的人列表
+            + nearby (object)
+                + user_id: 53 (number, required) - 用户id
+                + im_id: 155555 (number, required) - imid
+                + nickname: derek (string, required) - nickname
+                + sex: male (string, required) - 性别， 女：female， 男：male
+                + avatar： 52c9a9d3a72f94ef150d8f48d0427f0d (string, required) - 用户头像
+                + signature: hello (string, required) - 个性签名
+                + distance: 7.8 (number, required) - 距离， 单位：km
+                + zone: shenzhen (string, required) - 地址，待定
