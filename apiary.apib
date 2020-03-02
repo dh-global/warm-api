@@ -1276,7 +1276,7 @@ form的命名统一为file
 
 
 ## 附近的人 /users/{user_id}/people_nearby{?limit&dist}  [/users/{user_id}/people_nearby{?limit&dist}]
-### 获取附近的人 
+### 获取附近的人 [GET]
 + Parameters
     + user_id: 14 (number, required) - user id  
     + limit: 20 (number, required) - 每次获取数量
@@ -1290,7 +1290,7 @@ form的命名统一为file
                 + im_id: 155555 (number, required) - imid
                 + nickname: derek (string, required) - nickname
                 + sex: male (string, required) - 性别， 女：female， 男：male
-                + avatar： 52c9a9d3a72f94ef150d8f48d0427f0d (string, required) - 用户头像
+                + avatar: 52c9a9d3a72f94ef150d8f48d0427f0d (string, required) - 用户头像
                 + signature: hello (string, required) - 个性签名
                 + distance: 7.8 (number, required) - 距离， 单位：km
                 + zone: shenzhen (string, required) - 地址，待定
