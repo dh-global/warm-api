@@ -420,7 +420,7 @@ FORMAT: 1A
         + is_delete: false (string , required) - 是否是朋友，布尔值
         + is_black: false (string , required) - 是否是朋友，布尔值
         + friend_nickname: derek (string, required) - 对朋友的昵称
-        + add_by: share (string, required) - 联系人的添加方式：share/qrcode/phone/account
+        + add_by: share (string, required) - 联系人的添加方式：share/scan/phone/account
 
 ### 添加联系人,同意/拒绝添加联系人 [POST]
 + Parameters
@@ -431,7 +431,7 @@ FORMAT: 1A
 
     + Attributes (object)
         + handle_type: add (string, required) - 处理类型：add/agree/reject
-        + add_by: share (string, optional) - 通过什么方式添加朋友：share/qrcode/phone/account
+        + add_by: share (string, optional) - 通过什么方式添加朋友：share/scan/phone/account
         + message: I'm xx (string, optional) - 添加朋友时的备注
         + friend_im_id: 243 (number, required) - 联系人imid
 
