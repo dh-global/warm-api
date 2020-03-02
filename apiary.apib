@@ -367,7 +367,6 @@ FORMAT: 1A
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
-                    "mute_notice": "no"
                 },
                 {
                     "user_id": 100000136,
@@ -375,7 +374,6 @@ FORMAT: 1A
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
-                    "mute_notice": "yes"
                 },
                 {
                     "user_id": 100000138,
@@ -383,7 +381,6 @@ FORMAT: 1A
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
-                    "mute_notice": "no"
                 },
                 {
                     "user_id": 100000137,
@@ -391,7 +388,6 @@ FORMAT: 1A
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
-                    "mute_notice": "no"
                 }
             ]
         }
@@ -424,7 +420,7 @@ FORMAT: 1A
         + is_delete: false (string , required) - 是否是朋友，布尔值
         + is_black: false (string , required) - 是否是朋友，布尔值
         + friend_nickname: derek (string, required) - 对朋友的昵称
-        + mute_notice: yes (string, required) - 消息免打扰： yes/no
+        + add_by: share (string, required) - 联系人的添加方式：share/qrcode/phone/account
 
 ### 添加联系人,同意/拒绝添加联系人 [POST]
 + Parameters
@@ -1220,5 +1216,41 @@ form的命名统一为file
         + kay: detail (string, required) , - 设置类型: switch/detail
         + value: 0 (number, required) - 设置值，0关闭，1启用
 
++ Response 200 (application/json)
+    + Attributes (object)
+
+
+## 本地通讯录 /users/{user_id}/mobile_contacts{?device_id} [/users/{user_id}/mobile_contacts{?device_id}]
+### 获取通讯录 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+    + device_id: kjkj (string, required) - 设备唯一id
++ Request (application/json)
+    + Attributes (object)
++ Response 200 (application/json)
+    + Attributes (object)
+        + contacts (array) - 通讯录列表
+            + contact (object) - 通讯录信息
+                + cn : +86 (string, required)  - 国家号
+                + phone: 10086 (string, required) - 手机号码
+                + name: derek (string, required) - 通讯录备注
+                + user_id: 12 (number, required) - 用户id
+                + imid:1235414 (number, required) - imid
+                + avatar: sdkfjalskjd (string, required) - 用户头像
+                + friend_nickname: 15ajsdf (string, required) - 用户昵称
+                + is_friend: 0 (boolean, required) - 是否好友
+
+
+### 上传通讯录 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id  
++ Request (application/json)
+    + Attributes (object)
+        + device_id: sdfa (string, required) - 设备唯一id
+        + contacts (array) - 通讯录列表
+            + contact (object) - 通讯录信息
+                + cn : +86 (string, required)  - 国家号
+                + phone: 10086 (string, required) - 手机号码
+                + name: derek (string, required) - 通讯录备注
 + Response 200 (application/json)
     + Attributes (object)
