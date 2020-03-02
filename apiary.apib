@@ -45,7 +45,7 @@ FORMAT: 1A
 // + 404：GET not found
 
 
-## 平台启动信息 /config/{platform} [/config/{platform]
+## 平台启动信息 /config/{platform} [/config/{platform}]
 ### 平台启动信息 [GET]
 + Parameters
     + platform: iphone (string, required) - 平台： pc iphone android mac
@@ -96,6 +96,12 @@ FORMAT: 1A
             }
         }
 
+## 系统时间 /system/time [/system/time]
+### 获取系统时间[GET]
+
++ Response  200 (application/json)
+    + Attributes (object)
+        + time: 150000000 (number, required) -  系统时间戳
 
 ## SMS短信 /sms/{phone} [/sms/{phone}]
 ### 发送短信 [POST]
@@ -1106,7 +1112,7 @@ form的命名统一为file
             + device (object)
                 + device_id: 12 (number, required) - 设备id 
                 + login_at： 1559808709 (number, required) - 最后一次登录时间
-                + Name： HUAWEI (string, required) - 设备名称
+                + Name：HUAWEI (string, required) - 设备名称
                 + Model: android xxx (string, required) - 设备型号信息
     + Body {
         "devices": [
@@ -1114,7 +1120,7 @@ form的命名统一为file
                 "device_id": 12 ,
                 "login_at": 1559808709 ,
                 "Name"："HUAWEI",
-                "Model" : "android "
+                "Model" : "android ",
             }
         ]
     }
