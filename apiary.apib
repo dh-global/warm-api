@@ -193,15 +193,16 @@ FORMAT: 1A
 
 
 
-## 通过phone搜索联系人 /user/phone/{phone} [/users/phone/{phone}]
+## 通过phone搜索联系人 /user/phone/{phone}{?cn} [/users/phone/{phone}{?cn}]
 ### 通过phone搜索联系人parameters [GET]
 + Parameters
     + phone: xxxxx (string, required) - 手机号
+    + cn: +86 (string, optional) - 国家号
 
 + Response 200 (application/json)
     + Attributes (object)
-        + users: (array, required) - 用户列表 
-            + user (object)
+        + contacts: (array, required) - 用户列表 
+            + contact (object)
                 + user_id: 125 (number, required) - 用户id
                 + account: xxxxx (string, required) - 账号
                 + account_alias: xxxxx (string, required) - 账号别名
@@ -220,7 +221,7 @@ FORMAT: 1A
     
     + Body
     {
-        "users": [
+        "contacts": [
             {
                 "user_id": 1,
                 "account": "A1NSHijF6cBpudF3khcBCkfmVm",
@@ -249,8 +250,8 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (object)
-        + users: (array, required) - 用户列表 
-            + user (object)
+        + contacts: (array, required) - 用户列表 
+            + contact (object)
                 + user_id: 125 (number, required) - 用户id
                 + account: xxxxx (string, required) - 账号
                 + account_alias: xxxxx (string, required) - 账号别名
@@ -269,7 +270,7 @@ FORMAT: 1A
     
     + Body
     {
-        "users": [
+        "contacts": [
             {
                 "user_id": 1,
                 "account": "A1NSHijF6cBpudF3khcBCkfmVm",
