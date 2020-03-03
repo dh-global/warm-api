@@ -1257,7 +1257,7 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 地址位置  /users/{user_id}/locations [/users/{user_id}/locations]
+## 个人地址位置  /users/{user_id}/locations [/users/{user_id}/locations]
 ### 设置地理位置 [POST]
 + Parameters
     + user_id: 14 (number, required) - user id  
@@ -1275,7 +1275,7 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 附近的人 /users/{user_id}/people_nearby{?limit&dist}  [/users/{user_id}/people_nearby{?limit&dist}]
+## 附近的人 /users/{user_id}/people_nearby{?limit}{&dist}  [/users/{user_id}/people_nearby{?limit}{&dist}]
 ### 获取附近的人 [GET]
 + Parameters
     + user_id: 14 (number, required) - user id  
@@ -1285,7 +1285,7 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
         + nearby: (array, required) -  附近的人列表
-            + info (object)
+            + nearby (object)
                 + user_id: 53 (number, required) - 用户id
                 + im_id: 155555 (number, required) - imid
                 + nickname: derek (string, required) - nickname
@@ -1294,3 +1294,40 @@ form的命名统一为file
                 + signature: hello (string, required) - 个性签名
                 + distance: 7.8 (number, required) - 距离， 单位：km
                 + zone: shenzhen (string, required) - 地址，待定
+
+
+## 群地址位置  /groups/{group_id}/locations [/groups/{group_id}/locations]
+### 设置群地理位置 [POST]
++ Parameters
+    + group_id: 14 (number, required) - 群id  
++ Request (application/json)
+    + Attributes (object)
+        + longitude: 12.35 (number, required) - 经度， -180 ~ 180
+        + latitude: 35.3 (number, required) - 维度，-85.05112878 ~ 85.05112878
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 清楚群地理位置 [DELETE]
++ Parameters
+    + group_id: 14 (number, required) - 群id
++ Response 200 (application/json)
+    + Attributes (object)
+
+
+## 附近的群 /users/{user_id}/group_nearby{?limit}{&dist}  [/users/{user_id}/group_nearby{?limit}{&dist}]
+### 获取附近的群 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id  
+    + limit: 20 (number, required) - 每次获取数量
+    + dist: 10 (number, required) - 距离，最大值:20, 单位：km
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + group_nearby: (array, required) -  附近的人列表
+            + group_nearby (object)
+                + group_id: 53 (number, required) - 群id
+                + name: derek (string, required) - name
+                + avatar: 52c9a9d3a72f94ef150d8f48d0427f0d (string, required) - 用户头像
+                + count: 4 (number, required) - 群人数
+                + owner_id: 3 (number, required) - 群主id
+                + distance: 7.8 (number, required) - 距离， 单位：km
