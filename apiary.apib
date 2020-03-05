@@ -449,6 +449,8 @@ FORMAT: 1A
 + Request (application/json)
     + Attributes (object)
         + nickname: derek (string, required) - 用户昵称
+        + key: phones (string, required) - 修改值: nickname/description/phones
+        + value: ["10086","10010"] (string,required) - 设置值
 
 
 + Response  200 (application/json)
@@ -957,7 +959,7 @@ form的命名统一为file
 + Response 200 (application/json)
      + Attributes (object)
 
-## 入群申请处理相关 /groups/{group_id}/join_reqs/{req_id} [/groups/{group_id}/join_reqs/{req_id}]
+## 入群申请管理 /groups/{group_id}/join_reqs/{req_id} [/groups/{group_id}/join_reqs/{req_id}]
 ### 获取入群申请 [GET]
 + Parameters
     + group_id: 12 (number, required) - 群id
