@@ -1350,12 +1350,16 @@ form的命名统一为file
             + user_id: 12 (number, required) - 用户id，请求发起人
             + friend_id:14 (number, required) - 联系人id，请求接收人
             + add_by: phone (string, required) - 添加方式
+            + add_from: from  (string, required) - 来源
             + message: i'm derek (string, required) - 添加消息
 
 ### 处理添加请求 [POST]
  + Parameters
     + user_id: 14 (number, required) - user id  
     + req_id: 15 (number, required) - request id     
++ Request (application/json)
+    + Attributes (object)
+        + approve: agree (number, required) - 审批： agree/reject
 + Response 200 (application/json)
     + Attributes (object)
 
@@ -1368,6 +1372,7 @@ form的命名统一为file
     + Attributes (object)
         + friend_id: 35 (number, required) - 联系人的用户id
         + add_by: phone (string, required) - 添加方式：share/scan/phone/account
+        + add_from: from (string, required) - 来源
         + message: i'am derek (string, required) - 添加信息
 + Response 200 (application/json)
     + Attributes (object)
