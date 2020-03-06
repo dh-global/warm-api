@@ -1335,6 +1335,20 @@ form的命名统一为file
                 + owner_id: 3 (number, required) - 群主id
                 + distance: 7.8 (number, required) - 距离， 单位：km
 
+## 添加联系人  /users/{user_id}/add_reqs [/users/{user_id}/add_reqs]
+### 添加联系人请求 [POST]
++ Parameters
+    + user_id: 14 (number, required) - user id  
++ Request (application/json)
+    + Attributes (object)
+        + friend_id: 35 (number, required) - 联系人的用户id
+        + add_by: phone (string, required) - 添加方式：share/scan/phone/account
+        + add_from: from (string, required) - 来源
+        + message: i'am derek (string, required) - 添加信息
++ Response 200 (application/json)
+    + Attributes (object)
+        + req_id: 12 (number, required) - 请求记录id
+        + no_verify: 0 (number, required) - 对方是否开启无需验证添加好友
 
 ## 添加联系人管理 （new）/users/{user_id}/add_reqs/{req_id} [/users/{user_id}/add_reqs/{req_id}]
 ### 获取添加请求 [GET]
@@ -1364,17 +1378,3 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 添加联系人  /users/{user_id}/add_reqs [/users/{user_id}/add_reqs]
-### 添加联系人请求 [POST]
-+ Parameters
-    + user_id: 14 (number, required) - user id  
-+ Request (application/json)
-    + Attributes (object)
-        + friend_id: 35 (number, required) - 联系人的用户id
-        + add_by: phone (string, required) - 添加方式：share/scan/phone/account
-        + add_from: from (string, required) - 来源
-        + message: i'am derek (string, required) - 添加信息
-+ Response 200 (application/json)
-    + Attributes (object)
-        + req_id: 12 (number, required) - 请求记录id
-        + no_verify: 0 (number, required) - 对方是否开启无需验证添加好友
