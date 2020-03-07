@@ -1384,12 +1384,13 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 公开群 /discover/public_groups?limit&sort&sort_by [/discover/public_groups?limit&sort&sort_by]
+## 公开群 /discover/public_groups{?limit&sort&sort_by} [/discover/public_groups{?limit&sort&sort_by}]
 ### 获取获取公开群 [GET]
  + Parameters
     + limit: 12 (number, optional) - 数量
     + sort: asc (string, optional) - 升序/降序: asc/desc. 和sort_by一起使用
-    + sort_by: id (string, optional) - 筛选值: id/created_at. 和sort一起使用
+    + sort_by: created_at (string, optional) - 筛选值: id/created_at. 和sort一起使用
+
 
 + Response 200 (application/json)
     + Attributes (object)
