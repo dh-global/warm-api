@@ -565,7 +565,6 @@ form的命名统一为file
         + avatar: /image/avatar/2.png (string, required) - 群头像，默认空值
         + count: 1 (number, required) - 群成员人数
         + role： owner (string, required) - 群角色： owner/admin/member
-        + mute_notice: yes (string, required) - 消息免打扰： yes/no
 
 ## 获取群信息 /groups/{group_id}/info [/groups/{group_id}/info]
 ### 获取群概要信息(Y)  [GET]
@@ -758,6 +757,9 @@ form的命名统一为file
                 + imid: 1241235 (number, required) - imid
                 + avatar: /image/avatar/2.png  (string, required) - 用户头像
                 + role: owner (string, required) - 用户群角色
+                + join_at: 150000 (number, required) - 加入时间
+                + add_by: 15 (number, required) - 加群的操作人id
+                + add_way:  phone (string, required) - 添加方式：share/scan/phone/account
 
 ### 添加群成员(Y) [POST]
 + Parameters
