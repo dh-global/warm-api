@@ -727,10 +727,8 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + name: my group (string, optional) - 群名称
-        + owner_id: 1 (number, optional) - 群主的用户id
         + max_cap: 100 (number, optional) - 群成员容量，默认200
         + avatar: /image/avatar/2.png (string, optional) - 群头像，暂时先分配默认头像
-        + notice: hello world! (string, optional) - 群通告
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -920,7 +918,7 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + user_ids (array, required) - 用户id数组，
-            + id : 123 (number) - 用户id
+            + id : 123 (number) - 用户id, 转让群主时，数组只能填写一个用户id
         + role: string (string, required) - 群角色： owner/admin/member
 
 + Response 200 (application/json)
@@ -1389,7 +1387,7 @@ form的命名统一为file
  + Parameters
     + limit: 12 (number, optional) - 数量
     + sort: asc (string, optional) - 升序/降序: asc/desc. 和sort_by一起使用
-    + sort_by: created_at (string, optional) - 筛选值: id/created_at. 和sort一起使用
+    + sort_by: id (string, optional) - 筛选值: id/created_at. 和sort一起使用
 
 
 + Response 200 (application/json)
