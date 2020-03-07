@@ -870,12 +870,14 @@ form的命名统一为file
             + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
             + invite_way: 1 (number, required) - 邀请人入群方法, 0: 关闭， 1：开启
+            + public_group: 1 (number, required) - 公开群，0：不公开，1: 公开
     + Body {
         "setting": {
                 "no_speaking": 0,
                 "add_in_group": 1,
                 "invite": 1,
-                "invite_way":1
+                "invite_way":1,
+                "public_group":1
             },
     }
 
