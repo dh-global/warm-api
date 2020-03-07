@@ -1384,7 +1384,7 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 公开群 /discover/public_groups{?limit&sort&sort_by} [/discover/public_groups{?limit&sort&sort_by}]
+## 公开群 /discover/public_groups{?limit} [/discover/public_groups{?limit}]
 ### 获取获取公开群 [GET]
  + Parameters
     + limit: 12 (number, optional) - 数量
@@ -1394,7 +1394,9 @@ form的命名统一为file
 
 + Response 200 (application/json)
     + Attributes (object)
-        + group_id: 23 (string, required) - 群id
-        + name: 1009 (string, required) - 群名称
-        + avatar: ghjkl (string, required) - 群头像
-        + count: 20 (number, required) - 群人数
+        + groups (array) - 群列表
+            + group (object)
+                + group_id: 23 (string, required) - 群id
+                + name: 1009 (string, required) - 群名称
+                + avatar: ghjkl (string, required) - 群头像
+                + count: 20 (number, required) - 群人数
