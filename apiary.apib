@@ -870,13 +870,15 @@ form的命名统一为file
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
             + invite_way: 1 (number, required) - 邀请人入群方法, 
             + public_group: 1 (number, required) - 公开群，0：不公开，1: 公开
+            + add_group_type: 1 (number, required) - 入群方式， 默认为1
     + Body {
         "setting": {
                 "no_speaking": 0,
                 "add_in_group": 1,
                 "invite": 1,
-                "invite_way":1,
-                "public_group":1
+                "invite_way": 1,
+                "public_group": 1,
+                "add_group_type": 1,
             },
     }
 
@@ -897,7 +899,7 @@ form的命名统一为file
 ### 获取群角色 [GET]
 + Parameters
      + group_id: 12 (number, required) - 群id
-     + role: admin (string, required) - 群角色： admin
+     + role: admin (string, optional) - 群角色： admin
 
 + Response 200  (application/json)
     + Attributes (object)
@@ -1398,3 +1400,21 @@ form的命名统一为file
                 + name: 1009 (string, required) - 群名称
                 + avatar: ghjkl (string, required) - 群头像
                 + count: 20 (number, required) - 群人数
+
+## 版本 /platform/:platform/versions{?channel} [/platform/:platform/versions{?channel}]
+### 获取版本列表 [GET]
+ + Parameters
+    + platform: iphone (number, optional) - 平台:  pc iphone android mac
+    + channel: HUAWEI (string, optional) - 渠道
+
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + versions (array) - 版本列表
+            + version (object)
+                + updated_at: 2020-01-13 13:49:00 (string, required) -  更新发布时间
+                + platform:  iphone (string, required) - 平台： pc iphone android mac
+                + ver: 0.0.1 (string, required) - 版本号
+                + downloa_url: http://xxx.xxx.com (string, required) -  下载地址
+                + upgrade_info: upgrade: 1.xxxx; (string, required) - 版本更新信息
+                + is_force: true (string,required) - 是否强制更新
