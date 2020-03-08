@@ -1407,7 +1407,6 @@ form的命名统一为file
     + platform: iphone (number, optional) - 平台:  pc iphone android mac
     + channel: HUAWEI (string, optional) - 渠道
 
-
 + Response 200 (application/json)
     + Attributes (object)
         + versions (array) - 版本列表
@@ -1415,6 +1414,8 @@ form的命名统一为file
                 + updated_at: 2020-01-13 13:49:00 (string, required) -  更新发布时间
                 + platform:  iphone (string, required) - 平台： pc iphone android mac
                 + ver: 0.0.1 (string, required) - 版本号
+                + ver_code： 346 (number, required) -
                 + downloa_url: http://xxx.xxx.com (string, required) -  下载地址
                 + upgrade_info: upgrade: 1.xxxx; (string, required) - 版本更新信息
-                + is_force: true (string,required) - 是否强制更新
+                + is_force: true (boolean,required) - 是否强制更新
+                + activate: 0 (number, required) - 是否可用
