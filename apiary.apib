@@ -1133,7 +1133,7 @@ form的命名统一为file
         ]
     }
 
-## 登录设备管理 /users/{user_id}/devices/{device_id} [/users/{user_id}/devices{device_id}]
+## 登录设备管理 /users/{user_id}/devices/{device_id} [/users/{user_id}/devices/{device_id}]
 ### 修改登录设备信息 [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
@@ -1155,6 +1155,13 @@ form的命名统一为file
     + Attributes (object)
 
 
+## 上次登录设备 /users/{user_id}/devices/last{?platform} [/users/{user_id}/devices/last{?platform}]
+### 获取上次登录设备的记录 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+
++ Response 200 (application/json)
+    + Attributes (object)
 
 ## 账号 /users/{user_id}/account [/users/{user_id}/account]
 ###  修改用户account [POST]
