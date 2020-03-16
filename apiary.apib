@@ -1398,8 +1398,8 @@ form的命名统一为file
     + user_id: 14 (number, required) - user id  
     + req_id: 15 (number, required) - request id     
 + Request (application/json)
-    + Attributes (object)
-        + approve: agree (string, required) - 审批： agree/reject
+    + Attributes (object)pass
+        + approve: pass (string, required) - 审批： pass/reject
 + Response 200 (application/json)
     + Attributes (object)
 
@@ -1440,3 +1440,37 @@ form的命名统一为file
                 + upgrade_info: upgrade: 1.xxxx; (string, required) - 版本更新信息
                 + is_force: true (boolean,required) - 是否强制更新
                 + activate: 0 (number, required) - 是否可用
+
+
+## 视频媒体
+### 获取上传video凭证和地址 [POST]
++ Request (application/json)
+    + Attributes (object)
+        + filename: 3.mp4 (string, required) - 视频文件，必须带文件扩展名
+        + title: 124 (string, required) - 标题
++ Response 200 (application/json)
+    + Attributes (object)
+        + video_id: kjskldjf (string, required) - 视频id
+        + upload_address: ehlsld (string, required) - 上传地址，是一串base64字符串，解码后可能或上传地址. 详情：https://help.aliyun.com/document_detail/55397.html?spm=a2c4g.11186623.2.13.ccb3257eRKDecj
+        + upload_auth: ehlsld (string, required) - 上传凭证，是一串base64字符串，解码后keyID、secret和有效期
+
+## 视频文件管理     /videos/{video_id}   [/videos/{video_id}]
+### 获取视频文件信息 [GET]
++ Parameters
+    + video_id: dfghjkl (number, optional) - 视频id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + video_id: kjskldjf (string, required) - 视频id
+        + store_url: jlsdf  (string, required) - 视频地址
+        + cover_url: jlsdf  (string, required) - 封面地址
+        + size: 2388923  (number, required) - 视频大小
+        + duration: 123542  (number, required) - 时长
+        + status: uploading (string, required) -  上传状态
+
+### 删除视频 [DELETE]
++ Parameters
+    + video_id: dfghjkl (number, optional) - 视频id
+
++ Response 200 (application/json)
+    + Attributes (object)
