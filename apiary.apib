@@ -1451,13 +1451,13 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
         + video_id: kjskldjf (string, required) - 视频id
-        + upload_address: ehlsld (string, required) - 上传地址，是一串base64字符串，解码后可能或上传地址. 详情：https://help.aliyun.com/document_detail/55397.html?spm=a2c4g.11186623.2.13.ccb3257eRKDecj
+        + upload_address: ehlsld (string, required) - 上传地址,是一串base64字符串,解码后可能或上传地址,详情:https://help.aliyun.com/document_detail/55397.html?spm=a2c4g.11186623.2.13.ccb3257eRKDecj
         + upload_auth: ehlsld (string, required) - 上传凭证，是一串base64字符串，解码后keyID、secret和有效期
 
 ## 视频文件管理     /videos/{video_id}   [/videos/{video_id}]
 ### 获取视频文件信息 [GET]
 + Parameters
-    + video_id: dfghjkl (number, optional) - 视频id
+    + video_id: dfghjkl (string, optional) - 视频id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -1470,7 +1470,7 @@ form的命名统一为file
 
 ### 删除视频 [DELETE]
 + Parameters
-    + video_id: dfghjkl (number, optional) - 视频id
+    + video_id: dfghjkl (string, optional) - 视频id
 
 + Response 200 (application/json)
     + Attributes (object)
