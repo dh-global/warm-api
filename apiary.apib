@@ -742,10 +742,11 @@ form的命名统一为file
      + Attributes (object)
 
 
-## 群成员 /groups/{group_id}/members [/groups/{group_id}/members]
+## 群成员 /groups/{group_id}/members{?quit} [/groups/{group_id}/members{?quit}]
 ### 获取群成员列表(Y) [GET]
 + Parameters
     + group_id: 1235 (number, required) - 群id
+    + quit: 0 (string, required) - 是否获取退群成员列表，0:否，1:是
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -760,6 +761,8 @@ form的命名统一为file
                 + join_at: 150000 (number, required) - 加入时间
                 + add_by: 15 (number, required) - 加群的操作人id
                 + add_way:  phone (string, required) - 添加方式：share/scan/phone/account
+        + quit_members: (array, require) - 已退群成员数组
+            + user_id: 123 (number, required) - 用户id
 
 ### 添加群成员(Y) [POST]
 + Parameters
