@@ -342,11 +342,12 @@ FORMAT: 1A
     }
 
 
-## 联系人集合 /users/{id}/contacts [/users/{id}/contacts]
+## 联系人集合 /users/{id}/contacts{?contact_type} [/users/{id}/contacts{?contact_type}]
 ### 获取所有联系人的信息 [GET]
 
 + Parameters
     + id: 1235 (number, required) - 用户id
+    + contact_type: delete (number, optional) - 联系人类型: delete
 
 + Response  200 (application/json)
 
@@ -359,6 +360,8 @@ FORMAT: 1A
                 + avatar: /image/avatar/2.png (string, required) - 最后更新时间
                 + im_id: 137 (number, required) - im id
                 + mute_notice: yes (string, required) - 消息免打扰： yes/no. 默认：no
+        + deletes: (array, optional)    - 已删除的联系人列表ID
+            + user_id: 86 (number, required) - 用户id
 
     + Body
         {
