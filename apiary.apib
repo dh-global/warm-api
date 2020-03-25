@@ -422,8 +422,9 @@ FORMAT: 1A
         + is_delete: false (string , required) - 是否是朋友，布尔值
         + is_black: false (string , required) - 是否是朋友，布尔值
         + friend_nickname: derek (string, required) - 对朋友的昵称
-        + add_by: share (string, required) - 联系人的添加方式：share/scan/phone/account
-        + relation_type: 1 (number,required) - 联系人关系： 0：非好友/陌生人, 1：好友
+        + add_by: share (string, required) - 联系人的添加方式：scan/phone/account/card/group/nearby
+        + add_from: 34 (string, required) - 添加来源。 扩展字段，如群id，用户id
+        + relation_type: 1 (number,required) - 联系人关系： 0：非好友/陌生人, 1：好友, 2: 已刪除好友
         + blacklist_type: 0 (number,required) - 黑名单： 0：未拉黑,1：已拉黑好友,2：好友已拉黑你,3：相互拉黑
 
 ### 添加联系人,同意/拒绝添加联系人 [POST]
@@ -1377,6 +1378,8 @@ form的命名统一为file
         + add_by: phone (string, required) - 添加方式：share/scan/phone/account
         + add_from: from (string, required) - 来源
         + message: i'am derek (string, required) - 添加信息
+        + phones: [10086] (string, required) - 备注号码, 数组字符串
+        + description: sjkdlfjalsd (string, required) - 描述
 + Response 200 (application/json)
     + Attributes (object)
         + req_id: 12 (number, required) - 请求记录id
@@ -1407,6 +1410,8 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)pass
         + approve: pass (string, required) - 审批： pass/reject
+        + phones: [10086] (string, required) - 备注号码, 数组字符串
+        + description: sjkdlfjalsd (string, required) - 描述
 + Response 200 (application/json)
     + Attributes (object)
 
