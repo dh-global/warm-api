@@ -1504,7 +1504,10 @@ form的命名统一为file
 ### 获取文件服务凭证 [GET]
 + Response 200 (application/json)
     + Attributes (object)
-        + access_key_secret: kjskldjf (string, required) - 授权secret
-        + access_key_id: kjskldjf (string, required) - 授权id
-        + security_token: ehlsld (string, required) - 授权token
-        + expiration: 159090124  (number, required) - 有效期
+        + bucket: kjskldjf (string, required) - bucket name
+        + endpoint: hosid (string, required) - 地域
+        + auth (object)
+            + access_key_secret: kjskldjf (string, required) - 授权secret
+            + access_key_id: kjskldjf (string, required) - 授权id
+            + security_token: ehlsld (string, required) - 授权token
+            + expiration: 159090124  (number, required) - 有效期
