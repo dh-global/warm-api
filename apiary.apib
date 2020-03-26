@@ -1511,3 +1511,22 @@ form的命名统一为file
             + access_key_id: kjskldjf (string, required) - 授权id
             + security_token: ehlsld (string, required) - 授权token
             + expiration: 159090124  (number, required) - 有效期
+
+## 图片 /files/images [/files/images]
+### 上传图片信息 [POST]
++ Request (application/json)
+    + Attributes (object)
+        + name: 3.png (string, required) - 文件名
+        + url: 124 (string, required) - 文件存储路径
++ Response 200 (application/json)
+    + Attributes (object)
+
+
+## 音频 /files/audios [/files/audios]
+### 上传音频信息 [POST]
++ Request (application/json)
+    + Attributes (object)
+        + name: 3.mp3 (string, required) - 文件名
+        + url: 124 (string, required) - 文件存储路径
++ Response 200 (application/json)
+    + Attributes (object)
