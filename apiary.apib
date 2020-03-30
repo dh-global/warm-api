@@ -124,6 +124,15 @@ FORMAT: 1A
             "expire": 60,
         }
 
+## SMS短信验证码 /sms/{phone}/vcodes [/sms/{phone}/vcodes]
+### 发送短信验证码 [POST]
++ Parameters
+    + phone: 10086 (string, required) - 手机号码
++ Request (application/json)
+    + Attributes (object)
+        + country_code: +86 (string, required) - 国家号
+        + phone: 10086 (string, required) - 手机号码
+        + vcode_type: login (string, required) - 验证码类型： login/modify
 
 ## auth /auth/ [/auth/]
 ### login [POST]
