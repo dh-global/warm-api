@@ -1542,3 +1542,15 @@ form的命名统一为file
         + url: 124 (string, required) - 文件存储路径
 + Response 200 (application/json)
     + Attributes (object)
+
+## 修改手机号 /users/{user_id}/phones [/users/{id}/phones]
+### 修改手机号码 [POST]
++ Parameters
+    + user_id: dfghjkl (string, optional) - 视频id
++ Request (application/json)
+    + Attributes (object)
+        + vcode: 3464 (string, required) - 验证码
+        + new_cn: +86 (string, required) - 国家号
+        + new_phone: 124 (string, required) - 手机号码
++ Response 200 (application/json)
+    + Attributes (object)
