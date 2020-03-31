@@ -634,6 +634,7 @@ form的命名统一为file
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
             + invite_way: 1 (number, required) - 邀请人入群方法, ...
             + public_group: 1 (number, required) - 公开群，0：不公开，1: 公开
+            + add_group_type: 1 (number, required) - 加群方式 1：允许任何人加群，2：需要验证，3：不允许任何人加群
         + roles (array) - 群角色列表
             + roles (object)
                 + user_id: 1 (number, required) - 用户id
@@ -891,7 +892,7 @@ form的命名统一为file
             + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
             + invite_way: 1 (number, required) - 邀请人入群方法, 
             + public_group: 1 (number, required) - 公开群，0：不公开，1: 公开
-            + add_group_type: 1 (number, required) - 入群方式， 默认为1
+            + add_group_type: 1 (number, required) - 加群方式 1：允许任何人加群，2：需要验证，3：不允许任何人加群
     + Body {
         "setting": {
                 "no_speaking": 0,
