@@ -135,17 +135,18 @@ FORMAT: 1A
         + vcode_type: login (string, required) - 验证码类型： login/modify
 + Response 201 (application/json)
     + Attributes (object)
-    
+
 ## auth /auth/ [/auth/]
 ### login [POST]
 + Request (application/json)
     + Attributes (object)
-        + v_code: 0988 (string, optional) - 登录验证码
-        + pwd： passwordxxxxx (string, optional) - 登录密码
+        + v_code: 0988 (string, optional) - 登录验证码，验证码登录时必填
+        + pwd： passwordxxxxx (string, optional) - 登录密码，账号、密码登录时必填
         + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
-        + country_code: +86 (string, required) - 国家号
-        + login_type: vcode (string, required) - 登录类型: vcode/pwd
-        + phone: 10086 (string, required) - 手机号码
+        + country_code: +86 (string, required) - 国家号，验证码、密码登录时必填
+        + login_type: vcode (string, required) - 登录类型: vcode/pwd/account
+        + account: account (string, optional) - 账号，账号登录时必填
+        + phone: 10086 (string, optional) - 手机号码，验证码、密码登录时必填
         + device (object)
             + name: HUAWEI (string, required) - 设备名称
             + model: android xxx (string, required) - 设备型号
