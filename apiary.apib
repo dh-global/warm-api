@@ -1547,7 +1547,7 @@ form的命名统一为file
 ## 修改手机号 /users/{user_id}/phones [/users/{id}/phones]
 ### 修改手机号码 [POST]
 + Parameters
-    + user_id: dfghjkl (string, optional) - 视频id
+    + user_id: dfghjkl (string, required) - 视频id
 + Request (application/json)
     + Attributes (object)
         + vcode: 3464 (string, required) - 验证码
@@ -1555,3 +1555,43 @@ form的命名统一为file
         + new_phone: 124 (string, required) - 手机号码
 + Response 200 (application/json)
     + Attributes (object)
+
+
+
+
+## 群机器人信息 /groups/{group_id}/robots [/groups/{group_id}/robots]
+### 查询群中的机器人 [GET]
++ Parameters
+    + group_id: 23850923 (number, required) - 群id
++ Response 200 (application/json)
+    + Attributes (object)
+        + robots (array)   - 机器人列表
+            + robot (object) 
+                + robot_id: 23459083045 (string, required) - 机器人id
+                + name: robot (string, required) - 名称
+                + description: chat machine (string, required) - 聊天机器
+
+## 群机器人 /groups/{group_id}/robots/{robot_id} [/groups/{group_id}/robots/{robot_id}]
+### 绑定机器人 [POST]
++ Parameters
+    + group_id: 23850923 (number, required) - 群id
+    + robot_id: 23850923 (string, required) - 机器人id
++ Response 200 (application/json)
+    + Attributes (object)
+
+### 解绑机器人 [DELETE]
++ Parameters
+    + group_id: 23850923 (number, required) - 群id
+    + robot_id: 23850923 (string, required) - 机器人id
++ Response 200 (application/json)
+    + Attributes (object)
+
+## 机器人 /robots [robots]
+### 机器人列表 [GET]
++ Response 200 (application/json)
+    + Attributes (object)
+        + robots (array)   - 机器人列表
+            + robot (object) 
+                + robot_id: 23459083045 (string, required) - 机器人id
+                + name: robot (string, required) - 名称
+                + description: chat machine (string, required) - 聊天机器
