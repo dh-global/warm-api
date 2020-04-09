@@ -1424,7 +1424,7 @@ form的命名统一为file
     + user_id: 14 (number, required) - user id  
     + req_id: 15 (number, required) - request id     
 + Request (application/json)
-    + Attributes (object)pass
+    + Attributes (object)
         + approve: pass (string, required) - 审批： pass/reject
         + phones: [10086] (string, required) - 备注号码, 数组字符串
         + description: sjkdlfjalsd (string, required) - 描述
@@ -1565,8 +1565,8 @@ form的命名统一为file
     + group_id: 23850923 (number, required) - 群id
 + Response 200 (application/json)
     + Attributes (object)
-        + robots (array)   - 机器人列表
-            + robot (object) 
+        + robots: (array)   - 机器人列表
+            + robot: (object) - 机器人
                 + robot_id: 23459083045 (string, required) - 机器人id
                 + name: robot (string, required) - 名称
                 + description: chat machine (string, required) - 聊天机器
@@ -1590,8 +1590,8 @@ form的命名统一为file
 ### 机器人列表 [GET]
 + Response 200 (application/json)
     + Attributes (object)
-        + robots (array)   - 机器人列表
-            + robot (object) 
+        + robots: (array)   - 机器人列表
+            + robot: (object) - 机器人
                 + robot_id: 23459083045 (string, required) - 机器人id
                 + name: robot (string, required) - 名称
                 + description: chat machine (string, required) - 聊天机器
