@@ -778,7 +778,7 @@ form的命名统一为file
                 + role: owner (string, required) - 用户群角色
                 + join_at: 150000 (number, required) - 加入时间
                 + add_by: 15 (number, required) - 加群的操作人id
-                + add_way:  phone (string, required) - 添加方式：share/scan/phone/account
+                + add_way:  phone (string, required) - 添加方式：card/scan/phone/account/group/nearby
         + quit_members: (array, require) - 已退群成员数组
             + user_id: 123 (number, required) - 用户id
 
@@ -1391,7 +1391,7 @@ form的命名统一为file
 + Request (application/json)
     + Attributes (object)
         + friend_id: 35 (number, required) - 联系人的用户id
-        + add_by: phone (string, required) - 添加方式：share/scan/phone/account
+        + add_by: phone (string, required) - card/scan/phone/account/group/nearby
         + add_from: from (string, required) - 来源
         + message: i'am derek (string, required) - 添加信息
         + phones: [10086] (string, required) - 备注号码, 数组字符串
