@@ -136,7 +136,18 @@ FORMAT: 1A
 + Response 201 (application/json)
     + Attributes (object)
 
-## auth /auth/ [/auth/]
+## auth /auth{?server} [/auth{?server}]
+### 刷新token [GET]
++ Parameters
+    + server: warm (string, required) - 服务： warm/im。为空则刷新两端token
+    
++ Response 200 (application/json)
+    + Attributes (object)    
+        + token: 3rrsssssssssssssssssss (string, required) - warm token
+        + exp: 455 (number, required) - warm token 有效期
+        + im_token: 3rrsssssssssssssssssss (string, required) - im token
+        + im_exp: 455 (number, required) - im token 有效期
+
 ### login [POST]
 + Request (application/json)
     + Attributes (object)
@@ -451,7 +462,7 @@ FORMAT: 1A
 
     + Attributes (object)
         + handle_type: add (string, required) - 处理类型：add/agree/reject
-        + add_by: share (string, optional) - 通过什么方式添加朋友：share/scan/phone/account
+        + add_by: share (string, optional) - 通过什么方式添加朋友：card/scan/phone/account/group/nearby
         + message: I'm xx (string, optional) - 添加朋友时的备注
         + friend_im_id: 243 (number, required) - 联系人imid
 
