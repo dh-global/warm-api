@@ -444,9 +444,6 @@ FORMAT: 1A
         + job: xxxxx (string, required) - 用户工作
         + address: xxxxx (string, required) - 用户地址
         + signature: xxxxx (string, required) - 个性签名
-        + is_friend: true (string , required) - 是否是朋友，布尔值
-        + is_delete: false (string , required) - 是否是朋友，布尔值
-        + is_black: false (string , required) - 是否是朋友，布尔值
         + friend_nickname: derek (string, required) - 对朋友的昵称
         + add_by: share (string, required) - 联系人的添加方式：scan/phone/account/card/group/nearby
         + add_from: 34 (string, required) - 添加来源。 扩展字段，如群id，用户id
@@ -459,16 +456,39 @@ FORMAT: 1A
     + cid: 1235 (number, required) - 联系人id
 
 + Request (application/json)
-
     + Attributes (object)
-        + handle_type: add (string, required) - 处理类型：add/agree/reject
         + add_by: share (string, optional) - 通过什么方式添加朋友：card/scan/phone/account/group/nearby
+        + add_from: 35 (string, optional) - 通过谁添加的
         + message: I'm xx (string, optional) - 添加朋友时的备注
-        + friend_im_id: 243 (number, required) - 联系人imid
+        + friend_nickname: derek (string, optional) - 好友昵称
+        + phones: [10086] (string, optional) - 备注手机号码
+        + description: me (string, optional) - 备注描述
 
 + Response  201 (application/json)
-
     + Attributes (object)
+        + req_id: 14 (number, required) - 请求id
+        + status: success (string, required) - 状态：success/fail
+        + contact (object) - 联系人信息
+            + user_id: 125 (string, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (string, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+            + friend_nickname: derek (string, required) - 对朋友的昵称
+            + add_by: share (string, required) - 联系人的添加方式：scan/phone/account/card/group/nearby
+            + add_from: 34 (string, required) - 添加来源。 扩展字段，如群id，用户id
+            + relation_type: 1 (number,required) - 联系人关系： 0：非好友/陌生人, 1：好友, 2: 已刪除好友
+            + blacklist_type: 0 (number,required) - 黑名单： 0：未拉黑,1：已拉黑好友,2：好友已拉黑你,3：相互拉黑
 
 ### 修改联系人信息 [PATCH]
 + Parameters
