@@ -181,7 +181,8 @@ FORMAT: 1A
 
 
 ### logout [DELETE]
-+ Response 204 (application/json)
++ Response 200 (application/json)
+    + Attributes (object)    
 
 
 ## 二维码登陆相关 /auth/qrcode [/auth/qrcode{?qr_token}]
@@ -450,7 +451,7 @@ FORMAT: 1A
         + relation_type: 1 (number,required) - 联系人关系： 0：非好友/陌生人, 1：好友, 2: 已刪除好友
         + blacklist_type: 0 (number,required) - 黑名单： 0：未拉黑,1：已拉黑好友,2：好友已拉黑你,3：相互拉黑
 
-### 添加联系人,同意/拒绝添加联系人 [POST]
+### 添加联系人 [POST]
 + Parameters
     + id: 1235 (number, required) - 用户id
     + cid: 1235 (number, required) - 联系人id
@@ -1241,13 +1242,23 @@ form的命名统一为file
     + Attributes (object)
 
 ## 密码 /users/{user_id}/password [/users/{user_id}/password]
-###  password [POST]
+###  设置password [POST]
 + Parameters
     + user_id: 14 (number, required) - user id
 + Request (application/json)
     + Attributes (object)
-        + old_password: derek (string, required) - 救password，需要加密，加密方式由三端协商
+        + old_password: derek (string, required) - 旧password，需要加密，加密方式由三端协商
         + new_password: derek (string, required) - 新password，需要加密
++ Response 200 (application/json)
+    + Attributes (object)
+
+###  重置密码 [PUT]
++ Parameters
+    + user_id: 14 (number, required) - user id
++ Request (application/json)
+    + Attributes (object)
+        + vcode: derek (string, required) - 验证码
+        + password: derek (string, required) - 新password，需要加密
 + Response 200 (application/json)
     + Attributes (object)
 
