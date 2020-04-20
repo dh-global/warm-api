@@ -1256,8 +1256,11 @@ form的命名统一为file
 ###  重置密码 [PUT]
 + Request (application/json)
     + Attributes (object)
+        + country_code: +86 (string, required) - 国家号
+        + phone: 10086 (string, required) - 手机号码
         + vcode: derek (string, required) - 验证码
         + password: derek (string, required) - 新password，需要加密
+        
 + Response 200 (application/json)
     + Attributes (object)
 
