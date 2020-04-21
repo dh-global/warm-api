@@ -1260,7 +1260,7 @@ form的命名统一为file
         + phone: 10086 (string, required) - 手机号码
         + vcode: derek (string, required) - 验证码
         + password: derek (string, required) - 新password，需要加密
-        
+
 + Response 200 (application/json)
     + Attributes (object)
 
@@ -1639,3 +1639,28 @@ form的命名统一为file
                 + robot_id: 23459083045 (string, required) - 机器人id
                 + name: robot (string, required) - 名称
                 + description: chat machine (string, required) - 聊天机器
+
+
+## im用户信息 /im_users/{im_id} [/im_users/{im_id}]
+### 获取用户信息 [GET]
++ Parameters
+    + im_id: 23850923 (number, required) - im_id
++ Response 200 (application/json)
+    + Attributes (object)
+        + user_id: 125 (string, required) - 用户id
+        + account: xxxxx (string, required) - 账号
+        + account_alias: xxxxx (string, required) - 账号别名
+        + im_id: 125 (string, required) - im id
+        + nickname: xxxxx (string, required) - 用户昵称
+        + platform: xxxxx (string, required) - 设备平台
+        + country_code: xxxxx (string, required) - 国家号
+        + phone: xxxxx (string, required) - 手机号
+        + home_phone: xxxxx (string, required) - 座机号码
+        + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+        + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+        + avatar: xxxxx (string, required) - /image/avatar/1.png
+        + job: xxxxx (string, required) - 用户工作
+        + address: xxxxx (string, required) - 用户地址
+        + zone: xxxxx (string, required) - 地区
+        + signature: xxxxx (string, required) - 个性签名
+        + password: true (number, required) -  布尔值，是否已设置密码
