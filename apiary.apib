@@ -634,6 +634,13 @@ form的命名统一为file
         + creator_id: 1 (number, required) - 建群者的用户id
         + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
         + notice: hello world! (string, required) - 群通告
+        + setting (object) - 群设置
+            + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
+            + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
+            + invite: 1 (string, required) - 允许邀请人入群, 0: 关闭， 1：开启
+            + invite_way: 1 (number, required) - 邀请人入群方法, ...
+            + public_group: 1 (number, required) - 公开群，0：不公开，1: 公开
+            + add_group_type: 1 (number, required) - 加群方式 1：允许任何人加群，2：需要验证，3：不允许任何人加群
 
 
 ## 群操作 /groups/{group_id} [/groups/{group_id}]
