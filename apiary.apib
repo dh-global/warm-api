@@ -302,7 +302,72 @@ FORMAT: 1A
 + Response 200 (application/json)
 
 
+## pc请求登录 /auth/login_reqs  [/auth/login_reqs]
+### pc请求登录 [POST]
++ Request (application/json)
+    + Attributes (object)
+        + user_id: 100111 (number, required) - 用户id
+        + platform: pc (string, required) - 设备类型
+        + name: HUAWEI (string, optional) - 设备名称
+        + model: android xxx (string, optional) - 设备型号
+        + mac：jsldfjl (string, optional) - 设备mac地址
+        + version： v0.0.1 (string, optional) - 系统版本
++ Response 200 (application/json)
+    + Attributes (object)
+        + status: waiting (string, required) - 状态：success/reject/waiting/timeout 
+        + req_id: 32rrrr (string, required) - 请求记录id
 
+## pc登录请求 /auth/login_reqs/{req_id} [/auth/login_reqs/{req_id}]
+### 获取登录请求状态 [GET]
++ Parameters
+    + req_id: xxxx (string, required) - 登录请求id
++ Response 200 (application/json)
+    + Attributes (object)
+        + status: success (string, required) - 状态：success/waiting/timeout
+        + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
+        + device (object)
+            + platform: pc (string, required) - 设备类型
+            + name: HUAWEI (string, required) - 设备名称
+            + model: android xxx (string, required) - 设备型号
+            + mac：jsldfjl (string, required) - 设备mac地址
+            + version： v0.0.1 (string, required) - 系统版本
+        + user (object)
+            + user_id: 125 (number, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (number, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+        + web_server: (object, required) - http服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - http服务器地址
+        + file_server: (object, required) - 文件服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - 文件服务地址
+        + im_server: (object, required) - im服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - im服务地址
+        + token: 3rrsssssssssssssssssss (string, required) - warm token (登录成功才返回该字段)
+        + exp: 455 (number, required) - warm token 有效期 (登录成功才返回该字段)
+        + im_token: 3rrsssssssssssssssssss (string, required) - im token (登录成功才返该字段)
+        + im_exp: 455 (number, required) - im token 有效期 (登录成功才返回该字段)
+
+### 处理登录请求状态 [POST]
++ Parameters
+    + req_id: xxxx (string, required) - 登录请求id
++ Request (application/json)
+    + Attributes (object)
+        + approve: 100111 (string, required) - 用户id
+        + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
++ Response 200 (application/json)
+    + Attributes (object)
+    
 ## 通过phone搜索联系人 /user/phone/{phone}{?cn} [/users/phone/{phone}{?cn}]
 ### 通过phone搜索联系人parameters [GET]
 + Parameters
@@ -329,29 +394,6 @@ FORMAT: 1A
                 + address: xxxxx (string, required) - 用户地址
                 + signature: xxxxx (string, required) - 个性签名
     
-    + Body
-    {
-        "contacts": [
-            {
-                "user_id": 1,
-                "account": "A1NSHijF6cBpudF3khcBCkfmVm",
-                "account_alias": "",
-                "im_id": 0,
-                "nickname": "ujtb4h",
-                "platform": "iphone",
-                "country_code": "+86",
-                "phone": "18814181870",
-                "home_phone": "",
-                "sex": "",
-                "birthday": "",
-                "avatar": "/image/avatar/5.jpeg",
-                "email": "",
-                "job": "",
-                "address": "",
-                "signature": "hello world!"
-            }
-        ]
-    }
 
 ## 通过account搜索联系人 /user/account/{account} [/users/account/{account}]
 ### 通过account搜索联系人 [GET]
