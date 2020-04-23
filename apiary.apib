@@ -185,6 +185,90 @@ FORMAT: 1A
     + Attributes (object)    
 
 
+## 第三方授权登录 /auth/third  [/auth/third]
+### 第三方授权登录 [POST]
++ Request (application/json)
+    + code: warm (string, required) - 服务： warm/im。为空则刷新两端token
+    + third: wechat (string, required) - 第三方平台：wechat/qq/weibo
+    + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
+    + name: HUAWEI (string, required) - 设备名称
+    + model: android xxx (string, required) - 设备型号
+    + mac：jsldfjl (string, required) - 设备mac地址
+    + version： v0.0.1 (string, required) - 系统版本
+    
++ Response 200 (application/json)
+    + Attributes (object)    
+        + bind_status: 1 (number, required) - 是否已绑定账号，0:否，1：是
+        + openid: 239482 (string, required) - 第三方用户的id
+        + user (object) - (登录成功才返回该字段) 
+            + user_id: 125 (number, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (number, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+        + web_server: (object, required) - http服务器，(登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - http服务器地址
+        + file_server: (object, required) - 文件服务器，(登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - 文件服务地址
+        + im_server: (object, required) - im服务器，(登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - im服务地址
+        + token: 3rrsssssssssssssssssss (string, required) - warm token，(登录成功才返回该字段)
+        + exp: 455 (number, required) - warm token 有效期，(登录成功才返回该字段)
+        + im_token: 3rrsssssssssssssssssss (string, required) - im token，(登录成功才返回该字段)
+        + im_exp: 455 (number, required) - im token 有效期，(登录成功才返回该字段)
+
+
+## 绑定第三方用户 /auth/third_users  [/auth/third_users]
+### 绑定第三方用户 [POST]
++ Request (application/json)
+    + openid: 239482 (string, required) - 第三方用户的id
+    + country_code: +86 (string, required) - 国家码
+    + phone: iphone (string, required) - 手机号码
+    + vcode: HUAWEI (string, required) - 验证码
+    + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
+    + name: HUAWEI (string, required) - 设备名称
+    + model: android xxx (string, required) - 设备型号
+    + mac：jsldfjl (string, required) - 设备mac地址
+    + version： v0.0.1 (string, required) - 系统版本
++ Response 200 (application/json)
+    + Attributes (object)    
+        + user (object) - (登录成功才返回该字段)
+            + user_id: 125 (number, required) - 用户id
+            + account: xxxxx (string, required) - 账号
+            + account_alias: xxxxx (string, required) - 账号别名
+            + im_id: 125 (number, required) - im id
+            + nickname: xxxxx (string, required) - 用户昵称
+            + platform: xxxxx (string, required) - 设备平台
+            + country_code: xxxxx (string, required) - 国家号
+            + phone: xxxxx (string, required) - 手机号
+            + home_phone: xxxxx (string, required) - 座机号码
+            + sex: xxxxx (string, required) - 性别: 男：male， 女：female
+            + birthday: xxxxx (string, required) - 生日： 19xx-xx-xx
+            + avatar: xxxxx (string, required) - /image/avatar/1.png
+            + job: xxxxx (string, required) - 用户工作
+            + address: xxxxx (string, required) - 用户地址
+            + signature: xxxxx (string, required) - 个性签名
+        + web_server: (object, required) - http服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - http服务器地址
+        + file_server: (object, required) - 文件服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - 文件服务地址
+        + im_server: (object, required) - im服务器 (登录成功才返回该字段)
+            + addrs: ["1270.0.0.1:9001"] (array, required) - im服务地址
+        + token: 3rrsssssssssssssssssss (string, required) - warm token (登录成功才返回该字段)
+        + exp: 455 (number, required) - warm token 有效期 (登录成功才返回该字段)
+        + im_token: 3rrsssssssssssssssssss (string, required) - im token (登录成功才返回该字段)
+        + im_exp: 455 (number, required) - im token 有效期 (登录成功才返回该字段)
+
 ## 二维码登陆相关 /auth/qrcode [/auth/qrcode{?qr_token}]
 ### 获取二维码状态（pc接口) [GET]
 + Parameters
