@@ -314,7 +314,7 @@ FORMAT: 1A
         + version： v0.0.1 (string, optional) - 系统版本
 + Response 200 (application/json)
     + Attributes (object)
-        + status: waiting (string, required) - 状态：success/reject/waiting/timeout 
+        + status: waiting (string, required) - 状态：success/reject/pending/timeout 
         + req_id: 32rrrr (string, required) - 请求记录id
 
 ## pc登录请求 /auth/login_reqs/{req_id} [/auth/login_reqs/{req_id}]
@@ -323,7 +323,7 @@ FORMAT: 1A
     + req_id: xxxx (string, required) - 登录请求id
 + Response 200 (application/json)
     + Attributes (object)
-        + status: success (string, required) - 状态：success/waiting/timeout
+        + status: success (string, required) - 状态：success/reject/pending/timeout 
         + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
         + device (object)
             + platform: pc (string, required) - 设备类型
@@ -367,7 +367,7 @@ FORMAT: 1A
         + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
 + Response 200 (application/json)
     + Attributes (object)
-    
+
 ## 通过phone搜索联系人 /user/phone/{phone}{?cn} [/users/phone/{phone}{?cn}]
 ### 通过phone搜索联系人parameters [GET]
 + Parameters
