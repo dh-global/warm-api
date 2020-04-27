@@ -189,8 +189,9 @@ FORMAT: 1A
 ### 第三方授权登录 [POST]
 + Request (application/json)
     + Attributes (object)
-        + code: warm (string, required) - 服务： warm/im。为空则刷新两端token
+        + openid: 23400 (string, required) - 第三方用户的id
         + third: wechat (string, required) - 第三方平台：wechat/qq/weibo
+        + access_token: asdfasdfasd (string, required) - 第三方授权token
         + platform: iphone (string, required) - 设备类型：android、iphone、pc、mac
         + name: HUAWEI (string, required) - 设备名称
         + model: android xxx (string, required) - 设备型号
