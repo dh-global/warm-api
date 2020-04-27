@@ -237,11 +237,13 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (object)    
         + bind_status: 1 (number, required) - 是否已绑定账号，0:否，1：是
-        
+
 ### 绑定第三方用户 [POST]
 + Request (application/json)
     + Attributes (object)
+        + third: wechat (string, required) - 第三方平台：wechat/qq/weibo
         + openid: 239482 (string, required) - 第三方用户的id
+        + access_token: asdfasdfasd (string, required) - 第三方授权token
         + country_code: +86 (string, required) - 国家码
         + phone: iphone (string, required) - 手机号码
         + vcode: HUAWEI (string, required) - 验证码
