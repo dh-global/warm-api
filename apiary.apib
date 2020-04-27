@@ -325,13 +325,13 @@ FORMAT: 1A
     + Attributes (object)
         + status: success (string, required) - 状态：success/reject/pending/timeout 
         + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
-        + device (object)
+        + device (object) - (登录成功才返回该字段)
             + platform: pc (string, required) - 设备类型
             + name: HUAWEI (string, required) - 设备名称
             + model: android xxx (string, required) - 设备型号
             + mac：jsldfjl (string, required) - 设备mac地址
             + version： v0.0.1 (string, required) - 系统版本
-        + user (object)
+        + user (object) - (登录成功才返回该字段)
             + user_id: 125 (number, required) - 用户id
             + account: xxxxx (string, required) - 账号
             + account_alias: xxxxx (string, required) - 账号别名
@@ -363,7 +363,7 @@ FORMAT: 1A
     + req_id: xxxx (string, required) - 登录请求id
 + Request (application/json)
     + Attributes (object)
-        + approve: 100111 (string, required) - 用户id
+        + approve: agree (string, required) - 审批：agree/reject
         + auto_sync: 0 (number, required) - 是否自动同步信息：0：否，1：是 
 + Response 200 (application/json)
     + Attributes (object)
