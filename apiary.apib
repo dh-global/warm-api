@@ -229,8 +229,8 @@ FORMAT: 1A
         + im_exp: 455 (number, required) - im token 有效期，(登录成功才返回该字段)
 
 
-## 绑定第三方用户 /auth/third_users{?third&openid}  [/auth/third_users{?third&openid}]
-### 绑定第三方用户 [GET]
+## 第三方用户 /auth/third_users{?third&openid}  [/auth/third_users{?third&openid}]
+### 查询第三方用户是否已绑定 [GET]
 + Parameters
     + third: wechat (string, required) - 第三方平台：wechat/qq/weibo
     + openid: kdjljas (string, required) - 第三方用户的id
