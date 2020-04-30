@@ -1813,3 +1813,12 @@ form的命名统一为file
         + zone: xxxxx (string, required) - 地区
         + signature: xxxxx (string, required) - 个性签名
         + password: true (number, required) -  布尔值，是否已设置密码
+
+
+## 群vip /groups/{group_id}/vips [/groups/{group_id}/vips]
+### 群vip开关 [POST]
++ Parameters
+    + group_id: 23850923 (number, required) - 群id
++ Request (application/json)
+    + Attributes (object)
+        + open: 1 (string, required) - 会员开关，0：关，1：开
