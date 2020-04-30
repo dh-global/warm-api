@@ -742,7 +742,8 @@ form的命名统一为file
         + owner_id: 1 (number, required) - 群主的用户id
         + creator_id: 1 (number, required) - 建群者的用户id
         + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
-        + notice: hello world! (string, required) - 群通告
+        + is_vip: 0 (number, required) - 是否vip,0:否，1：是
+        + vip_level: 1 (number, required) - vip登记，预留字段
 
 ### 获取群列表(Y) [GET]
 
@@ -772,7 +773,8 @@ form的命名统一为file
         + owner_id: 1 (number, required) - 群主的用户id
         + creator_id: 1 (number, required) - 建群者的用户id
         + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
-        + notice: hello world! (string, required) - 群通告
+        + is_vip: 0 (number, required) - 是否vip,0:否，1：是
+        + vip_level: 1 (number, required) - vip登记，预留字段
         + setting (object) - 群设置
             + no_speaking: 123 (number, required) - 禁言, 0: 关闭， 1：开启
             + add_in_group: 1 (string, required) - 允许群内添加好友, 0: 关闭， 1：开启
@@ -800,7 +802,8 @@ form的命名统一为file
             + owner_id: 1 (number, required) - 群主的用户id
             + creator_id: 1 (number, required) - 建群者的用户id
             + avatar: /image/avatar/2.png (string, required) - 群头像，暂时先分配默认头像
-            + notice: hello world! (string, required) - 群通告
+            + is_vip: 0 (number, required) - 是否vip,0:否，1：是
+            + vip_level: 1 (number, required) - vip登记，预留字段
         + notice (object) - 群公告
             + notice_id: 12435 (number, required) - 群公告id
             + notice: hello world! (string, required) - 群公告信息
