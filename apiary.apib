@@ -1824,4 +1824,44 @@ form的命名统一为file
     + group_id: 23850923 (number, required) - 群id
 + Request (application/json)
     + Attributes (object)
-        + open: 1 (string, required) - 会员开关，0：关，1：开
+        + open: 1 (number, required) - 会员开关，0：关，1：开
+
+
+## 红包创建 /red_packets [/red_packets]
+### 发送红包 [POST]
++ Request (application/json)
+    + Attributes (object)
+       + user_id: 1245 (number,required) - 红包发起人的id
+       + group_id: 1245 (number,optional) - 红包发起群的id
+       + rp_type: 1 (number,required) - 红包类型, 1：普通红包，金额平均， 2：随机红包，金额随机 
+       + amount: 100.13 (number, required) - 红包总金额     
+       + size: 10 (number, required) - 红包总个数
+       + desc: lucky (string, required) - 红包备注
++ Response 200 (application/json)
+    + Attributes (object)
+       + rpid: 23850923 (number, required) - 红包id   
+
+
+## 红包操作 /red_packets/{rpid} [/red_packets/{rpid}]
+### 查询红包流水 [GET]
++ Parameters
+    + rpid: 23850923 (number, required) - 红包id
++ Response 200 (application/json)
+    + Attributes (object)
+       + rpid: 23850923 (number, required) - 红包id
+       + rp_type: 1 (number,required) - 红包类型, 1：普通红包，金额平均， 2：随机红包，金额随机 
+       + created_at: 15989898 (number, required) - 发红包的时间戳
+       + status: grabbing (number, require) - 红包状态，grabbing: 抢红包中, empty: 红包已空，close: 已结束
+       + remain_amount: 12.3 (number, required) - 红包剩余金额     
+       + amount: 100.0 (number, required) - 红包总金额     
+       + remain_size: 3 (number, required) - 红包剩余个数
+       + size: 10 (number, required) - 红包总个数
+       + flows: (array) - 红包流水
+            + flow (object) - 流水
+                + user_id: 1234 (number, required) - 抢红包的人的用户id
+                + grabbed_at: 15989898 (number, required) - 抢红包的时间戳
+                + amount: 12.4 (number, required) - 抢到的红包金额
+### 打开红包 [POST]
++ Parameters
+    + rpid: 23850923 (number, required) - 红包id
+### 抢红包 [PATCH]
