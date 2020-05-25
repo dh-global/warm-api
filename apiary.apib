@@ -1885,3 +1885,22 @@ form的命名统一为file
                 + user_id: 1234 (number, required) - 抢红包的人的用户id
                 + opened_at: 15989898 (number, required) - 抢红包的时间戳
                 + amount: 12.4 (number, required) - 抢到的红包金额
+
+### 群个人红包积分 /users/{user_id}/groups/{group_id}/wallets [/users/{user_id}/groups/{group_id}/wallets]
+### 获取个人红包积分的汇总 [GET]
++ Parameters
+    + user_id: 23850923 (number, required) - 用户id
+    + group_id: 23850923 (number, required) - 群id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + group_id: 23850923 (number, required) - 群id
+        + total_amount: 100.34 (number, required) - 总金额
+        + total_count: 10 (number, required) - 红包记录数量
+        + flows: (array) - 红包流水
+            + flow (object) - 红包记录
+                + rpid: 23850923 (number, required) - 红包id
+                + rp_type: 2 (number, required) - 红包类型, 1：普通红包，金额平均， 2：随机红包，金额随机 
+                + from: 1251 (number, required) - 红包发起人的id
+                + amount: 2.4 (number, required) - 红包积分金额
+                + opened_at: 15000 (number, required) - 打开红包的时间戳
