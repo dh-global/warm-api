@@ -1213,6 +1213,12 @@ form的命名统一为file
             + list: 1500000 (number, required) - 时间戳，上次联系人列表更新时间戳
         + groups (object)
             + list: 1500000 (number, required) - 时间戳，上次群列表更新时间戳
+            + groups (array) - 群资源列表
+                + group (object)
+                    + group_id: 12 (number, required) - 群id 
+                    + info: 1500000 (number, required) - 时间戳,上次更新时间戳
+                    + setting: 1500000 (number, required) - 时间戳,上次更新时间戳
+                    + member: 1500000 (number, required) - 时间戳,上次更新时间戳
         + settings (object)
             + setting: 124 (number, required) - 个人设置记录id
             + chat: 124 (number, required) - 会话记录id
