@@ -1913,3 +1913,29 @@ form的命名统一为file
                 + from: 1251 (number, required) - 红包发起人的id
                 + amount: 2.4 (number, required) - 红包积分金额
                 + opened_at: 15000 (number, required) - 打开红包的时间戳
+
+## 查询扩展信息 /users/{id}/extension  [/users/{id}/extension]
+### 查询扩展信息 [GET]
++ Parameters
+    + id: 4524 (number, required) - 用户id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + extension: (object, required) - 用户列表
+            + wangyiyunxin (object)
+                + token: xxx (string, required) - 用户token
+
+
+    + Body
+    {
+      "code":200,
+      "message":"",
+      "data":{
+        "extension":{
+          "wangyiyunxin":{
+            "token":"cf0543d387692e9549cb72395194ea1a"
+          }
+        }
+      }
+    }
+
