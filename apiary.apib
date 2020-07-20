@@ -1222,8 +1222,22 @@ form的命名统一为file
         + settings (object)
             + setting: 124 (number, required) - 个人设置记录id
             + chat: 124 (number, required) - 会话记录id
-        + login_request_id: faskjhfkasfa (string, optional) - pc端二次登录请求token
+        + login_request_id: faskjhfkasfa (string, optional) - pc端二次登录请求token。参数不为空时，即有登录请求。
 
+
+## 单个会话设置 /users/{user_id}/chat_settings/{chat_id} [/users/{user_id}/chat_settings/{chat_id}]
+### 获取会话设置记录 [GET]
++ Parameters
+    + user_id: 14 (number, required) - user id
+    + chat_id: 12445 (number, required) - 会话设置id
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + setting: (array) - 会话设置记录
+            + object_id: 14 (number, required) - imid or group id，-1：群通知，-2： 临时会话
+            + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊， 3： 临时会话
+            + top： 0 (number, required) - top:置顶， 0:关闭，1：启用
+            + mute: 0 (number, required) - mute:免打扰，0:关闭，1：启用
 
 ## 会话设置 /users/{user_id}/chat_settings{?after} [/users/{user_id}/chat_settings{?after}]
 ### 获取会话设置记录 [GET]
@@ -1233,12 +1247,12 @@ form的命名统一为file
 
 + Response 200 (application/json)
      + Attributes (object)
-         + chat_settings: (array) - 会话设置记录
-            + chat_setting (object)
-                + object_id: 14 (number, required) - imid or group id
-                + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊
-                + key： xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰，(由客户端自定义，但要三端统一)
-                + value： 0 (number, required) - 配置值，如, 1:开启， 2:关闭，(由客户端自定义，但要三端统一)
+        + settings: (array) - 会话设置记录
+            + setting (object)
+                + object_id: 14 (number, required) - imid or group id，-1：群通知，-2： 临时会话
+                + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊， 3： 临时会话
+                + top： 0 (number, required) - top:置顶， 0:关闭，1：启用
+                + mute: 0 (number, required) - mute:免打扰，0:关闭，1：启用
 
 
 ### 设置会话设置记录 [POST]
@@ -1247,10 +1261,10 @@ form的命名统一为file
 
 + Request (application/json)
      + Attributes (object)
-         + object_id: 14 (number, required) - user id or group id
-         + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊
-         + key： xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰，(由客户端自定义，但要三端统一)
-         + value： 0 (number, required) - 配置值，如, 1:开启， 2:关闭，(由客户端自定义，但要三端统一)
+        + object_id: 14 (number, required) - imid or group id，-1：群通知，-2： 临时会话
+        + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊， 3： 临时会话
+        + key： xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰
+        + value： 0 (number, required) - 配置值，如, 0:开启， 1:关闭
 
 + Response 200 (application/json)
      + Attributes (object)
