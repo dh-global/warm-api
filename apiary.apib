@@ -1239,10 +1239,11 @@ form的命名统一为file
             + top: 0 (number, required) - top:置顶， 0:关闭，1：启用
             + mute: 0 (number, required) - mute:免打扰，0:关闭，1：启用
 
-## 会话设置 /users/{user_id}/chat_settings [/users/{user_id}/chat_settings]
+## 会话设置 /users/{user_id}/chat_settings{?after} [/users/{user_id}/chat_settings{?after}]
 ### 获取会话设置记录（全量） [GET]
 + Parameters
     + user_id: 14 (number, required) - user id
+    + after: 1423514 (number, required) - 资源版本的时间戳
 
 + Response 200 (application/json)
      + Attributes (object)
@@ -1263,7 +1264,7 @@ form的命名统一为file
         + object_id: 14 (number, required) - imid or group id，-1：群通知，-2： 临时会话
         + chat_type: 1 (number, required) - 会话类型， 1：单聊， 2：群聊， 3： 临时会话
         + key: xxx (string, required) - 配置类型，如, top:置顶， mute:免打扰
-        + value： 0 (number, required) - 配置值，如, 0:开启， 1:关闭
+        + value： 0 (number, required) - 配置值，如, 0:关闭，1：启用
 
 + Response 200 (application/json)
      + Attributes (object)
