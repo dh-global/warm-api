@@ -1953,3 +1953,33 @@ form的命名统一为file
       }
     }
 
+
+## 站台 /station [/station]
++ Parameters
+    + longitude: 12.35 (number, required) - 经度， -180 ~ 180
+    + latitude: 35.3 (number, required) - 维度，-85.05112878 ~ 85.05112878
++ Response 200 (application/json)
+    + Attributes (object)
+        + stations (array) - 群列表
+            + station (object)
+                + station_id: 23 (string, required) - 站台id
+                + city: zhenzhen (string, required) - 城市名称
+                + station_type: airport (string, required) - 站台类型： airport: 机场，hrail: 高铁
+                + code: szx (string, required) - 站台编码
+                + longitude: 13.24 (string, required) - 经度
+                + latitude: 54.23 (string, required) - 纬度  
+
+## 临时群 /temp_groups{?code&station_type}  [/temp_groups{?code&station_type}]
+### 查询指定站台的临时群 [GET]
++ Parameters
+    + code: szx (string, required) - 字码，从站台信息接口可以获取
+    + station_type: airport (string, required) - 站台类型： airport: 机场，hrail: 高铁
++ Response 200 (application/json)
+    + Attributes (object)
+        + groups (array) - 群列表
+            + group (object)
+                + group_id: 23 (string, required) - 群id
+                + name: 1009 (string, required) - 群名称
+                + avatar: ghjkl (string, required) - 群头像
+                + count: 20 (number, required) - 群人数
+                + member_hash: kkkkddd (string, required) - 成员hash
