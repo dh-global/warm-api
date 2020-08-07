@@ -1959,6 +1959,7 @@ form的命名统一为file
 + Parameters
     + longitude: 12.35 (number, required) - 经度， -180 ~ 180
     + latitude: 35.3 (number, required) - 维度，-85.05112878 ~ 85.05112878
+    + city_code: 0755 (string, optional) - 城市码，加上该参数可获取城市内所有站台，如，0755：深圳
 + Response 200 (application/json)
     + Attributes (object)
         + stations (array) - 群列表
@@ -1969,14 +1970,20 @@ form的命名统一为file
                 + code: szx (string, required) - 站台编码
                 + longitude: 13.24 (string, required) - 经度
                 + latitude: 54.23 (string, required) - 纬度  
+                + dist: 1.4 (number, required) - 客户端与站台的距离，单位：km
 
 ## 临时群 /temp_groups{?code&station_type}  [/temp_groups{?code&station_type}]
 ### 查询指定站台的临时群 [GET]
 + Parameters
     + code: szx (string, required) - 字码，从站台信息接口可以获取
     + station_type: airport (string, required) - 站台类型： airport: 机场，hrail: 高铁
+    + page: 0 (number, optional) - 页码，从0开始
+    + page_size: 10 (number, optional) - 每页的数量
 + Response 200 (application/json)
     + Attributes (object)
+        + page: 0 (number, optional) - 页码，从0开始
+        + page_size: 10 (number, optional) - 每页的数量
+        + total: 100 (number, optional) - 总数量
         + groups (array) - 群列表
             + group (object)
                 + group_id: 23 (string, required) - 群id
@@ -1984,3 +1991,8 @@ form的命名统一为file
                 + avatar: ghjkl (string, required) - 群头像
                 + count: 20 (number, required) - 群人数
                 + member_hash: kkkkddd (string, required) - 成员hash
+                + departure_at: 1500000 (number, required) - 起飞时间
+                + admins (array) - 管理员列表
+                    + admin (object) - 管理员
+                        + im_id: 23 (number, required) - 用户id
+                        + avatar: 1009 (avatar, required) - 用户头像
