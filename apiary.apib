@@ -173,7 +173,7 @@ FORMAT: 1A
         + im_server: (object, required) - im服务器
             + addrs: ["1270.0.0.1:9001"] (array, required) - im服务地址
         + user: (object, required)
-            + user_id: 
+            + im_id: 
         + token: xxxxxxxxx (array, required) - token
         + exp: 60 (array, required) - token
         + im_token: xxxxxxxxx (array, required) - im token
@@ -203,7 +203,7 @@ FORMAT: 1A
         + bind_status: 1 (number, required) - 是否已绑定账号，0:否，1：是
         + openid: 239482 (string, required) - 第三方用户的id
         + user (object) - (登录成功才返回该字段) 
-            + user_id: 125 (number, required) - 用户id
+            + im_id: 125 (number, required) - 用户id
             + account: xxxxx (string, required) - 账号
             + account_alias: xxxxx (string, required) - 账号别名
             + im_id: 125 (number, required) - im id
@@ -256,7 +256,7 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (object)    
         + user (object) - (登录成功才返回该字段)
-            + user_id: 125 (number, required) - 用户id
+            + im_id: 125 (number, required) - 用户id
             + account: xxxxx (string, required) - 账号
             + account_alias: xxxxx (string, required) - 账号别名
             + im_id: 125 (number, required) - im id
@@ -317,7 +317,7 @@ FORMAT: 1A
 ### pc请求登录 [POST]
 + Request (application/json)
     + Attributes (object)
-        + user_id: 100111 (number, required) - 用户id
+        + im_id: 100111 (number, required) - 用户id
         + platform: pc (string, required) - 设备类型
         + name: HUAWEI (string, optional) - 设备名称
         + model: android xxx (string, optional) - 设备型号
@@ -343,10 +343,9 @@ FORMAT: 1A
             + mac：jsldfjl (string, required) - 设备mac地址
             + version： v0.0.1 (string, required) - 系统版本
         + user (object) - (登录成功才返回该字段)
-            + user_id: 125 (number, required) - 用户id
+            + im_id: 125 (number, required) - 用户id
             + account: xxxxx (string, required) - 账号
             + account_alias: xxxxx (string, required) - 账号别名
-            + im_id: 125 (number, required) - im id
             + nickname: xxxxx (string, required) - 用户昵称
             + platform: xxxxx (string, required) - 设备平台
             + country_code: xxxxx (string, required) - 国家号
@@ -389,10 +388,9 @@ FORMAT: 1A
     + Attributes (object)
         + contacts: (array, required) - 用户列表 
             + contact (object)
-                + user_id: 125 (number, required) - 用户id
+                + im_id: 125 (number, required) - 用户id
                 + account: xxxxx (string, required) - 账号
                 + account_alias: xxxxx (string, required) - 账号别名
-                + im_id: 125 (number, required) - im id
                 + nickname: xxxxx (string, required) - 用户昵称
                 + platform: xxxxx (string, required) - 设备平台
                 + country_code: xxxxx (string, required) - 国家号
@@ -415,10 +413,9 @@ FORMAT: 1A
     + Attributes (object)
         + contacts: (array, required) - 用户列表 
             + contact (object)
-                + user_id: 125 (number, required) - 用户id
+                + im_id: 125 (number, required) - 用户id
                 + account: xxxxx (string, required) - 账号
                 + account_alias: xxxxx (string, required) - 账号别名
-                + im_id: 125 (number, required) - im id
                 + nickname: xxxxx (string, required) - 用户昵称
                 + platform: xxxxx (string, required) - 设备平台
                 + country_code: xxxxx (string, required) - 国家号
@@ -435,10 +432,9 @@ FORMAT: 1A
     {
         "contacts": [
             {
-                "user_id": 1,
+                "im_id": 1,
                 "account": "A1NSHijF6cBpudF3khcBCkfmVm",
                 "account_alias": "",
-                "im_id": 0,
                 "nickname": "ujtb4h",
                 "platform": "iphone",
                 "country_code": "+86",
@@ -464,10 +460,9 @@ FORMAT: 1A
     + Attributes (object)
         + contacts: (array, required) - 用户列表 
             + contact (object)
-                + user_id: 125 (string, required) - 用户id
+                + im_id: 125 (string, required) - 用户id
                 + account: xxxxx (string, required) - 账号
                 + account_alias: xxxxx (string, required) - 账号别名
-                + im_id: 125 (string, required) - im id
                 + nickname: xxxxx (string, required) - 用户昵称
                 + platform: xxxxx (string, required) - 设备平台
                 + country_code: xxxxx (string, required) - 国家号
@@ -484,10 +479,9 @@ FORMAT: 1A
     {
         "contacts": [
             {
-                "user_id": 1,
+                "im_id": 1,
                 "account": "A1NSHijF6cBpudF3khcBCkfmVm",
                 "account_alias": "",
-                "im_id": 0,
                 "nickname": "ujtb4h",
                 "platform": "iphone",
                 "country_code": "+86",
@@ -517,42 +511,37 @@ FORMAT: 1A
     + Attributes (object)
         + contacts: (array, required)
             + contact (object)
-                + user_id: 86 (number, required) - 用户id
+                + im_id: 86 (number, required) - 用户id
                 + nickname: neil (string, required) - 昵称
                 + friend_nickname: neil (string, required) - 用户对朋友的昵称 
                 + avatar: /image/avatar/2.png (string, required) - 最后更新时间
-                + im_id: 137 (number, required) - im id
                 + mute_notice: yes (string, required) - 消息免打扰： yes/no. 默认：no
         + deletes: (array, optional)    - 已删除的联系人ID列表, contact_type=delete时，才有该参数
-            + user_id: 86 (number, required) - 用户id
+            + im_id: 86 (number, required) - 用户id
 
     + Body
         {
             "contacts": [
                 {
-                    "user_id": 100000135,
-                    "im_id": 0,
+                    "im_id": 100000135,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
                 },
                 {
-                    "user_id": 100000136,
-                    "im_id": 0,
+                    "im_id": 100000136,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
                 },
                 {
-                    "user_id": 100000138,
-                    "im_id": 0,
+                    "im_id": 100000138,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
                 },
                 {
-                    "user_id": 100000137,
-                    "im_id": 0,
+                    "im_id": 100000137,
                     "nickname": "ujtb4h",
                     "friend_nickname": "",
                     "avatar": "/image/avatar/5.jpeg",
@@ -569,10 +558,9 @@ FORMAT: 1A
 + Response  200 (application/json)
 
     + Attributes (object)
-        + user_id: 125 (string, required) - 用户id
+        + im_id: 125 (string, required) - 用户id
         + account: xxxxx (string, required) - 账号
         + account_alias: xxxxx (string, required) - 账号别名
-        + im_id: 125 (string, required) - im id
         + nickname: xxxxx (string, required) - 用户昵称
         + platform: xxxxx (string, required) - 设备平台
         + country_code: xxxxx (string, required) - 国家号
@@ -609,10 +597,9 @@ FORMAT: 1A
         + req_id: 14 (number, required) - 请求id
         + status: success (string, required) - 状态：success/fail
         + contact (object) - 联系人信息
-            + user_id: 125 (string, required) - 用户id
+            + im_id: 125 (string, required) - 用户id
             + account: xxxxx (string, required) - 账号
             + account_alias: xxxxx (string, required) - 账号别名
-            + im_id: 125 (string, required) - im id
             + nickname: xxxxx (string, required) - 用户昵称
             + platform: xxxxx (string, required) - 设备平台
             + country_code: xxxxx (string, required) - 国家号
@@ -653,7 +640,7 @@ FORMAT: 1A
 + Response  204 (application/json)
 
 
-## 个人中心 /users/{user_id} [/users/{user_id}]
+## 个人中心 /users/{im_id} [/users/{im_id}]
 ### 获取个人中心信息 [GET]
 + Parameters
     + id: 1235 (number, required) - 用户id 
@@ -661,10 +648,9 @@ FORMAT: 1A
 + Response  200 (application/json)
 
     + Attributes (object)
-        + user_id: 125 (string, required) - 用户id
+        + im_id: 125 (string, required) - 用户id
         + account: xxxxx (string, required) - 账号
         + account_alias: xxxxx (string, required) - 账号别名
-        + im_id: 125 (string, required) - im id
         + nickname: xxxxx (string, required) - 用户昵称
         + platform: xxxxx (string, required) - 设备平台
         + country_code: xxxxx (string, required) - 国家号
@@ -725,7 +711,7 @@ form的命名统一为file
 + Request (application/json)
 
     + Attributes (object)
-        + user_ids (array, required) - 用户id数组，
+        + im_ids (array, required) - 用户id数组，
             + id : 123 (number) - 用户id
         + name: my group (string, required) - 群名称
         + group_type: chat (string, optional) - 群类型
@@ -820,7 +806,7 @@ form的命名统一为file
             + add_group_type: 1 (number, required) - 加群方式 1：允许任何人加群，2：需要验证，3：不允许任何人加群
         + roles (array) - 群角色列表
             + roles (object)
-                + user_id: 1 (number, required) - 用户id
+                + im_id: 1 (number, required) - 用户id
                 + role: admin (string, required) - 群角色： owner/admin/member
                 + no_speaking: 1 (number, required) - 是否有禁言权力, 0: 开启，1： 关闭
                 + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
@@ -828,12 +814,12 @@ form的命名统一为file
         + members (array) - 成员列表
             + members (object)
                 + group_nickname: derek (string, required) - 用户昵称
-                + user_id: 123 (number, required) - 用户id
+                + im_id: 123 (number, required) - 用户id
                 + imid: 1241235 (number, required) - imid
                 + avatar: /image/avatar/2.png  (string, required) - 用户头像
         + member_settings (array) - 成员设置
             + member_settings (object) 
-                + user_id: 123 (number, required) - 用户id
+                + im_id: 123 (number, required) - 用户id
                 + no_speaking: 15xxxxx (number, required) - 禁言结束时间戳
 
     + Body 
@@ -865,21 +851,21 @@ form的命名统一为file
         },
         "roles": [
             {
-                "user_id": 16,
+                "im_id": 16,
                 "role": "owner",
                 "no_speaking": 1,
                 "modify_info": 1,
                 "add_in_group": 1
             },
             {
-                "user_id": 18,
+                "im_id": 18,
                 "role": "member",
                 "no_speaking": 0,
                 "modify_info": 0,
                 "add_in_group": 0
             },
             {
-                "user_id": 24,
+                "im_id": 24,
                 "role": "member",
                 "no_speaking": 0,
                 "modify_info": 0,
@@ -888,21 +874,18 @@ form的命名统一为file
         ],
         "members": [
             {
-                "user_id": 16,
                 "im_id": 1582799689503524,
                 "group_nickname": "sg1zs3",
                 "avatar": "3ee76fabaec2bf385015049390210f45",
                 "role": ""
             },
             {
-                "user_id": 18,
                 "im_id": 1582800854198274,
                 "group_nickname": "ginsx4",
                 "avatar": "b4db9c634ca0a753ac1edc0f23f3b4ad",
                 "role": ""
             },
             {
-                "user_id": 24,
                 "im_id": 1582859137417914,
                 "group_nickname": "c3n3fw",
                 "avatar": "b4db9c634ca0a753ac1edc0f23f3b4ad",
@@ -911,15 +894,15 @@ form的命名统一为file
         ],
         "member_settings": [
             {
-                "user_id": 16,
+                "im_id": 16,
                 "no_speaking": 0
             },
             {
-                "user_id": 18,
+                "im_id": 18,
                 "no_speaking": 0
             },
             {
-                "user_id": 24,
+                "im_id": 24,
                 "no_speaking": 0
             }
         ]
@@ -955,7 +938,7 @@ form的命名统一为file
         + members: (array, require) - 数组
             + members (object)
                 + group_nickname: derek (string, required) - 用户昵称
-                + user_id: 123 (number, required) - 用户id
+                + im_id: 123 (number, required) - 用户id
                 + imid: 1241235 (number, required) - imid
                 + avatar: /image/avatar/2.png  (string, required) - 用户头像
                 + role: owner (string, required) - 用户群角色
@@ -963,7 +946,7 @@ form的命名统一为file
                 + add_by: 15 (number, required) - 加群的操作人id
                 + add_way:  phone (string, required) - 添加方式：card/scan/phone/account/group/nearby
         + quit_members: (array, require) - 已退群成员数组
-            + user_id: 123 (number, required) - 用户id
+            + im_id: 123 (number, required) - 用户id
 
 ### 添加群成员(Y) [POST]
 + Parameters
@@ -971,7 +954,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids (array, required) - 用户id数组，
+        + im_ids (array, required) - 用户id数组，
             + id : 123 (number) - 用户id
 
 
@@ -984,24 +967,23 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids (array, required) - 用户id数组，
+        + im_ids (array, required) - 用户id数组，
             + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
 
-## 群成员 /groups/{group_id}/members/{user_id} [/groups/{group_id}/members/{user_id}]
+## 群成员 /groups/{group_id}/members/{im_id} [/groups/{group_id}/members/{im_id}]
 ### 获取群成员信息(Y) [GET]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    + user_id: 1235 (number, required) - 用户id
+    + im_id: 1235 (number, required) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
-        + user_id: 125 (string, required) - 用户id
+        + im_id: 125 (string, required) - 用户id
         + account: xxxxx (string, required) - 账号
         + account_alias: xxxxx (string, required) - 账号别名
-        + im_id: 125 (string, required) - im id
         + nickname: xxxxx (string, required) - 用户昵称
         + platform: xxxxx (string, required) - 设备平台
         + country_code: xxxxx (string, required) - 国家号
@@ -1019,7 +1001,7 @@ form的命名统一为file
 ### 修改群成员信息(Y) [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    + user_id: 1235 (number, required) - 用户id
+    + im_id: 1235 (number, required) - 用户id
 
 + Request (application/json)
     + Attributes (object)
@@ -1031,28 +1013,28 @@ form的命名统一为file
 ### 群成员退群(Y) [DELETE]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    + user_id: 1235 (number, required) - 用户id
+    + im_id: 1235 (number, required) - 用户id
 
 + Response (application/json)
     + Attributes (object)
 
 
-## 群成员设置 /groups/{group_id}/members/{user_id}/settings [/groups/{group_id}/members/{user_id}/settings]
+## 群成员设置 /groups/{group_id}/members/{im_id}/settings [/groups/{group_id}/members/{im_id}/settings]
 ### 获取群成员设置 [GET]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    + user_id: 1235 (number, required) - 用户id
+    + im_id: 1235 (number, required) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
         + setting：(object)
-            + user_id: 123 (number, required) - 用户id
+            + im_id: 123 (number, required) - 用户id
             + no_speaking: 15xxxxx (number, required) - 禁言结束时间戳
 
 ### 修改群成员设置 [POST]
 + Parameters
     + group_id: 12 (number, required) - 群id
-    + user_id: 1235 (number, required) - 用户id
+    + im_id: 1235 (number, required) - 用户id
 
 + Request (application/json)
     + Attributes (object)
@@ -1110,7 +1092,7 @@ form的命名统一为file
     + Attributes (object)
         + roles: (array, required) - 群角色列表
             + roles (object)
-                + user_id: 1 (number, required) - 用户id
+                + im_id: 1 (number, required) - 用户id
                 + role: admin (string, required) - 群角色： owner/admin/member
                 + no_speaking: 1 (number, required) - 是否有禁言权力, 0: 开启，1： 关闭
                 + modify_info: 1 (number, required) - 是否有修改群信息的权力, 0: 开启，1： 关闭
@@ -1124,7 +1106,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + user_ids (array, required) - 用户id数组，
+        + im_ids (array, required) - 用户id数组，
             + id : 123 (number) - 用户id, 转让群主时，数组只能填写一个用户id
         + role: string (string, required) - 群角色： owner/admin/member
 
@@ -1162,7 +1144,7 @@ form的命名统一为file
 
 + Request (application/json)
     + Attributes (object)
-        + invite_id: 2134 (number, required) - 邀请人的user_id,主动申请入群的,填申请人user_id
+        + invite_id: 2134 (number, required) - 邀请人的im_id,主动申请入群的,填申请人im_id
         + join_way: qrcode (string, required) - 加入方式: create/invite/qrcode
         + message: I'm xxx (string, required) - 添加消息
 
@@ -1180,10 +1162,10 @@ form的命名统一为file
 
 + Response 200 (application/json)
     + Attributes (object)
-        + id: 2134 (number, required) - 邀请人的user_id,主动申请入群的,填申请人user_id
+        + id: 2134 (number, required) - 邀请人的im_id,主动申请入群的,填申请人im_id
         + create_at: 15000000000000 (number, required) - 时间戳
         + group_id: 354  (number, required) - 群id
-        + user_id: 2 (number, required) - 用户id
+        + im_id: 2 (number, required) - 用户id
         + operator_id： 3 (number, required) - 用户id
         + join_way: qrcode (string, required) - 加入方式: create/invite/qrcode
         + status: applying (string, required) - 申请状态
@@ -1202,10 +1184,10 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 资源同步 /users/{user_id}/res [/users/{user_id}/res]
+## 资源同步 /users/{im_id}/res [/users/{im_id}/res]
 ### 获取同步资源集合 [GET]
 + Parameters
-    + user_id: 12 (number, required) - 用户id
+    + im_id: 12 (number, required) - 用户id
 
 + Response 200 (application/json)
      + Attributes (object)
@@ -1225,10 +1207,10 @@ form的命名统一为file
         + login_request_id: faskjhfkasfa (string, optional) - pc端二次登录请求token。参数不为空时，即有登录请求。
 
 
-## 单个会话设置 /users/{user_id}/chat_settings/{chat_id} [/users/{user_id}/chat_settings/{chat_id}]
+## 单个会话设置 /users/{im_id}/chat_settings/{chat_id} [/users/{im_id}/chat_settings/{chat_id}]
 ### 获取会话设置记录 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + chat_id: 12445 (number, required) - 会话设置id
 
 + Response 200 (application/json)
@@ -1239,10 +1221,10 @@ form的命名统一为file
             + top: 0 (number, required) - top:置顶， 0:关闭，1：启用
             + mute: 0 (number, required) - mute:免打扰，0:关闭，1：启用
 
-## 会话设置 /users/{user_id}/chat_settings{?after} [/users/{user_id}/chat_settings{?after}]
+## 会话设置 /users/{im_id}/chat_settings{?after} [/users/{im_id}/chat_settings{?after}]
 ### 获取会话设置记录（全量） [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + after: 1423514 (number, required) - 资源版本的时间戳
 
 + Response 200 (application/json)
@@ -1257,7 +1239,7 @@ form的命名统一为file
 
 ### 设置会话设置记录 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Request (application/json)
      + Attributes (object)
@@ -1270,10 +1252,10 @@ form的命名统一为file
      + Attributes (object)
 
 
-## 个人设置 /users/{user_id}/settings{?after} [/users/{user_id}/settings{?after}]
+## 个人设置 /users/{im_id}/settings{?after} [/users/{im_id}/settings{?after}]
 ### 获取个人设置 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Response 200 (application/json)
      + Attributes (object)
          + settings: (array, required) - 配置列表
@@ -1284,11 +1266,11 @@ form的命名统一为file
 
 ### 配置个人设置 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Request (application/json)
      + Attributes (object)
-         + user_id: 14 (number, required) - user id
+         + im_id: 14 (number, required) - user id
          + type: 1 (number, required) - 设置类型， 如： 通用/个人/通知/隐私（由客户端自定义，但要三端统一）
          + key： xxx (string, required) - 具体设置类型 (由客户端自定义，但要三端统一)
          + value： 0 (number, required) - 配置值，如, 1:开启， 2:关闭，(由客户端自定义，但要三端统一)
@@ -1298,15 +1280,15 @@ form的命名统一为file
 
 
 
-## 个人设置-黑名单 /users/{user_id}/blacklist [/users/{user_id}/blacklist]
+## 个人设置-黑名单 /users/{im_id}/blacklist [/users/{im_id}/blacklist]
 ### 获取黑名单列表 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Response 200 (application/json)
     + Attributes (object)
         + blacklist: (array, required) - 黑名单列表
             + blacklist (object)
-                + user_id: 124 (number, required) - 被拉黑人的user_id
+                + im_id: 124 (number, required) - 被拉黑人的im_id
                 + nickname: derek (string, required) - 昵称 
                 + friend_nickname: derek (string, required) - 备注 
                 + avatar: tgyhjk (string, required) - 头像
@@ -1314,11 +1296,11 @@ form的命名统一为file
 
 ### 添加黑名单 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Request (application/json)
      + Attributes (object)
-        + blacklist (array, required) - 被拉黑人的user_id数组
+        + blacklist (array, required) - 被拉黑人的im_id数组
             + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
@@ -1326,21 +1308,21 @@ form的命名统一为file
 
 ### 移除黑名单 [DELETE]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Request (application/json)
      + Attributes (object)
-        + blacklist (array, required)  - 黑名单的user_id数组
+        + blacklist (array, required)  - 黑名单的im_id数组
             + id : 123 (number) - 用户id
 
 + Response 200 (application/json)
     + Attributes (object)
 
 
-## 登录设备 /users/{user_id}/devices [/users/{user_id}/devices]
+## 登录设备 /users/{im_id}/devices [/users/{im_id}/devices]
 ### 获取登录设备列表 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -1361,10 +1343,10 @@ form的命名统一为file
         ]
     }
 
-## 登录设备管理 /users/{user_id}/devices/{device_id} [/users/{user_id}/devices/{device_id}]
+## 登录设备管理 /users/{im_id}/devices/{device_id} [/users/{im_id}/devices/{device_id}]
 ### 修改登录设备信息 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + device_id: 1 (number, required) - device id
 
 + Request (application/json)
@@ -1376,17 +1358,17 @@ form的命名统一为file
 
 ### 删除登录设备 [DELETE]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + device_id: 1 (number, required) - device id
 
 + Response 200 (application/json)
     + Attributes (object)
 
 
-## 上次登录设备 /users/{user_id}/devices/last{?endpoint} [/users/{user_id}/devices/last{?endpoint}]
+## 上次登录设备 /users/{im_id}/devices/last{?endpoint} [/users/{im_id}/devices/last{?endpoint}]
 ### 获取上次登录设备的记录 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + endpoint: pc (string, required) - 终端： mobile/pc
 
 + Response 200 (application/json)
@@ -1394,7 +1376,7 @@ form的命名统一为file
         + device (object)
             + login_id: 42 (number, required) - 登录id
             + login_at: 15000000000 (number, required) - 登录时间
-            + user_id: 15000000000 (number, required) - 用户id
+            + im_id: 15000000000 (number, required) - 用户id
             + name: dgs (string, required) - 设备名称
             + platform: android (string, required) - 平台
             + model: 10 (string, required) - 型号
@@ -1403,20 +1385,20 @@ form的命名统一为file
             + ip: 172.16.3.55 (string, required) - ip
             + login_type: vcode (string, required) - 登录类型: vcode/pwd
 
-## 账号 /users/{user_id}/account [/users/{user_id}/account]
+## 账号 /users/{im_id}/account [/users/{im_id}/account]
 ###  修改用户account [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Request (application/json)
     + Attributes (object)
         + account_alias: derek (string, required) - 修改account
 + Response 200 (application/json)
     + Attributes (object)
 
-## 密码 /users/{user_id}/password [/users/{user_id}/password]
+## 密码 /users/{im_id}/password [/users/{im_id}/password]
 ###  设置password [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Request (application/json)
     + Attributes (object)
         + old_password: derek (string, required) - 旧password，需要加密，加密方式由三端协商
@@ -1437,15 +1419,15 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 隐私设置 /users/{user_id}/privacy_settings [/users/{user_id}/privacy_settings]
+## 隐私设置 /users/{im_id}/privacy_settings [/users/{im_id}/privacy_settings]
 ### 获取隐私设置 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Response 200 (application/json)
     + Attributes (object)
         + setting: (object)
             + id: 1 (number, required) - 设置id
-            + user_id: 123 (number, required) - 用户id
+            + im_id: 123 (number, required) - 用户id
             + add_verify: 1 (number, required) - 添加认证， 0： 关闭， 1：启用
             + search_phone: 1 (number, required) - 允许搜索号码， 0： 关闭， 1：启用 
             + search_account: 1 (number, required) - 允许搜索账号， 0： 关闭， 1：启用
@@ -1453,14 +1435,14 @@ form的命名统一为file
     + Body {
         "setting": {
             "id": 1,
-            "user_id": 23,
+            "im_id": 23,
             "add_verify": 1
         }
     }
 
 ### 修改隐私设置 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Request (application/json)
     + Attributes (object)
         + key: add_verify (string, required) - 设置类型， add_verify：被添加好友是否需要验证。search_phone:允许号码搜索。search_account：允许id搜索。share_card: 允许名片添加好友
@@ -1469,10 +1451,10 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 推送设置 /users/{user_id}/push_settings  [/users/{user_id}/push_settings]
+## 推送设置 /users/{im_id}/push_settings  [/users/{im_id}/push_settings]
 ###  获取推送设置 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 
 + Response 200 (application/json)
     + Attributes (object)
@@ -1482,7 +1464,7 @@ form的命名统一为file
 
 ###  设置推送 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
 + Request (application/json)
     + Attributes (object)
         + kay: detail (string, required) , - 设置类型: switch/detail
@@ -1492,10 +1474,10 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 本地通讯录 /users/{user_id}/mobile_contacts{?device_id} [/users/{user_id}/mobile_contacts{?device_id}]
+## 本地通讯录 /users/{im_id}/mobile_contacts{?device_id} [/users/{im_id}/mobile_contacts{?device_id}]
 ### 获取通讯录 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id
+    + im_id: 14 (number, required) - user id
     + device_id: kjkj (string, required) - 设备唯一id
 + Request (application/json)
     + Attributes (object)
@@ -1506,7 +1488,7 @@ form的命名统一为file
                 + cn : +86 (string, required)  - 国家号
                 + phone: 10086 (string, required) - 手机号码
                 + name: derek (string, required) - 通讯录备注
-                + user_id: 12 (number, required) - 用户id
+                + im_id: 12 (number, required) - 用户id
                 + imid:1235414 (number, required) - imid
                 + avatar: sdkfjalskjd (string, required) - 用户头像
                 + friend_nickname: 15ajsdf (string, required) - 用户昵称
@@ -1515,7 +1497,7 @@ form的命名统一为file
 
 ### 上传通讯录 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
 + Request (application/json)
     + Attributes (object)
         + device_id: sdfa (string, required) - 设备唯一id
@@ -1528,10 +1510,10 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 个人地址位置  /users/{user_id}/locations [/users/{user_id}/locations]
+## 个人地址位置  /users/{im_id}/locations [/users/{im_id}/locations]
 ### 设置地理位置 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
 + Request (application/json)
     + Attributes (object)
         + longitude: 12.35 (number, required) - 经度， -180 ~ 180
@@ -1541,15 +1523,15 @@ form的命名统一为file
 
 ### 清楚地理位置 [DELETE]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
 + Response 200 (application/json)
     + Attributes (object)
 
 
-## 附近的人 /users/{user_id}/people_nearby{?limit}{&dist}  [/users/{user_id}/people_nearby{?limit}{&dist}]
+## 附近的人 /users/{im_id}/people_nearby{?limit}{&dist}  [/users/{im_id}/people_nearby{?limit}{&dist}]
 ### 获取附近的人 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
     + limit: 20 (number, required) - 每次获取数量
     + dist: 10 (number, required) - 距离，最大值:20, 单位：km
 
@@ -1557,7 +1539,6 @@ form的命名统一为file
     + Attributes (object)
         + nearby: (array, required) -  附近的人列表
             + nearby (object)
-                + user_id: 53 (number, required) - 用户id
                 + im_id: 155555 (number, required) - imid
                 + nickname: derek (string, required) - nickname
                 + sex: male (string, required) - 性别， 女：female， 男：male
@@ -1585,10 +1566,10 @@ form的命名统一为file
     + Attributes (object)
 
 
-## 附近的群 /users/{user_id}/group_nearby{?limit}{&dist}  [/users/{user_id}/group_nearby{?limit}{&dist}]
+## 附近的群 /users/{im_id}/group_nearby{?limit}{&dist}  [/users/{im_id}/group_nearby{?limit}{&dist}]
 ### 获取附近的群 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
     + limit: 20 (number, required) - 每次获取数量
     + dist: 10 (number, required) - 距离，最大值:20, 单位：km
 
@@ -1603,10 +1584,10 @@ form的命名统一为file
                 + owner_id: 3 (number, required) - 群主id
                 + distance: 7.8 (number, required) - 距离， 单位：km
 
-## 添加联系人  /users/{user_id}/add_reqs [/users/{user_id}/add_reqs]
+## 添加联系人  /users/{im_id}/add_reqs [/users/{im_id}/add_reqs]
 ### 添加联系人请求 [POST]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
 + Request (application/json)
     + Attributes (object)
         + friend_id: 35 (number, required) - 联系人的用户id
@@ -1620,10 +1601,10 @@ form的命名统一为file
         + req_id: 12 (number, required) - 请求记录id
         + no_verify: 0 (number, required) - 对方是否开启无需验证添加好友
 
-## 添加联系人管理 （new）/users/{user_id}/add_reqs/{req_id} [/users/{user_id}/add_reqs/{req_id}]
+## 添加联系人管理 （new）/users/{im_id}/add_reqs/{req_id} [/users/{im_id}/add_reqs/{req_id}]
 ### 获取添加请求 [GET]
 + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
     + req_id: 16 (number, required) - request id  
 
 + Response 200 (application/json)
@@ -1631,7 +1612,7 @@ form的命名统一为file
         + request (object)
             + req_id: 12 (number, required) - 请求记录id
             + updated_at: 150000 (number, required) - 记录更新时间
-            + user_id: 12 (number, required) - 用户id，请求发起人
+            + im_id: 12 (number, required) - 用户id，请求发起人
             + friend_id:14 (number, required) - 联系人id，请求接收人
             + request_by: 12 (number, required) - 请求发起人id
             + add_by: phone (string, required) - 添加方式
@@ -1640,7 +1621,7 @@ form的命名统一为file
 
 ### 处理添加请求 [POST]
  + Parameters
-    + user_id: 14 (number, required) - user id  
+    + im_id: 14 (number, required) - user id  
     + req_id: 15 (number, required) - request id     
 + Request (application/json)
     + Attributes (object)
@@ -1763,10 +1744,10 @@ form的命名统一为file
 + Response 200 (application/json)
     + Attributes (object)
 
-## 修改手机号 /users/{user_id}/phones [/users/{id}/phones]
+## 修改手机号 /users/{im_id}/phones [/users/{id}/phones]
 ### 修改手机号码 [POST]
 + Parameters
-    + user_id: dfghjkl (string, required) - 视频id
+    + im_id: dfghjkl (string, required) - 视频id
 + Request (application/json)
     + Attributes (object)
         + vcode: 3464 (string, required) - 验证码
@@ -1822,10 +1803,9 @@ form的命名统一为file
     + im_id: 23850923 (number, required) - im_id
 + Response 200 (application/json)
     + Attributes (object)
-        + user_id: 125 (string, required) - 用户id
+        + im_id: 125 (string, required) - 用户id
         + account: xxxxx (string, required) - 账号
         + account_alias: xxxxx (string, required) - 账号别名
-        + im_id: 125 (string, required) - im id
         + nickname: xxxxx (string, required) - 用户昵称
         + platform: xxxxx (string, required) - 设备平台
         + country_code: xxxxx (string, required) - 国家号
@@ -1854,7 +1834,7 @@ form的命名统一为file
 ### 发送红包 [POST]
 + Request (application/json)
     + Attributes (object)
-       + user_id: 1245 (number,required) - 红包发起人的id
+       + im_id: 1245 (number,required) - 红包发起人的id
        + group_id: 1245 (number,optional) - 红包发起群的id
        + rp_type: 1 (number,required) - 红包类型, 1：普通红包，金额平均， 2：随机红包，金额随机 
        + amount: 100.13 (number, required) - 红包总金额(ps.普通红包时，给总金额)     
@@ -1879,11 +1859,11 @@ form的命名统一为file
        + remain_size: 3 (number, required) - 红包剩余个数
        + size: 10 (number, required) - 红包总个数
        + desc: lucky (string, required) - 红包备注
-       + user_id: 1245 (number,required) - 红包发起人的id
+       + im_id: 1245 (number,required) - 红包发起人的id
        + group_id: 1245 (number,optional) - 红包发起群的id
        + flows: (array) - 红包流水
             + flow (object) - 流水
-                + user_id: 1234 (number, required) - 抢红包的人的用户id
+                + im_id: 1234 (number, required) - 抢红包的人的用户id
                 + opened_at: 15989898 (number, required) - 抢红包的时间戳
                 + amount: 12.4 (number, required) - 抢到的红包金额
 
@@ -1901,18 +1881,18 @@ form的命名统一为file
         + size: 10 (number, required) - 红包数量
         + amount: 2.0 (number, required) - 红包总金额
         + desc: lucky (string, required) - 红包备注
-        + user_id: 1245 (number,required) - 红包发起人的id
+        + im_id: 1245 (number,required) - 红包发起人的id
         + group_id: 1245 (number,optional) - 红包发起群的id
         + flows: (array) - 红包流水
             + flow (object) - 红包记录
-                + user_id: 1234 (number, required) - 抢红包的人的用户id
+                + im_id: 1234 (number, required) - 抢红包的人的用户id
                 + opened_at: 15989898 (number, required) - 抢红包的时间戳
                 + amount: 12.4 (number, required) - 抢到的红包金额
 
-### 群个人红包积分 /users/{user_id}/groups/{group_id}/wallets [/users/{user_id}/groups/{group_id}/wallets]
+### 群个人红包积分 /users/{im_id}/groups/{group_id}/wallets [/users/{im_id}/groups/{group_id}/wallets]
 ### 获取个人红包积分的汇总 [GET]
 + Parameters
-    + user_id: 23850923 (number, required) - 用户id
+    + im_id: 23850923 (number, required) - 用户id
     + group_id: 23850923 (number, required) - 群id
 
 + Response 200 (application/json)
